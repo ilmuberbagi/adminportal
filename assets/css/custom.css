@@ -1,0 +1,19 @@
+/**/
+
+.right-bg{
+	background:#FF4444;
+	color:#FFF;
+	vertical-align:middle;
+	min-height:100%;	
+}
+.jargon{
+	text-align:center;
+	font-family:impact;
+	text-shadow:2px 2px 0 #000;
+	font-size:3em;
+}
+.jargon div{
+	font-size:20px;
+}
+
+.bg-white{ background-color:#FFF;}
