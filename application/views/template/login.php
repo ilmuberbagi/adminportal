@@ -32,6 +32,7 @@
 					<p class="login-box-msg">Sign in to start your session</p>
 					<?php echo $this->session->flashdata('invalid');?>
 					<form action="<?php echo base_url().'auth';?>" method="post">
+						<input type="hidden" name="app" value="portal">
 						<div class="form-group has-feedback">
 							<input type="text" class="form-control" name="username" placeholder="Username or Email" required>
 							<span class="glyphicon glyphicon-user form-control-feedback"></span>

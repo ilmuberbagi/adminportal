@@ -126,9 +126,12 @@
 			<!-- Sidebar Menu -->
 			<ul class="sidebar-menu">
 				<li class="header">MAIN MENU</li>
-				<li class="active"><a href="#"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
-				<li><a href="#"><i class="fa fa-users"></i> <span>Directory Member</span></a></li>
-				<li><a href="#"><i class="fa fa-file-text"></i> <span>Artikel</span></a></li>
+				<li class="<?php echo $this->uri->segment(1) == ''? 'active':'';?>"><a href="<?php echo base_url();?>"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+				
+				<li class="<?php echo $this->uri->segment(1) == 'member'? 'active':'';?>"><a href="<?php echo base_url().'member';?>"><i class="fa fa-users"></i> <span>Directory Member</span></a></li>
+				
+				<li class="<?php echo $this->uri->segment(1) == 'artikel'? 'active':'';?>"><a href="<?php echo base_url().'artikel';?>"><i class="fa fa-file-text"></i> <span>Artikel</span></a></li>
+				
 				<li><a href="#"><i class="fa fa-book"></i> <span>Jurnal</span></a></li>
 				<li><a href="#"><i class="fa fa-shopping-cart"></i> <span>Market IB</span></a></li>
 				<li><a href="#"><i class="fa fa-comments"></i> <span>Quote Berbagi</span></a></li>

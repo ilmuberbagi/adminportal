@@ -21,18 +21,22 @@ class Auth extends CI_Controller {
 	public function index(){
 		$username = $this->security->xss_clean($this->input->post('username'));
 		$password = $this->security->xss_clean($this->input->post('password'));
-		$login = $this->model->get_user($username, $password);
-		if ($login){
-			foreach($login as $data){
-				$create_session = array(
-					'ibf_token_string' 	=> 'IBF'.md5($password),
-					'email'			=> $data['member_email'],
-					'username'		=> $username,
-					'name'			=> $data['member_name'],										
-				);
-				$this->session->set_userdata($create_session);
-				redirect('dashboard');
-			}
+		$app = $this->security->xss_clean($this->input->post('app'));
+		$user = $this->model->get_user($username, $password);
+		if (!empty($user)){
+			$priv = $this->model->get_user_privilage($user[0]['member_id']);
+			$create_session = array(
+				'ibf_token_string' 	=> 'IBF'.md5($password),
+				'email'			=> $user[0]['member_email'],
+				'username'		=> $username,
+				'name'			=> $user[0]['member_name'],
+				'avatar'		=> $user[0]['member_image_profile'],
+				'type'			=> $user[0]['member_type'],
+				'privilage'		=> $priv,
+			);
+			$this->session->set_userdata($create_session);
+			// print_r($this->session->all_userdata());die();
+			redirect('dashboard');
 		}
 		else{
 			$msg = '<div class="alert alert-danger alert-dismissable">
@@ -43,6 +47,14 @@ class Auth extends CI_Controller {
 				  
 			$this->session->set_flashdata('invalid', $msg);
 			redirect('login');
+		}
+	}
+	
+	
+	
+	private function director($app){
+		switch($app){
+			case 'portal': 
 		}
 	}
 	
