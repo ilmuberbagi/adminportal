@@ -1,43 +1,41 @@
-<!DOCTYPE html>
-<html>
+<div class="content-wrapper">
+	<section class="content-header">
+	  <h1>
+		404 Error Page
+	  </h1>
+	  <ol class="breadcrumb">
+		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+		<li><a href="#">Examples</a></li>
+		<li class="active">404 error</li>
+	  </ol>
+	</section>
 
-<head>
+	<section class="content">
+	  <div class="error-page">
+		<h2 class="headline text-yellow"> 404</h2>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<div class="error-content">
+		  <h3><i class="fa fa-warning text-yellow"></i> Oops! Page not found.</h3>
 
-    <title><?php echo isset($title) ? $title : '404 Page Not Found!'?></title>
+		  <p>
+			We could not find the page you were looking for.
+			Meanwhile, you may <a href="../../index.html">return to dashboard</a> or try using the search form.
+		  </p>
 
-    <link href="<?php echo base_url().'assets/css/bootstrap.min.css';?>" rel="stylesheet">
-    <link href="<?php echo base_url().'assets/font-awesome/css/font-awesome.css';?>" rel="stylesheet">
+		  <form class="search-form">
+			<div class="input-group">
+			  <input type="text" name="search" class="form-control" placeholder="Search">
 
-    <link href="<?php echo base_url().'assets/css/animate.css';?>" rel="stylesheet">
-    <link href="<?php echo base_url().'assets/css/style.css';?>" rel="stylesheet">
-
-</head>
-
-<body class="gray-bg">
-
-
-    <div class="middle-box text-center animated fadeInDown">
-        <h1>404</h1>
-        <h3 class="font-bold">Page Not Found</h3>
-
-        <div class="error-desc">
-            Sorry, but the page you are looking for has note been found. Try checking the URL for error, then hit the refresh button on your browser or try found something else in our app.
-            <form class="form-inline m-t" role="form">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search for page">
-                </div>
-                <button type="submit" class="btn btn-primary">Search</button>
-            </form>
-        </div>
-    </div>
-
-    <!-- Mainly scripts -->
-    <script src="js/jquery-2.1.1.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-
-</body>
-
-</html>
+			  <div class="input-group-btn">
+				<button type="submit" name="submit" class="btn btn-warning btn-flat"><i class="fa fa-search"></i>
+				</button>
+			  </div>
+			</div>
+			<!-- /.input-group -->
+		  </form>
+		</div>
+		<!-- /.error-content -->
+	  </div>
+	  <!-- /.error-page -->
+	</section>
+</div>

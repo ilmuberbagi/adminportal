@@ -10,8 +10,10 @@ class Dashboard extends CI_Controller{
 	}
 	
 	public function index(){
+		$this->load->model('Mdl_member','member');
+		
 		$this->data['page'] = 'page/home';
-		$this->session->set_flashdata('success','Welcome to IBF Admin Template');
+		$this->data['count_member'] = $this->member->count_member();
 		$this->load->view('template', $this->data);
 	}
 

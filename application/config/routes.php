@@ -52,3 +52,5 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'dashboard';
 $route['404_override'] = '_404';
 
+$route['member/(:any)'] = 'member/detail/$1';
+

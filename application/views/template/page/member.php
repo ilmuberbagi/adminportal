@@ -24,6 +24,8 @@
 					<th>Name</th>
 					<th>Email</th>
 					<th>Type</th>
+					<th>Status</th>
+					<th>Since</th>
 					<th>Action</th>
 				</thead>
 				<tbody>
@@ -31,11 +33,13 @@
 				<tr>
 					<td><?php echo $m['member_ibf_code'];?></td>
 					<td><?php echo $m['member_name'];?></td>
-					<td><?php echo $m['member_email'];?></td>
-					<td><?php echo $m['member_type'];?></td>
+					<td align="center"><a href="mailto:<?php echo $m['member_email'];?>"><?php echo $m['member_email'];?></a></td>
+					<td align="center"><?php echo $m['member_type'];?></td>
+					<td align="center"><?php echo $m['member_status'] == 1? '<span class="text-success"><i class="fa fa-check-circle"></i></span>':'<span class=""></span>';?></td>
+					<td align="center"><?php echo $m['member_reg_year'];?></td>
 					<td>
 						<span class="btn-group">
-							<a href="" class="btn btn-default btn-sm"><i class="fa fa-edit"></i></a>
+							<a href="<?php echo base_url().'member/'.$m['member_ibf_code'];?>" class="btn btn-default btn-sm"><i class="fa fa-search"></i></a>
 							<a href="" class="btn btn-default btn-sm"><i class="fa fa-ban"></i></a>
 						</span>
 					</td>
@@ -44,7 +48,6 @@
 				</tbody>
 				</table>
 			</div>
-			<div class="box-footer">Footer</div>
 		</div>
 	</section>
 </div>

@@ -74,21 +74,19 @@
 
 					<li class="dropdown user user-menu">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-							<img src="<?php echo base_url().'assets/img/admin.jpg';?>" class="user-image" alt="User Image">
-							<span class="hidden-xs">Sabbana Azmi</span>
+							<img src="<?php echo $this->session->userdata('avatar');?>" class="user-image" alt="User Image">
+							<span class="hidden-xs"><?php echo $this->session->userdata('name');?></span>
 						</a>
 						<ul class="dropdown-menu">
 							<li class="user-header">
-								<img src="<?php echo base_url().'assets/img/admin.jpg';?>" class="img-circle" alt="User Image">
-								<p>Sabbana Azmi - Web Developer <small>Member since Nov. 2012</small></p>
+								<img src="<?php echo $this->session->userdata('avatar');?>" class="img-circle" alt="User Image">
+								<p><?php echo $this->session->userdata('name').' - '.$this->session->userdata('type');?> <small>Member since : <?php echo date('M Y');?></small></p>
 							</li>
 							<li class="user-body">
-								<div class="col-xs-4 text-center"><a href="#">Followers</a></div>
-								<div class="col-xs-4 text-center"><a href="#">Sales</a></div>
-								<div class="col-xs-4 text-center"><a href="#">Friends</a></div>
+								<?php echo $this->session->userdata('email');?>
 							</li>
 							<li class="user-footer">
-								<div class="pull-left"><a href="#" class="btn btn-default btn-flat">Profile</a></div>
+								<div class="pull-left"><a href="<?php echo base_url().'member/'.$this->session->userdata('ibf_code');?>" class="btn btn-default btn-flat">Profile</a></div>
 								<div class="pull-right"><a href="<?php echo base_url().'login/signout';?>" class="btn btn-default btn-flat">Sign out</a></div>
 							</li>
 						</ul>
@@ -105,10 +103,10 @@
 		<section class="sidebar">
 			<div class="user-panel">
 				<div class="pull-left image">
-					<img src="<?php echo base_url().'assets/img/admin.jpg';?>" class="img-circle" alt="User Image">
+					<img src="<?php echo $this->session->userdata('avatar');?>" class="img-circle" alt="<?php echo $this->session->userdata('ibf_code');?>">
 				</div>
 				<div class="pull-left info">
-					<p>Sabbana Azmi</p>
+					<p><?php echo $this->session->userdata('name');?></p>
 					<a href="#"><i class="fa fa-circle text-success"></i> Online</a>
 				</div>
 			</div>
@@ -128,13 +126,13 @@
 				<li class="header">MAIN MENU</li>
 				<li class="<?php echo $this->uri->segment(1) == ''? 'active':'';?>"><a href="<?php echo base_url();?>"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
 				
-				<li class="<?php echo $this->uri->segment(1) == 'member'? 'active':'';?>"><a href="<?php echo base_url().'member';?>"><i class="fa fa-users"></i> <span>Directory Member</span></a></li>
+				<li class="<?php echo $this->uri->segment(1) == 'member'? 'active':'';?>"><a href="<?php echo base_url().'member';?>"><i class="fa fa-users"></i> <span>Member</span></a></li>
 				
-				<li class="<?php echo $this->uri->segment(1) == 'artikel'? 'active':'';?>"><a href="<?php echo base_url().'artikel';?>"><i class="fa fa-file-text"></i> <span>Artikel</span></a></li>
+				<li class="<?php echo $this->uri->segment(1) == 'article'? 'active':'';?>"><a href="<?php echo base_url().'article';?>"><i class="fa fa-file-text"></i> <span>Article</span></a></li>
 				
-				<li><a href="#"><i class="fa fa-book"></i> <span>Jurnal</span></a></li>
+				<li><a href="#"><i class="fa fa-book"></i> <span>Journal</span></a></li>
+				<li><a href="#"><i class="fa fa-comments"></i> <span>Quote</span></a></li>
 				<li><a href="#"><i class="fa fa-shopping-cart"></i> <span>Market IB</span></a></li>
-				<li><a href="#"><i class="fa fa-comments"></i> <span>Quote Berbagi</span></a></li>
 				<li class="treeview">
 					<a href="#"><i class="fa fa-link"></i> <span>Multilevel</span> <i class="fa fa-angle-left pull-right"></i></a>
 					<ul class="treeview-menu">
