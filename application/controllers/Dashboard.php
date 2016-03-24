@@ -11,9 +11,11 @@ class Dashboard extends CI_Controller{
 	
 	public function index(){
 		$this->load->model('Mdl_member','member');
+		$this->load->model('Mdl_article','article');
 		
 		$this->data['page'] = 'page/home';
 		$this->data['count_member'] = $this->member->count_member();
+		$this->data['count_article'] = $this->article->count_article();
 		$this->load->view('template', $this->data);
 	}
 

@@ -128,18 +128,19 @@
 				
 				<li class="<?php echo $this->uri->segment(1) == 'member'? 'active':'';?>"><a href="<?php echo base_url().'member';?>"><i class="fa fa-users"></i> <span>Member</span></a></li>
 				
-				<li class="<?php echo $this->uri->segment(1) == 'article'? 'active':'';?>"><a href="<?php echo base_url().'article';?>"><i class="fa fa-file-text"></i> <span>Article</span></a></li>
+				<li class="treeview <?php echo $this->uri->segment(1) == 'article'? 'active':'';?>">
+					<a href="#"><i class="fa fa-file-text"></i> <span>Articles</span> <i class="fa fa-angle-left pull-right"></i></a>
+					<ul class="treeview-menu">
+						<li><a href="<?php echo base_url().'article';?>"><i class="fa fa-arrow-circle-right"></i> List Articles</a></li>
+						<li><a href="<?php echo base_url().'article/category';?>"><i class="fa fa-arrow-circle-right"></i>  Article Category</a></li>
+						<li><a href="<?php echo base_url().'article/image';?>"><i class="fa fa-arrow-circle-right"></i>  Images</i></a></li>
+					</ul>
+				</li>
+
 				
 				<li><a href="#"><i class="fa fa-book"></i> <span>Journal</span></a></li>
 				<li><a href="#"><i class="fa fa-comments"></i> <span>Quote</span></a></li>
 				<li><a href="#"><i class="fa fa-shopping-cart"></i> <span>Market IB</span></a></li>
-				<li class="treeview">
-					<a href="#"><i class="fa fa-link"></i> <span>Multilevel</span> <i class="fa fa-angle-left pull-right"></i></a>
-					<ul class="treeview-menu">
-						<li><a href="#">Link in level 2</a></li>
-						<li><a href="#">Link in level 2</a></li>
-					</ul>
-				</li>
 			</ul>
         </section>
 	</aside>

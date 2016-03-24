@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="<?php echo base_url().'assets/css/bootstrap.min.css';?>">
     <link rel="stylesheet" href="<?php echo base_url().'assets/css/font-awesome.min.css';?>">
     <link rel="stylesheet" href="<?php echo base_url().'assets/css/ionicons.min.css';?>">
+	<link rel="stylesheet" href="<?php echo base_url().'assets/plugins/timepicker/bootstrap-timepicker.min.css';?>">
     <link rel="stylesheet" href="<?php echo base_url().'assets/css/AdminLTE.min.css';?>">
     <link rel="stylesheet" href="<?php echo base_url().'assets/css/skins/skin-red.css';?>">
 

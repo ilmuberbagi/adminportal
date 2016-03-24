@@ -29,6 +29,7 @@ class Auth extends CI_Controller {
 			$create_session = array(
 				'ibf_token_string' 	=> 'IBF'.md5($password),
 				'email'			=> $user[0]['member_email'],
+				'id'			=> $user[0]['member_id'],
 				'username'		=> $username,
 				'name'			=> $user[0]['member_name'],
 				'avatar'		=> $user[0]['member_image_profile'],

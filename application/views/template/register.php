@@ -19,20 +19,18 @@
 </head>
 <body class="hold-transition">
 	<div class="row">
-		<div class="col-md-7 right-bg hidden-xs hidden-sm hidden-md">
-			<!--div class="jargon">
+		<div class="col-md-5 right-bg hidden-xs hidden-sm hidden-md">
+			<div class="jargon">
 				ILMU BERBAGI FOUNDATION
 				<div>Ilmu itu ada, ya untuk berbagi</div>
-			</div -->
+			</div>
 		</div>
-		<div class="col-md-5 bg-white">
+		<div class="col-md-7 bg-white">
 			<div class="login-box">
 				<div class="login-logo"><a href="<?php echo base_url();?>"><b>PORTAL</b>IBF</a></div>
 				<div class="login-box-body">
-					<p class="login-box-msg">Sign in to start your session</p>
-					<?php echo $this->session->flashdata('invalid');?>
-					<form action="<?php echo base_url().'auth';?>" method="post">
-						<input type="hidden" name="app" value="portal">
+					<p class="login-box-msg">Join with us</p>
+					<form action="<?php echo base_url().'proc_register';?>" method="post">
 						<div class="form-group has-feedback">
 							<input type="text" class="form-control" name="username" placeholder="Username or Email" required>
 							<span class="glyphicon glyphicon-user form-control-feedback"></span>
@@ -42,19 +40,11 @@
 							<span class="glyphicon glyphicon-lock form-control-feedback"></span>
 						</div>
 						<div class="row">
-							<div class="col-xs-8">
-								<div class="checkbox">
-									<label><input type="checkbox"> Remember Me</label>
-								</div>
-							</div>
-							<div class="col-xs-4">
-							  <button type="submit" class="btn btn-danger btn-block btn-flat">Sign In</button>
+							<div class="col-xs-12">
+							  <button type="submit" class="btn btn-danger btn-block btn-flat">Register</button>
 							</div>
 						</div>
 					</form>
-
-					<a href="<?php echo base_url().'reset';?>"><i class="fa fa-question-circle"></i> I forgot my password</a><br>
-					<a href="<?php echo base_url().'register';?>" class="text-center"><i class="fa fa-bookmark"></i> Register a new membership</a>
 				</div>
 			</div>
 		</div>

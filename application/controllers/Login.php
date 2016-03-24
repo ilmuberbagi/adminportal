@@ -21,7 +21,14 @@ class Login extends CI_Controller {
 		$this->load->view('template/login');
 	}
 	
- 
+	public function reset(){
+		$this->load->view('template/reset');
+	}
+	
+	public function register(){
+		$this->load->view('template/register');
+	}
+	
     public function signout(){
         $this->session->unset_userdata('token_string');
 		$this->session->sess_destroy();

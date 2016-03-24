@@ -2,9 +2,7 @@
 	<section class="content-header">
 		<h1>Dashboard <small>IBF Foundation Online Features</small></h1>
 		<ol class="breadcrumb">
-			<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-			<li><a href="#">Examples</a></li>
-			<li class="active">Blank page</li>
+			<li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
 		</ol>
 	</section>
 
@@ -36,13 +34,13 @@
 					<div class="col-lg-3 col-xs-6">
 						<div class="small-box bg-green">
 							<div class="inner">
-								<h3><?php echo number_format($count_member);?></h3>
+								<h3><?php echo number_format($count_article);?></h3>
 								<p>All Articles</p>
 							</div>
 							<div class="icon">
 								<i class="fa fa-file-text"></i>
 							</div>
-							<a href="<?php echo base_url().'member';?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+							<a href="<?php echo base_url().'article';?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
 						</div>
 					</div>
 					<!-- quotes -->

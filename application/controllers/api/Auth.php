@@ -18,7 +18,7 @@ class Auth extends CI_Controller {
 	}
 
 	public function index(){
-		echo "--- IBF API SERVICES ---";
+		echo "--- IBF API AUTH SERVICES ---";
 	}
 	
 	public function auth_user(){
