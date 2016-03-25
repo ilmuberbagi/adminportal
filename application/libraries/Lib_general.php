@@ -17,6 +17,11 @@ class Lib_general {
     function __construct() {
         $this->ci =&get_instance();
     }
+	
+	public function get_id_from_code($code){
+		$this->ci->load->model('Mdl_member','member');
+		return $this->ci->member->get_id_from_code($code);
+	}
 
 	public function count_article_by_category($id){
 		$this->ci->load->model('Mdl_article','article');

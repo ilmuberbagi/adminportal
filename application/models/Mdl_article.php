@@ -59,6 +59,11 @@ class Mdl_article extends CI_Model{
 		return $this->db->query($sql)->result_array();
 	}
 	
+	public function get_article_by_member($id='', $limit = 5){
+		$sql = "select * from ibf_article where article_author = '$id' order by article_date_update limit 0, $limit";
+		return $this->db->query($sql)->result_array();
+	}
+	
 	
 }
 

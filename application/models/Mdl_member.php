@@ -24,6 +24,16 @@ class Mdl_member extends CI_Model{
 		$sql = "select * from ibf_privilage where member_id = '$user_id'";
 		return $this->db->query($sql)->result_array();
 	}
+	
+	public function get_id_from_code($code){
+		$sql = "select member_id from ibf_member where member_ibf_code = '$code'";
+		$data = $this->db->query($sql)->result_array();
+		if(!empty($data))
+			return $data[0]['member_id'];
+		else return null;
+	}
+	
+	
 }
 
 

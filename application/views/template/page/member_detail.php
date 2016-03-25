@@ -13,13 +13,13 @@
 			<div class="col-md-4">
 				<div class="box box-danger">
 					<div class="box-body box-profile">
-						<img class="profile-user-img img-responsive img-circle" src="<?php echo image_url($member[0]['member_image_profile']);?>" alt="User profile picture">
+						<img class="profile-user-img img-responsive img-circle" src="<?php echo image_url($member[0]['member_image_profile']);?>" alt="User profile picture" height="100" width="100">
 						<h3 class="profile-username text-center"><?php echo $member[0]['member_name'];?></h3>
 						<p class="text-muted text-center"><?php echo $member[0]['member_job'];?></p>
 						<ul class="list-group list-group-unbordered">
-							<li class="list-group-item"><b>Followers</b> <a class="pull-right">1,322</a></li>
-							<li class="list-group-item"><b>Following</b> <a class="pull-right">543</a></li>
-							<li class="list-group-item"><b>Friends</b> <a class="pull-right">13,287</a></li>
+							<li class="list-group-item"><b>Article</b> <a class="pull-right">1,322</a></li>
+							<li class="list-group-item"><b>Comments</b> <a class="pull-right">13,287</a></li>
+							<li class="list-group-item"><b>Quote</b> <a class="pull-right">543</a></li>
 						</ul>
 						<a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
 					</div>
@@ -70,7 +70,12 @@
 					</ul>
 					<div class="tab-content">
 						<div class="active tab-pane" id="activity">
-
+							<?php if(!empty($articles)){ foreach($articles as $ar){?>
+							<div class="">
+								<label><a href="<?php echo base_url().'article/'.$ar['article_id'];?>"><?php echo $ar['article_title'];?></a></label>
+								<div class=""><?php echo headline($ar['article_content']);?></div>
+							</div>
+							<?php }}else{ echo "No article can be display."; } ?>
 						</div>
 					</div>
 					

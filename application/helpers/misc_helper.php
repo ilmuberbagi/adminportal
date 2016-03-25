@@ -10,10 +10,18 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
+function UR_exists($url){
+   $headers=get_headers($url);
+   return stripos($headers[0],"200 OK")?true:false;
+}
+
 function image_url($url){
-	if(file_exists($url))
+	if(UR_exists($url))
 		$img = $url;
-	else $img = site_url().'assets/img/default.png';
+	else if($url == '')
+		$img = site_url().'assets/img/default.jpg';
+	else
+		$img = site_url().'assets/img/default.jpg';
 	return $img;
 }
 
@@ -42,7 +50,10 @@ function generatePassword($length, $strength){
     }
     return $password;
 }
+function headline($txt){
+	$str = strip_tags($txt);
+	return substr($str, 0, 200);
+}
 
 
-    echo generatePassword(6,4);
 ?>

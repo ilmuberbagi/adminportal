@@ -17,15 +17,15 @@
         $this->load->view("template/meta_top/{$meta_page}");
     ?>
 </head>
-<body class="hold-transition">
+<body class="hold-transition login">
 	<div class="row">
-		<div class="col-md-7 right-bg hidden-xs hidden-sm hidden-md">
-			<!--div class="jargon">
+		<div class="col-md-8 right-bg hidden-xs hidden-sm hidden-md">
+			<div class="jargon">
 				ILMU BERBAGI FOUNDATION
 				<div>Ilmu itu ada, ya untuk berbagi</div>
-			</div -->
+			</div>
 		</div>
-		<div class="col-md-5 bg-white">
+		<div class="col-md-4 bg-white">
 			<div class="login-box">
 				<div class="login-logo"><a href="<?php echo base_url();?>"><b>PORTAL</b>IBF</a></div>
 				<div class="login-box-body">

@@ -15,5 +15,19 @@
 .jargon div{
 	font-size:20px;
 }
-
-.bg-white{ background-color:#FFF;}
+.login{
+	background-image:url(../img/visa.png);
+}
+.bg-white{ 
+	background-color:#eee; 
+	display:block; 
+	min-height:100%;
+	vertical-align:middle;
+}
+.profile-user-img{
+	width:125px;
+	height:125px;
+}
+label > span{
+	color:#FF4444;
+}

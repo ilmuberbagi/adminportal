@@ -19,9 +19,10 @@ class Member extends CI_Controller{
 	}
 	
 	public function detail($code){
+		$this->load->model('Mdl_article','article');
 		$this->data['page'] = 'page/member_detail';
+		$this->data['articles'] = $this->article->get_article_by_member($this->lib_general->get_id_from_code($code));
 		$this->data['member'] = $this->member->get_member($code);
-		// print_r($this->data['member']); die();
 		$this->data['title'] = 'IBF Member : '.$this->data['member'][0]['member_name'];
 		$this->load->view('template', $this->data);
 	}
