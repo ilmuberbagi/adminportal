@@ -16,7 +16,7 @@
 			$member_name = $article[0]['member_name'];
 			$author = $article[0]['article_author'];
 			$content = $article[0]['article_content'];
-			$tags = implode(',', json_decode($article[0]['article_tags']));
+			$tags = $article[0]['article_tags'] ? implode(',', json_decode($article[0]['article_tags'])) : '';
 			$date_input = date('d/m/Y', strtotime($article[0]['article_date_input']));
 			$time_input = date('H:i:s', strtotime($article[0]['article_date_input']));
 			$action = 'update';

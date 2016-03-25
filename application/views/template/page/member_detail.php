@@ -13,7 +13,7 @@
 			<div class="col-md-4">
 				<div class="box box-danger">
 					<div class="box-body box-profile">
-						<img class="profile-user-img img-responsive img-circle" src="<?php echo $member[0]['member_image_profile'];?>" alt="User profile picture">
+						<img class="profile-user-img img-responsive img-circle" src="<?php echo image_url($member[0]['member_image_profile']);?>" alt="User profile picture">
 						<h3 class="profile-username text-center"><?php echo $member[0]['member_name'];?></h3>
 						<p class="text-muted text-center"><?php echo $member[0]['member_job'];?></p>
 						<ul class="list-group list-group-unbordered">

@@ -10,22 +10,11 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-function create_refid($ref='') {
-    if(empty($ref)) $ref = time();
-    $salt = md5($ref);
-    return $ref."-".substr($salt,11,4)."-".substr($salt,15,4)."-".substr($salt,19,1).mt_rand(111,999);
-}
-
-function duration_time($time) {
-    $res = '';
-    if($time>=3600)
-        $res = sprintf("%02d",floor($time/3600));
-    if(($time%3600) > 0)
-        $res .= ':'.sprintf("%02d",floor(($time%3600)/60));
-    if((($time%3600)%60) > 0)
-        $res .= ':'.sprintf("%02d",(($time%3600)%60));
-    $res =preg_replace("/^:/", '', $res);
-    return $res;
+function image_url($url){
+	if(file_exists($url))
+		$img = $url;
+	else $img = site_url().'assets/img/default.png';
+	return $img;
 }
 
 function generatePassword($length, $strength){

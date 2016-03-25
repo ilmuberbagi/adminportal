@@ -21,17 +21,17 @@
 			<div class="box-body">
 				<table  class="table table-striped table-hover data-category">
 				<thead>
-					<th>No.</th>
+					<th width="20">No.</th>
 					<th>Category</th>
 					<th>Count Article</th>
-					<th>Action</th>
+					<th width="100">Action</th>
 				</thead>
 				<tbody>
 				<?php if(!empty($categories)){ $no=0; foreach($categories as $a){ $no++;?>
 				<tr>
 					<td><?php echo $no;?></td>
 					<td><?php echo $a['category_name'];?></td>
-					<td><?php echo '0';?></td>
+					<td><?php echo $this->lib_general->count_article_by_category($a['category_id']);?></td>
 					<td>
 						<span class="btn-group">
 							<a href="<?php echo base_url().'article/'.$a['category_id'];?>" class="btn btn-default btn-sm"><i class="fa fa-search"></i></a>

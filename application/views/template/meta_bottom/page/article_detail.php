@@ -14,7 +14,6 @@
 		});
 		$('.timepicker').timepicker({
 			showInputs: true,
-			showSeconds: true,
 		});
 		$(".content-article").wysihtml5();
 		$(".select2").select2();

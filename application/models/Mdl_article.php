@@ -24,7 +24,21 @@ class Mdl_article extends CI_Model{
 		return $this->db->query($sql)->result_array();
 	}
 	
+	# count article by :
+	# all article
 	public function count_article(){
+		return $this->db->get('ibf_article')->num_rows();
+	}
+	
+	# by category
+	public function count_article_by_category($id){
+		$this->db->where('article_category', $id);
+		return $this->db->get('ibf_article')->num_rows();
+	}
+	
+	# by user
+	public function count_article_by_user(){
+		$this->db->where('article_author', $id);
 		return $this->db->get('ibf_article')->num_rows();
 	}
 	

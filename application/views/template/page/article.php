@@ -28,9 +28,9 @@
 				<tbody>
 				<?php if(!empty($articles)){ foreach($articles as $a){?>
 				<tr>
-					<td>
+					<td width="50%">
 						<b><a href="<?php echo base_url().'article/'.$a['article_id'];?>"><?php echo strip_tags($a['article_title']);?></a></b><br/>
-						<?php echo substr(trim(strip_tags($a['article_content'])),0,500);?>
+						<?php echo substr(trim(strip_tags($a['article_content'])),0,200);?>
 					</td>
 					<td><?php echo $a['member_name'];?></td>
 					<td><?php echo $a['article_date_input'];?></td>
