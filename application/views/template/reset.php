@@ -17,20 +17,17 @@
         $this->load->view("template/meta_top/{$meta_page}");
     ?>
 </head>
-<body class="hold-transition">
+<body class="hold-transition login">
 	<div class="row">
-		<div class="col-md-7 right-bg hidden-xs hidden-sm hidden-md">
-			<div class="jargon">
-				ILMU BERBAGI FOUNDATION
-				<div>Ilmu itu ada, ya untuk berbagi</div>
-			</div>
+		<div class="col-md-8 hidden-xs hidden-sm hidden-md">
+			&nbsp;
 		</div>
-		<div class="col-md-5 bg-white">
+		<div class="col-md-4 col-xs-12 col-sm-6 bg-white">
 			<div class="login-box">
 				<div class="login-logo"><a href="<?php echo base_url();?>"><b>PORTAL</b>IBF</a></div>
 				<div class="login-box-body">
 					<p class="login-box-msg">
-					Please enter your correct email address. Click reset password and we will send an url to your email address to reset the password! 
+					Silakan masukkan alamat email Anda dengan benar. Klik 'Reset Password', Kami akan mengirimkan password baru ke email Anda.
 					</p>
 					<?php echo $this->session->flashdata('invalid');?>
 					<form action="<?php echo base_url().'reset';?>" method="post">
@@ -46,8 +43,8 @@
 						</div>
 					</form>
 					<hr/>
-					<a href="<?php echo base_url().'login';?>" class="text-center"><i class="fa fa-arrow-circle-left"></i> Back to login page</a><br/>
-					<a href="<?php echo base_url().'register';?>" class="text-center"><i class="fa fa-bookmark"></i> Register a new membership</a>
+					<a href="<?php echo base_url().'login';?>" class="text-center"><i class="fa fa-arrow-circle-left"></i> Kembali ke halaman Login</a><br/>
+					<a href="<?php echo base_url().'register';?>" class="text-center"><i class="fa fa-bookmark"></i> Daftar Sebagai Member</a>
 				</div>
 			</div>
 		</div>

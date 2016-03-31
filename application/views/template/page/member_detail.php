@@ -44,9 +44,9 @@
 							<?php 
 								if($member[0]['member_skills'] !== ""){
 									$label = array('primary','info','success','warning','danger');
-									$skills = json_decode($member[0]['member_skills']);
+									$skills = explode(',',$member[0]['member_skills']);
 									for($a=0; $a<count($skills); $a++){
-										echo '<span class="label label-'.$label[$a].'">'.$skills[$a].'</span>';
+										echo '<span class="label label-'.$label[$a].'">'.$skills[$a].'</span> ';
 									}
 								}else{
 									echo '-----';
@@ -68,6 +68,7 @@
 						<li><a href="#timeline" data-toggle="tab">Comments</a></li>
 						<li><a href="#settings" data-toggle="tab">Settings</a></li>
 					</ul>
+					
 					<div class="tab-content">
 						<div class="active tab-pane" id="activity">
 							<?php if(!empty($articles)){ foreach($articles as $ar){?>
@@ -80,10 +81,13 @@
 					</div>
 					
 					<div class="tab-pane" id="timeline">
+					
 					</div>
 
 					<div class="tab-pane" id="settings">
+					
 					</div>
+					
 				</div>
 			</div>
 		</div>

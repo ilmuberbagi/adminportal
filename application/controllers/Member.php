@@ -27,5 +27,18 @@ class Member extends CI_Controller{
 		$this->load->view('template', $this->data);
 	}
 
+	public function region(){
+		$this->data['title'] = 'IBF Region';
+		$this->data['page'] = 'page/region';
+		$this->data['region'] = $this->member->get_region();
+		$this->load->view('template', $this->data);
+	}
+	
+	public function type(){
+		$this->data['title'] = 'IBF Member Types';
+		$this->data['page'] = 'page/type';
+		$this->data['region'] = $this->member->get_member_type();
+		$this->load->view('template', $this->data);		
+	}
 
 }

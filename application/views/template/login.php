@@ -9,32 +9,22 @@
     <link rel="stylesheet" href="<?php echo base_url().'assets/css/AdminLTE.min.css';?>">
     <link rel="stylesheet" href="<?php echo base_url().'assets/css/skins/skin-red.css';?>">
     <link rel="stylesheet" href="<?php echo base_url().'assets/css/custom.css';?>">
-
-	<?php
-    $meta_page = "default";
-    if(isset($page)) $meta_page = $page;
-    if(file_exists(APPPATH."views/template/meta_top/{$meta_page}.php")) 
-        $this->load->view("template/meta_top/{$meta_page}");
-    ?>
 </head>
 <body class="hold-transition login">
 	<div class="row">
-		<div class="col-md-8 right-bg hidden-xs hidden-sm hidden-md">
-			<div class="jargon">
-				ILMU BERBAGI FOUNDATION
-				<div>Ilmu itu ada, ya untuk berbagi</div>
-			</div>
+		<div class="col-md-8 hidden-xs hidden-sm hidden-md">
+			&nbsp;
 		</div>
-		<div class="col-md-4 bg-white">
+		<div class="col-md-4 col-xs-12 col-sm-6 bg-white">
 			<div class="login-box">
 				<div class="login-logo"><a href="<?php echo base_url();?>"><b>PORTAL</b>IBF</a></div>
 				<div class="login-box-body">
-					<p class="login-box-msg">Sign in to start your session</p>
+					<p class="login-box-msg">Silakan masuk untuk menggunakan Layanan Kami</p>
 					<?php echo $this->session->flashdata('invalid');?>
 					<form action="<?php echo base_url().'auth';?>" method="post">
 						<input type="hidden" name="app" value="portal">
 						<div class="form-group has-feedback">
-							<input type="text" class="form-control" name="username" placeholder="Username or Email" required>
+							<input type="text" class="form-control" name="username" placeholder="Username atau Email" required>
 							<span class="glyphicon glyphicon-user form-control-feedback"></span>
 						</div>
 						<div class="form-group has-feedback">
@@ -44,7 +34,7 @@
 						<div class="row">
 							<div class="col-xs-8">
 								<div class="checkbox">
-									<label><input type="checkbox"> Remember Me</label>
+									<label><input type="checkbox"> Biarkan saya masuk</label>
 								</div>
 							</div>
 							<div class="col-xs-4">
@@ -53,8 +43,8 @@
 						</div>
 					</form>
 
-					<a href="<?php echo base_url().'reset';?>"><i class="fa fa-question-circle"></i> I forgot my password</a><br>
-					<a href="<?php echo base_url().'register';?>" class="text-center"><i class="fa fa-bookmark"></i> Register a new membership</a>
+					<a href="<?php echo base_url().'reset';?>"><i class="fa fa-question-circle"></i> Lupa password?</a><br>
+					<a href="<?php echo base_url().'register';?>" class="text-center"><i class="fa fa-bookmark"></i> Daftar Sebagai Member</a>
 				</div>
 			</div>
 		</div>

@@ -57,6 +57,8 @@ $route['reset'] = 'login/reset';
 $route['register'] = 'login/register';
 
 $route['member/(:any)'] = 'member/detail/$1';
+$route['member/region'] = 'member/region';
+$route['member/type'] = 'member/type';
 
 $route['article/(:any)'] = 'article/detail/$1';
 $route['article/category'] = 'article/category';

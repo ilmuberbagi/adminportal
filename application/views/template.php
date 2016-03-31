@@ -37,7 +37,6 @@
     <script src="<?php echo base_url().'assets/plugins/slimScroll/jquery.slimscroll.min.js';?>"></script>
     <script src="<?php echo base_url().'assets/plugins/fastclick/fastclick.min.js';?>"></script>
     <script src="<?php echo base_url().'assets/js/app.min.js';?>"></script>
-    <script src="<?php echo base_url().'assets/js/demo.js';?>"></script>
 	<?php
     if(file_exists(APPPATH."views/template/meta_bottom/{$meta_page}.php"))
         $this->load->view("template/meta_bottom/{$meta_page}");

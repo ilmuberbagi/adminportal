@@ -1,4 +1,8 @@
-/**/
+/* 
+	create date : 29/03/2016
+	author : sabbana
+	custom style portal 
+*/
 
 .right-bg{
 	background:#FF4444;
@@ -12,17 +16,20 @@
 	text-shadow:2px 2px 0 #000;
 	font-size:3em;
 }
-.jargon div{
-	font-size:20px;
-}
 .login{
-	background-image:url(../img/visa.png);
+	background: url(../img/credit/nature.png) no-repeat center center fixed; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
 }
 .bg-white{ 
-	background-color:#eee; 
-	display:block; 
-	min-height:100%;
-	vertical-align:middle;
+	background-color:#fff;
+	position:fixed;
+	top:0; right:0;
+	height:100%;
+	overflow:auto;
+	padding:20px;
 }
 .profile-user-img{
 	width:125px;
@@ -30,4 +37,9 @@
 }
 label > span{
 	color:#FF4444;
+}
+h5.title{
+	font-weight:bold;
+	padding-bottom:10px;
+	border-bottom:solid 2px #FF4444;
 }

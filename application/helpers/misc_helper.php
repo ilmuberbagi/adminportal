@@ -11,8 +11,11 @@ if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
 function UR_exists($url){
-   $headers=get_headers($url);
-   return stripos($headers[0],"200 OK")?true:false;
+	if($url != ''){
+		$headers=get_headers($url);
+		return stripos($headers[0],"200 OK")?true:false;
+	}else
+		return false;
 }
 
 function image_url($url){
@@ -53,6 +56,12 @@ function generatePassword($length, $strength){
 function headline($txt){
 	$str = strip_tags($txt);
 	return substr($str, 0, 200);
+}
+
+function generate_code_member($count){
+	$count = sprintf("%04d",$count);
+	$string = 'IBF'.date('Y').$count;
+	return $string;
 }
 
 
