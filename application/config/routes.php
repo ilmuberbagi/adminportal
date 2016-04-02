@@ -59,11 +59,13 @@ $route['register'] = 'login/register';
 $route['member/(:any)'] = 'member/detail/$1';
 $route['member/region'] = 'member/region';
 $route['member/type'] = 'member/type';
+$route['member/privilage'] = 'member/privilage';
 
 $route['article/(:any)'] = 'article/detail/$1';
 $route['article/category'] = 'article/category';
 $route['article/create'] = 'article/create';
 $route['article/update'] = 'article/update';
 $route['article/insert'] = 'article/insert';
+$route['article/image'] = 'article/image';
 $route['article/get_image'] = 'article/get_image_from_dir';
 

@@ -36,8 +36,13 @@ class Mdl_member extends CI_Model{
 		return $count;
 	}
 
-	public function get_user_privilage($user_id){
-		$sql = "select * from ibf_privilage where member_id = '$user_id'";
+	public function get_user_privilage($user_id = ""){
+		$sql = "select a.*, b.member_name, b.member_ibf_code from ibf_privilage a 
+				left join ibf_member b on a.member_id = b.member_id 
+				order by b.member_name ASC";
+		if($user_id !== "")
+			$sql = "select * from ibf_privilage where member_id = '$user_id'";
+		
 		return $this->db->query($sql)->result_array();
 	}
 	
@@ -50,8 +55,14 @@ class Mdl_member extends CI_Model{
 	}
 	
 	# region and member type 
-	public function get_region(){
+	public function get_region($region=""){
 		$sql = "select * from ibf_region order by region_name ASC";
+		if($region !== ""){
+			$sql = "select a.*, c.member_type, b.member_image_profile, b.member_reg_year from ibf_member a 
+				left join ibf_member_detail b on a.member_id = b.member_id
+				left outer join ibf_member_type c on b.member_type = c.type_id 
+				where b.member_region = '$region' order by a.member_id DESC";
+		}
 		return $this->db->query($sql)->result_array();
 	}
 	
@@ -61,9 +72,26 @@ class Mdl_member extends CI_Model{
 		return $count;
 	}
 	
-	public function get_member_type(){
+	public function get_member_type($type = ""){
 		$sql = "select * from ibf_member_type order by member_type ASC";
+		if($type !== ""){
+			$sql = "select a.*, c.member_type, b.member_image_profile, b.member_reg_year from ibf_member a 
+				left join ibf_member_detail b on a.member_id = b.member_id
+				left outer join ibf_member_type c on b.member_type = c.type_id 
+				where b.member_type = '$type' order by a.member_id DESC";
+		}
 		return $this->db->query($sql)->result_array();
+	}
+	
+	public function count_member_by_type($id){
+		$sql = "select member_id from ibf_member_detail where member_type = '$id'";
+		$count = $this->db->query($sql)->num_rows();
+		return $count;
+	}
+	
+	# ibf apps
+	public function get_apps(){
+		return $this->db->get('ibf_app')->result_array();
 	}
 	
 	

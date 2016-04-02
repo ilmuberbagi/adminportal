@@ -17,11 +17,11 @@
 						<h3 class="profile-username text-center"><?php echo $member[0]['member_name'];?></h3>
 						<p class="text-muted text-center"><?php echo $member[0]['member_job'];?></p>
 						<ul class="list-group list-group-unbordered">
-							<li class="list-group-item"><b>Article</b> <a class="pull-right">1,322</a></li>
+							<li class="list-group-item"><b>Article</b><span class="badge badge-primary pull-right"><?php echo $this->lib_general->count_article_by_user($member[0]['member_id']);?></span></li>
+							<li class="list-group-item"><b>Quote</b> <span class="badge badge-primary pull-right"><?php echo $this->lib_general->count_article_by_user($member[0]['member_id']);?></span></li>
 							<li class="list-group-item"><b>Comments</b> <a class="pull-right">13,287</a></li>
-							<li class="list-group-item"><b>Quote</b> <a class="pull-right">543</a></li>
 						</ul>
-						<a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
+						<a href="<?php echo base_url().'member/edit/'.$member[0]['member_ibf_code'];?>" class="btn btn-primary btn-block"><b><i class="fa fa-edit"></i> Perbaharui</b></a>
 					</div>
 				</div>
 				<!-- About Me Box -->

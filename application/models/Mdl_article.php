@@ -37,7 +37,7 @@ class Mdl_article extends CI_Model{
 	}
 	
 	# by user
-	public function count_article_by_user(){
+	public function count_article_by_user($id){
 		$this->db->where('article_author', $id);
 		return $this->db->get('ibf_article')->num_rows();
 	}

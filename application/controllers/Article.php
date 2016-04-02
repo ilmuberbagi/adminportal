@@ -87,6 +87,13 @@ class Article extends CI_Controller{
 		redirect('article');
 	}
 	
+	public function image(){
+		$this->data['title'] = 'IBF Image Asset';
+		$this->data['page'] = 'page/article_category';
+		$this->data['categories'] = $this->article->get_article_category();
+		$this->load->view('template', $this->data);
+	}
+	
 	public function get_image_from_dir(){
 		$handle = opendir('./assets/img/thumbs/');
         while($file = readdir($handle)){

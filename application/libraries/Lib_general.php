@@ -28,9 +28,19 @@ class Lib_general {
 		return $this->ci->article->count_article_by_category($id);
 	}
 
+	public function count_article_by_user($id){
+		$this->ci->load->model('Mdl_article','article');
+		return $this->ci->article->count_article_by_user($id);
+	}
+
 	public function count_member_by_region($id){
 		$this->ci->load->model('Mdl_member','member');
 		return $this->ci->member->count_member_by_region($id);
+	}
+
+	public function count_member_by_type($id){
+		$this->ci->load->model('Mdl_member','member');
+		return $this->ci->member->count_member_by_type($id);
 	}
 
 }

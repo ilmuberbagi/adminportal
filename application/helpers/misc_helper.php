@@ -64,5 +64,14 @@ function generate_code_member($count){
 	return $string;
 }
 
+function label_privilage($uid, $app_id, $priv){
+	switch($priv){
+		case 0 : $label = '<span class="badge badge-danger" data-toggle="modal" data-target="#modalPriv" style="cursor:pointer" onclick="return privilage(\''.$app_id.'#'.$uid.'#'.$priv.'\')">B</span>'; break;
+		case 1 : $label = '<span class="badge badge-success" data-toggle="modal" data-target="#modalPriv" style="cursor:pointer"  onclick="return privilage(\''.$app_id.'#'.$uid.'#'.$priv.'\')">U</span>'; break;
+		case 2 : $label = '<span class="badge badge-warning" data-toggle="modal" data-target="#modalPriv" style="cursor:pointer" onclick="return privilage(\''.$app_id.'#'.$uid.'#'.$priv.'\')">R</span>'; break;
+		case 3 : $label = '<span class="badge badge-primary" data-toggle="modal" data-target="#modalPriv" style="cursor:pointer" onclick="return privilage(\''.$app_id.'#'.$uid.'#'.$priv.'\')">A</span>'; break;
+	}
+	return $label;
+}
 
 ?>

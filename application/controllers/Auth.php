@@ -17,6 +17,7 @@ class Auth extends CI_Controller {
 		parent::__construct();
 		$this->load->model("Mdl_login","model");
 		define('AUTH_API_URL','http://services.ilmuberbagi.id/auth/');
+		// define('AUTH_API_URL','http://localhost/ibf/services/auth/');
 	}
 	
 	public function index(){
