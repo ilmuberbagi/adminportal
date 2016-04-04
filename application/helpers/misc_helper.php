@@ -55,7 +55,7 @@ function generatePassword($length, $strength){
 }
 function headline($txt){
 	$str = strip_tags($txt);
-	return substr($str, 0, 200);
+	return substr($str, 0, 200).' ...';
 }
 
 function generate_code_member($count){
@@ -66,12 +66,21 @@ function generate_code_member($count){
 
 function label_privilage($uid, $app_id, $priv){
 	switch($priv){
-		case 0 : $label = '<span class="badge badge-danger" data-toggle="modal" data-target="#modalPriv" style="cursor:pointer" onclick="return privilage(\''.$app_id.'#'.$uid.'#'.$priv.'\')">B</span>'; break;
-		case 1 : $label = '<span class="badge badge-success" data-toggle="modal" data-target="#modalPriv" style="cursor:pointer"  onclick="return privilage(\''.$app_id.'#'.$uid.'#'.$priv.'\')">U</span>'; break;
-		case 2 : $label = '<span class="badge badge-warning" data-toggle="modal" data-target="#modalPriv" style="cursor:pointer" onclick="return privilage(\''.$app_id.'#'.$uid.'#'.$priv.'\')">R</span>'; break;
-		case 3 : $label = '<span class="badge badge-primary" data-toggle="modal" data-target="#modalPriv" style="cursor:pointer" onclick="return privilage(\''.$app_id.'#'.$uid.'#'.$priv.'\')">A</span>'; break;
+		case 0 : $label = '<span class="label label-danger" data-toggle="modal" data-target="#modalPriv" style="cursor:pointer" onclick="return privilage(\''.$app_id.'#'.$uid.'#'.$priv.'\')">B</span>'; break;
+		case 1 : $label = '<span class="label label-success" data-toggle="modal" data-target="#modalPriv" style="cursor:pointer"  onclick="return privilage(\''.$app_id.'#'.$uid.'#'.$priv.'\')">U</span>'; break;
+		case 2 : $label = '<span class="label label-warning" data-toggle="modal" data-target="#modalPriv" style="cursor:pointer" onclick="return privilage(\''.$app_id.'#'.$uid.'#'.$priv.'\')">R</span>'; break;
+		case 3 : $label = '<span class="label label-primary" data-toggle="modal" data-target="#modalPriv" style="cursor:pointer" onclick="return privilage(\''.$app_id.'#'.$uid.'#'.$priv.'\')">A</span>'; break;
 	}
 	return $label;
+}
+
+function get_image_from_content($html){
+	preg_match_all('/<img[^>]+>/i',$html, $result);
+	$res = '';
+	if(!empty($result)){
+		$res = $result[0][0]; 
+	}
+	return str_replace('img', 'img class="content-img"', $res);
 }
 
 ?>

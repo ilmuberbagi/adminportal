@@ -11,18 +11,19 @@
 	<section class="content">
 		<div class="box">
 			<div class="box-header with-border">
-				<h3 class="box-title">IBF Members</h3>
+				<h3 class="box-title"><i class="fa fa-file-text"></i> &nbsp; IBF Artikel</h3>
 				<div class="box-tools pull-right">
-					<button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
-					<button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
+					<a class="btn btn-default" href="<?php echo base_url().'article/create';?>"><i class="fa fa-plus-circle"></i></a>
+					<button class="btn" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
+					<button class="btn" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
 				</div>
 			</div>
 			<div class="box-body">
 				<table  class="table table-striped table-hover data-member">
 				<thead>
-					<th>Article</th>
+					<th>Artikel</th>
 					<th>Author</th>
-					<th>Date Input</th>
+					<th>Update Terakhir</th>
 					<th>Action</th>
 				</thead>
 				<tbody>
@@ -30,10 +31,10 @@
 				<tr>
 					<td width="50%">
 						<b><a href="<?php echo base_url().'article/'.$a['article_id'];?>"><?php echo strip_tags($a['article_title']);?></a></b><br/>
-						<?php echo substr(trim(strip_tags($a['article_content'])),0,200);?>
+						<?php echo headline($a['article_content']);?>
 					</td>
 					<td><?php echo $a['member_name'];?></td>
-					<td><?php echo $a['article_date_input'];?></td>
+					<td><?php echo date('d/m/Y H:i', strtotime($a['article_date_update']));?></td>
 					<td>
 						<span class="btn-group">
 							<a href="<?php echo base_url().'article/'.$a['article_id'];?>" class="btn btn-default btn-sm"><i class="fa fa-search"></i></a>

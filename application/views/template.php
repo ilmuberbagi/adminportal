@@ -7,16 +7,16 @@
     <link rel="stylesheet" href="<?php echo base_url().'assets/css/font-awesome.min.css';?>">
     <link rel="stylesheet" href="<?php echo base_url().'assets/css/ionicons.min.css';?>">
 	<link rel="stylesheet" href="<?php echo base_url().'assets/plugins/timepicker/bootstrap-timepicker.min.css';?>">
-    <link rel="stylesheet" href="<?php echo base_url().'assets/css/AdminLTE.min.css';?>">
+    <link rel="stylesheet" href="<?php echo base_url().'assets/plugins/toastr/toastr.min.css';?>">
     <link rel="stylesheet" href="<?php echo base_url().'assets/css/skins/skin-red.css';?>">
-    <link rel="stylesheet" href="<?php echo base_url().'assets/css/custom.css';?>">
-
 	<?php
     $meta_page = "default";
     if(isset($page)) $meta_page = $page;
     if(file_exists(APPPATH."views/template/meta_top/{$meta_page}.php")) 
         $this->load->view("template/meta_top/{$meta_page}");
     ?>
+    <link rel="stylesheet" href="<?php echo base_url().'assets/css/AdminLTE.min.css';?>">
+    <link rel="stylesheet" href="<?php echo base_url().'assets/css/custom.css';?>">
 </head>
 
 <body class="hold-transition skin-red sidebar-mini">
@@ -41,6 +41,7 @@
     if(file_exists(APPPATH."views/template/meta_bottom/{$meta_page}.php"))
         $this->load->view("template/meta_bottom/{$meta_page}");
     ?>
-
+	<!-- toastr message -->
+	<?php $this->load->view('template/inc/toastr');?>
 </body>
 </html>

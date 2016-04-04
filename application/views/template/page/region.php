@@ -11,10 +11,11 @@
 	<section class="content">
 		<div class="box">
 			<div class="box-header with-border">
-				<h3 class="box-title">IBF Members</h3>
+				<h3 class="box-title">IBF Wilayah</h3>
 				<div class="box-tools pull-right">
-					<button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
-					<button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
+					<button class="btn" data-toggle="modal" data-target="modalWilayah" title="Wilayah Baru"><i class="fa fa-plus-circle"></i></button>
+					<button class="btn" data-widget="collapse" data-tooltip="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
+					<button class="btn" data-widget="remove" data-tooltip="tooltip" title="Remove"><i class="fa fa-times"></i></button>
 				</div>
 			</div>
 			<div class="box-body">
@@ -23,7 +24,7 @@
 					<th width="20">No.</th>
 					<th>Nama Wilayah</th>
 					<th>Jumlah Member</th>
-					<th>Action</th>
+					<th width="50">Action</th>
 				</thead>
 				<tbody>
 				<?php if(!empty($region)){ $no=0;  foreach($region as $r){  $no++; ?>

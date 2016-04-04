@@ -49,3 +49,32 @@
 		</div>
 	</section>
 </div>
+
+<!-- modal privilage setting -->
+<div id="modalPriv" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title"><i class="fa fa-lock"></i> Modul Akses</h4>
+			</div>
+			<form method="POST" action="<?php echo base_url().'member/change_privilage';?>">
+			<input type="hidden" name="app_id" id="app_id">
+			<input type="hidden" name="member_id" id="uid">
+			<div class="modal-body">
+				<div class="form-group">
+					<label>Seeting user sebagai:</label><br/>
+					<input type="radio" name="priv" class="priv" id="block" value="0"> Blokir
+					<input type="radio" name="priv" class="priv" id="user" value="1"> User
+					<input type="radio" name="priv" class="priv" id="approval" value="2"> Approv
+					<input type="radio" name="priv" class="priv" id="admin" value="3"> Admin
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<input type="submit" class="btn btn-danger" value="Simpan">
+			</div>
+			</form>
+		</div>
+	</div>
+</div>

@@ -3,13 +3,13 @@
 class Mdl_member extends CI_Model{
 
 	public function get_member($code = ''){
-		$sql = "select a.*, c.member_type, b.member_image_profile, b.member_reg_year from ibf_member a 
-			left join ibf_member_detail b on a.member_id = b.member_id
-			left outer join ibf_member_type c on b.member_type = c.type_id order by a.member_id DESC";
+		$sql = "select a.*, b. member_type, b.member_image_profile, b.member_reg_year, c.region_name as member_region 
+			from ibf_member a left join ibf_member_detail b on a.member_id = b.member_id 
+			left outer join ibf_region c on b.member_region = c.region_id 
+			order by a.member_id DESC";
 		if($code != ''){
 			$sql = "select * from ibf_member a 
 				left join ibf_member_detail b on a.member_id = b.member_id
-				left outer join ibf_member_type c on b.member_type = c.type_id
 				left outer join ibf_region d on b.member_region = d.region_id
 				where a.member_ibf_code = '$code'";
 		}
@@ -100,10 +100,26 @@ class Mdl_member extends CI_Model{
 		return $this->db->insert('ibf_member_detail', $data);
 	}
 	
+	public function update($id, $data){
+		$this->db->where('member_id', $id);
+		return $this->db->update('ibf_member', $data);
+	}
+	
+	public function update_data_user($id, $data){
+		$this->db->where('member_id', $id);
+		return $this->db->update('ibf_member_detail', $data);
+	}
+	
 	public function create_user($data){
 		$this->db->insert('ibf_member', $data);
 		return $this->db->insert_id();
 	}
+	
+	public function set_privilage($id, $data){
+		$this->db->where('member_id', $id);
+		return $this->db->update('ibf_privilage', $data);		
+	}
+	
 	
 }
 

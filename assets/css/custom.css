@@ -43,3 +43,17 @@ h5.title{
 	padding-bottom:10px;
 	border-bottom:solid 2px #FF4444;
 }
+h1{
+	font-family:impact;
+}
+html, h1 > small{
+	font-family:"Source Sans Pro";
+}
+.content-img{
+	padding:2px;
+	margin-right:20px;
+	border:solid 1px #DDD;
+	background:#FFF;
+	float:left;
+	width:100px;
+}

@@ -58,8 +58,12 @@ $route['register'] = 'login/register';
 
 $route['member/(:any)'] = 'member/detail/$1';
 $route['member/region'] = 'member/region';
+$route['member/changepassword'] = 'member/changepassword';
 $route['member/type'] = 'member/type';
 $route['member/privilage'] = 'member/privilage';
+$route['member/update'] = 'member/proc_update';
+$route['member/updatepassword'] = 'member/proc_change_password';
+$route['member/change_privilage'] = 'member/change_privilage';
 
 $route['article/(:any)'] = 'article/detail/$1';
 $route['article/category'] = 'article/category';

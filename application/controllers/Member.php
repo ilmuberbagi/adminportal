@@ -66,5 +66,107 @@ class Member extends CI_Controller{
 		$this->load->view('template', $this->data);
 	}
 
+	public function changepassword(){
+		$this->data['title'] = 'Change Password';
+		$this->data['page'] = 'page/password_change';
+		$this->load->view('template', $this->data);
+	}
+	
+	# proc updating data 
+	# ============================
+	public function proc_change_password(){
+		$this->load->library('form_validation');
+		$id = $this->security->xss_clean($this->input->post('member_id'));
+		$pass = $this->security->xss_clean($this->input->post('member_password'));
+		$repass = $this->security->xss_clean($this->input->post('member_repassword'));
+		$this->form_validation->set_rules('member_password','Password','required|trim');
+		$this->form_validation->set_rules('member_repassword','Ulangi Password','required|trim|match[member_password]');
+		if($this->form_validation->run() == 'FALSE'){
+			$msg = validation_errors();
+			$this->session->set_flashdata('alert', $msg);
+		}else{
+			$data = array('member_password' => md5($pass));
+			$change = $this->member->update($id, $data);
+			if($change)
+				$this->session->set_flashdata('success','Password Anda berhasil diupdate.');
+			else
+				$this->session->set_flashdata('alert','Terjadi kesalahan saat mengupdate password!');
+		}
+		redirect('member/changepassword');
+	}
+	
+	public function proc_update(){
+		
+		$id = $this->security->xss_clean($this->input->post('member_id'));
+		
+		$name = $this->security->xss_clean($this->input->post('member_name'));
+		$place = $this->security->xss_clean($this->input->post('member_birthplace'));
+		$birthdate = str_replace('/','-', $this->security->xss_clean($this->input->post('member_birthdate')));
+		$education = $this->security->xss_clean($this->input->post('member_education'));
+		$gender = $this->input->post('member_gender');
+		$job = $this->security->xss_clean($this->input->post('member_job'));
+		$year = $this->security->xss_clean($this->input->post('member_reg_year'));
+		$skills = $this->security->xss_clean($this->input->post('member_skills'));
+		$description = $this->security->xss_clean($this->input->post('member_description'));
+		$region = $this->input->post('member_region');
+		$type = $this->input->post('member_type');
+		$phone = $this->security->xss_clean($this->input->post('member_phone'));
+		$email = $this->security->xss_clean($this->input->post('member_email'));
+		$address = $this->security->xss_clean($this->input->post('member_address'));
+		$fb = $this->security->xss_clean($this->input->post('member_fb'));
+		$tw = $this->security->xss_clean($this->input->post('member_twitter'));
+		$website = $this->security->xss_clean($this->input->post('member_website'));
+		$motivation = $this->security->xss_clean($this->input->post('member_reason'));
+		
+		$data = array(
+			'member_name'	=> $name,
+			'member_email'	=> $email,
+		);
+		
+		$detailuser = array(
+			'member_birthplace'	=> $place,
+			'member_birth_date'	=> date('Y-m-d', strtotime($birthdate)),
+			'member_education'	=> $education,
+			'member_gender'	=> $gender,
+			'member_job'	=> $job,
+			'member_skills'	=> $skills,
+			'member_description'	=> $description,
+			'member_region'	=> $region,
+			'member_type'	=> json_encode($type),
+			'member_phone'	=> $phone,
+			'member_address'	=> $address,
+			'member_facebook'	=> $fb,
+			'member_twitter'	=> $tw,
+			'member_reg_year'	=> $year,
+			'member_blog'	=> $website,
+			'member_motivation'	=> $motivation,
+			'member_date_update'	=> date('Y-m-d H:i:s'),
+		);
+		
+		$act = $this->member->update($id, $data);
+		if($act){
+			$this->member->update_data_user($id, $detailuser);
+			$this->session->flashdata('success','Data profil berhasil diperbaharui.');
+		}else
+			$this->session->flashdata('error','Terjadi masalah saat menyimpan data, Silakan cek data yang Anda masukkan!');
+			
+		redirect('member');
+	}
+	
+	public function change_privilage(){
+		$app_id = $this->input->post('app_id');
+		$uid = $this->input->post('member_id');
+		$priv = $this->input->post('priv');
+		$data = array(
+			'app_'.$app_id	=> $priv
+		);
+		$act = $this->member->set_privilage($uid, $data);
+		if($act)
+			$this->session->set_flashdata('success','Setting Privilage berhasil disimpan');
+		else
+			$this->session->set_flashdata('error','Setting Privilage gagal disimpan');
+		
+		redirect('member/privilage');
+	}
 
 }

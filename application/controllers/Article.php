@@ -75,7 +75,7 @@ class Article extends CI_Controller{
 			'article_title' => $this->input->post('article_title'),
 			'article_content' => $this->input->post('article_content'),
 			'article_author' => $this->input->post('article_author'),
-			'article_date_update' => date('Y-m-d H:i:s', strtotime($date)),
+			'article_date_update' => date('Y-m-d H:i:s'),
 			'article_category' => $this->input->post('article_category'),
 			'article_tags' => json_encode($tags)
 		);

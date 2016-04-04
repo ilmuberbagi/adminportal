@@ -34,7 +34,7 @@ class Auth extends CI_Controller {
 		$context  = stream_context_create($param);
 		$user = json_decode(file_get_contents(AUTH_API_URL.'user', false, $context), true);
 		$priv = array();
-		if(!empty($user)){
+		if(count($user) > 0){
 			$postdata = http_build_query(array('api_kode' => 2000, 'api_datapost' => array($user[0]['member_id'])));
 			$param = array('http' =>
 				array(
