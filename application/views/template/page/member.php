@@ -9,7 +9,7 @@
 	</section>
 
 	<section class="content">
-		<div class="box">
+		<div class="box box-info">
 			<div class="box-header with-border">
 				<h3 class="box-title"><i class="fa fa-users"></i> IBF Members</h3>
 				<div class="box-tools pull-right">
@@ -34,13 +34,13 @@
 					<td><?php echo $m['member_ibf_code'];?></td>
 					<td><?php echo $m['member_name'];?></td>
 					<td><a href="mailto:<?php echo $m['member_email'];?>"><?php echo $m['member_email'];?></a></td>
-					<td><?php echo $m['member_region'];?></td>
+					<td><?php echo $m['region_name'];?></td>
 					<td align="center"><?php echo $m['member_status'] == 1? '<span class="label label-success">aktif</span>':'<span class="label label-default">pending</span>';?></td>
 					<td align="center"><?php echo $m['member_reg_year'];?></td>
 					<td>
 						<span class="btn-group">
 							<a href="<?php echo base_url().'member/'.$m['member_ibf_code'];?>" class="btn btn-default btn-sm"><i class="fa fa-search"></i></a>
-							<a href="" class="btn btn-default btn-sm"><i class="fa fa-ban"></i></a>
+							<a data-toggle="modal" data-target="#modalStatus" class="btn btn-default btn-sm" onclick="return change_status('<?php echo $m['member_id'].'#'.$m['member_status'].'#'.$m['member_name'];?>')"><i class="fa fa-ban"></i></a>
 						</span>
 					</td>
 				</tr>
@@ -50,4 +50,28 @@
 			</div>
 		</div>
 	</section>
+</div>
+
+<!-- modal status -->
+<div id="modalStatus" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title"><i class="fa fa-lock"></i> Aktif/Nonaktifkan Member</h4>
+			</div>
+			<form method="POST" action="<?php echo base_url().'member/change_member_status';?>">
+			<input type="hidden" name="member_id" id="member_id">
+			<input type="hidden" name="member_status" id="member_status">
+			<input type="hidden" name="member_name" id="member_name">
+			<div class="modal-body msg">
+				
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<input type="submit" class="btn btn-danger btnaction">
+			</div>
+			</form>
+		</div>
+	</div>
 </div>

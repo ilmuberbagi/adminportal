@@ -1,6 +1,6 @@
 <div class="content-wrapper">
 	<section class="content-header">
-		<h1>Dashboard <small>IBF Foundation Online Features</small></h1>
+		<h1>Dashboard <small>IBF Online Features</small></h1>
 		<ol class="breadcrumb">
 			<li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
 		</ol>
@@ -9,7 +9,7 @@
 	<section class="content">
 		<div class="box">
 			<div class="box-header with-border">
-				<h3 class="box-title">Title</h3>
+				<h3 class="box-title"><i class="fa fa-globe"></i> Layanan Online</h3>
 				<div class="box-tools pull-right">
 					<button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
 					<button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>

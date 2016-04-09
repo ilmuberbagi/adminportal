@@ -36,6 +36,8 @@ class Member extends CI_Controller{
 		$this->load->view('template', $this->data);
 	}
 
+	# module wilayah
+	# ==============================================
 	public function region($region = ""){
 		$this->data['title'] = 'IBF Region';
 		$this->data['page'] = 'page/region';
@@ -46,6 +48,42 @@ class Member extends CI_Controller{
 		}
 		$this->load->view('template', $this->data);
 	}
+	
+	/**
+	 * save new region
+	 * @ param array data
+	 * @ return boolean
+	 * redirect
+	 */
+	public function sv_region(){
+		$data = array(
+			'region_name' => $this->security->xss_clean($this->input->post('region_name'))
+		);
+		$act = $this->member->create_region($data);
+		if($act) $this->session->set_flashdata('success','Wilayah baru telah berhasil disimpan.');
+		else $this->session->set_flashdata('error','Terjadi kesalahan saat menyimpan data.');
+		redirect('member/region');
+	}
+	
+	/**
+	 * update region
+	 * @ param id & array data
+	 * @ return boolean
+	 * redirect
+	 */
+	 public function upd_region(){
+		$id = $this->input->post('region_id');
+		$data = array(
+			'region_name' => $this->security->xss_clean($this->input->post('region_name'))
+		);
+		$act = $this->member->update_region($id, $data);
+		if($act) $this->session->set_flashdata('success','Data telah berhasil diupdate.');
+		else $this->session->set_flashdata('error','Terjadi kesalahan saat mengupdate data.');
+		redirect('member/region');
+	}
+	
+	# modules member type
+	# ========================================
 	
 	public function type($type = ""){
 		$this->data['title'] = 'IBF Member Types';
@@ -58,6 +96,43 @@ class Member extends CI_Controller{
 		$this->load->view('template', $this->data);		
 	}
 	
+	/**
+	 * save member type
+	 * @ param array data
+	 * @ return boolean
+	 * redirect
+	 */
+	public function sv_type(){
+		$data = array(
+			'member_type' => $this->security->xss_clean($this->input->post('member_type')),
+			'type_description' => $this->security->xss_clean($this->input->post('type_description'))
+		);
+		$act = $this->member->create_member_type($data);
+		if($act) $this->session->set_flashdata('success','Status Anggota baru telah berhasil disimpan.');
+		else $this->session->set_flashdata('error','Terjadi kesalahan saat menyimpan data.');
+		redirect('member/type');
+	}
+	
+	/**
+	 * update member type
+	 * @ param id & array data
+	 * @ return boolean
+	 * redirect
+	 */
+	public function upd_type(){
+		$id = $this->input->post('type_id');
+		$data = array(
+			'member_type' => $this->security->xss_clean($this->input->post('region_name')),
+			'type_description' => $this->security->xss_clean($this->input->post('type_description'))
+		);
+		$act = $this->member->update_type($id, $data);
+		if($act) $this->session->set_flashdata('success','Data telah berhasil diupdate.');
+		else $this->session->set_flashdata('error','Terjadi kesalahan saat mengupdate data.');
+		redirect('member/type');
+	}
+	
+	# modules privilage
+	# =============================================
 	public function privilage(){
 		$this->data['title'] = 'IBF Members';
 		$this->data['page'] = 'page/privilage';
@@ -145,11 +220,28 @@ class Member extends CI_Controller{
 		
 		$act = $this->member->update($id, $data);
 		if($act){
-			$this->member->update_data_user($id, $detailuser);
-			$this->session->flashdata('success','Data profil berhasil diperbaharui.');
+			$upd = $this->member->update_data_user($id, $detailuser);
+			if($upd){
+				$this->member->update_wilayah_count($detailuser['member_region']);
+				$this->session->set_flashdata('success','Data profil berhasil diperbaharui.');
+			}
 		}else
-			$this->session->flashdata('error','Terjadi masalah saat menyimpan data, Silakan cek data yang Anda masukkan!');
+			$this->session->set_flashdata('error','Terjadi masalah saat menyimpan data, Silakan cek data yang Anda masukkan!');
 			
+		redirect('member');
+	}
+	
+	public function change_member_status(){
+		$id = $this->input->post('member_id');
+		$name = $this->input->post('member_name');
+		$data = array(
+			'member_status' => $this->input->post('member_status') == 1 ? 0 : 1,
+		);
+		$status = $data['member_status'] == 1 ? 'diaktifkan.':'diblokir.';
+		$act = $this->member->update($id, $data);
+		if($act)
+			$this->session->set_flashdata('success','Member '.$name.' telah '.$status);
+		else $this->session->set_flashdata('error','Terjadi masalah saat mengupdate data.');
 		redirect('member');
 	}
 	

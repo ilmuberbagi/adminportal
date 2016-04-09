@@ -26,10 +26,14 @@ class Article extends CI_Controller{
 		$this->load->view('template', $this->data);
 	}
 	
-	public function category(){
+	public function category($id = ""){
 		$this->data['title'] = 'IBF Article Categories';
 		$this->data['page'] = 'page/article_category';
 		$this->data['categories'] = $this->article->get_article_category();
+		if($id !==""){
+			$this->data['page'] = 'page/article';
+			$this->data['articles'] = $this->article->get_article_category($id);	
+		}
 		$this->load->view('template', $this->data);
 	}
 	
@@ -59,10 +63,12 @@ class Article extends CI_Controller{
 			'article_tags' => json_encode($tags)
 		);
 		$act = $this->article->insert($data);
-		if($act)
-			$this->session->set_flashdata('success','The Article has been saved.');
-		else
-			$this->session->set_flashdata('error','Trouble while saving article.');
+		if($act){
+			$upd = $this->article->update_category_count($data['article_category']);
+			if($upd)
+				$this->session->set_flashdata('success','Artikel telah berhasil disimpan.');
+		}else
+			$this->session->set_flashdata('error','Terjadi masalah saat menyimpan data.');
 		
 		redirect('article');
 	}	
@@ -77,13 +83,19 @@ class Article extends CI_Controller{
 			'article_author' => $this->input->post('article_author'),
 			'article_date_update' => date('Y-m-d H:i:s'),
 			'article_category' => $this->input->post('article_category'),
-			'article_tags' => json_encode($tags)
+			'article_tags' => json_encode($tags),
 		);
+		if($this->session->userdata('privilage')[0]['app_2'] > 1 ||
+			$this->session->userdata('id') == $this->input->post('article_author'))
+			$data['article_approve'] = $this->input->post('article_approve');
+		
 		$act = $this->article->update($id, $data);
-		if($act)
-			$this->session->set_flashdata('success','The Article has been updated.');
-		else
-			$this->session->set_flashdata('error','Trouble while updating article.');
+		if($act){
+			$upd = $this->article->update_category_count($data['article_category']);
+			if($upd)
+				$this->session->set_flashdata('success','Data artikel telah berhasil diupdate.');
+		}else
+			$this->session->set_flashdata('error','Terjadi masalah saat menyimpan data.');
 		redirect('article');
 	}
 	

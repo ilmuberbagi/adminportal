@@ -7,7 +7,6 @@
 			<li class="active"><?php echo $member[0]['member_name'];?></li>
 		</ol>
 	</section>
-
 	<section class="content">
 		<div class="row">
 			<div class="col-md-3">
@@ -30,7 +29,8 @@
 							<li class="list-group-item"><b>Quote</b> <span class="badge badge-primary pull-right"><?php echo $this->lib_general->count_article_by_user($member[0]['member_id']);?></span></li>
 							<li class="list-group-item"><b>Komentar</b> <span class="badge badge-primary pull-right"><?php echo $this->lib_general->count_article_by_user($member[0]['member_id']);?></span></li>
 						</ul>
-						<?php if($this->session->userdata('id') == $member[0]['member_id']){?>
+						<?php $priv = $this->session->userdata('privilage');
+							if($this->session->userdata('id') == $member[0]['member_id'] || $priv['app_1'] == 3){?>
 							<a href="<?php echo base_url().'member/edit/'.$member[0]['member_ibf_code'];?>" class="btn btn-primary btn-block"><b><i class="fa fa-edit"></i> Perbaharui</b></a>
 						<?php } ?>
 					</div>
@@ -50,7 +50,13 @@
 							<div class="row">
 								<div class="col-md-6">
 									<table class="table table-striped">
+									<tr><td><b><i class="fa fa-cc-discover"></i> Nama Lengkap:</b><br/><?php echo $member[0]['member_name'];?></td></tr>
+									<tr><td><b><i class="fa fa-child"></i> Tempat & Tgl Lahir:</b><br/><?php echo $member[0]['member_birthplace'],', '.date('d M Y', strtotime($member[0]['member_birth_date']));?></td></tr>
+									<tr><td><b><i class="fa fa-<?php echo $member[0]['member_gender'] == 0?'female':'male';?>"></i> Gender: </b><?php echo $member[0]['member_gender'] == 0?'Perempuan':'Laki-laki';?></td></tr>
+									<tr><td><b><i class="fa fa-map-marker"></i> Alamat:</b><br/><?php echo $member[0]['member_address'];?></td></tr>
 									<tr><td><b><i class="fa fa-book"></i> Pendidikan:</b><br/><?php echo $member[0]['member_education'];?></td></tr>
+									<tr><td><b><i class="fa fa-phone"></i> Phone: </b><?php echo $member[0]['member_phone'];?></td></tr>
+									<tr><td><b><i class="fa fa-envelope"></i> Email: </b><a href="mailto:<?php echo $member[0]['member_email'];?>"><?php echo $member[0]['member_email'];?></a></td></tr>
 									<tr><td><b><i class="fa fa-building"></i> Pekerjaan:</b><br/><?php echo $member[0]['member_job'];?></td></tr>
 									<tr><td><b><i class="fa fa-pencil"></i> Keahlian:</b><br/>
 									<?php 
@@ -68,7 +74,15 @@
 									</table>
 								</div>
 								<div class="col-md-6">
-									
+									<table class="table table-striped">
+									<tr><td><b><i class="fa fa-file-text"></i> Tentang:</b><br/><?php echo $member[0]['member_description'];?></td></tr>
+									<tr><td><b><i class="fa fa-file-text"></i> Alasan Bergabung:</b><br/><?php echo $member[0]['member_motivation'];?></td></tr>
+									<tr><td><b><i class="fa fa-share-alt"></i> Jejaring Sosial:</b><br/>
+										<?php echo $member[0]['member_facebook'] ? '<a style="font-size:4em" href="'.$member[0]['member_facebook'].'"><i class="fa fa-facebook-square"></i></a>':'';?> &nbsp;&nbsp;&nbsp;
+										<?php echo $member[0]['member_twitter'] ? '<a style="font-size:4em" href="'.$member[0]['member_twitter'].'"><i class="fa fa-twitter-square"></i></a>':'';?> &nbsp;&nbsp;&nbsp;
+										<?php echo $member[0]['member_blog'] ? '<a style="font-size:4em" href="'.$member[0]['member_blog'].'"><i class="fa fa-wordpress"></i></a>':'';?>
+									</td></tr>
+									</table>
 								</div>
 							</div>
 						</div>

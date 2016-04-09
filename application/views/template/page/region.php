@@ -9,11 +9,11 @@
 	</section>
 
 	<section class="content">
-		<div class="box">
+		<div class="box box-info">
 			<div class="box-header with-border">
-				<h3 class="box-title">IBF Wilayah</h3>
+				<h3 class="box-title"><i class="fa fa-map"></i> IBF Wilayah</h3>
 				<div class="box-tools pull-right">
-					<button class="btn" data-toggle="modal" data-target="modalWilayah" title="Wilayah Baru"><i class="fa fa-plus-circle"></i></button>
+					<button class="btn" data-toggle="modal" data-target="#modalWilayah" title="Wilayah Baru"><i class="fa fa-plus-circle"></i></button>
 					<button class="btn" data-widget="collapse" data-tooltip="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
 					<button class="btn" data-widget="remove" data-tooltip="tooltip" title="Remove"><i class="fa fa-times"></i></button>
 				</div>
@@ -23,15 +23,14 @@
 				<thead>
 					<th width="20">No.</th>
 					<th>Nama Wilayah</th>
-					<th>Jumlah Member</th>
 					<th width="50">Action</th>
 				</thead>
 				<tbody>
 				<?php if(!empty($region)){ $no=0;  foreach($region as $r){  $no++; ?>
 				<tr>
 					<td><?php echo $no;?></td>
-					<td><?php echo $r['region_name'];?></td>
-					<td><?php echo $this->lib_general->count_member_by_region($r['region_id']);?></td>
+					<td><?php echo $r['region_name'];?>&nbsp;
+					<span class="badge"><?php echo $r['count_member'];?></span></td>
 					<td>
 						<span class="btn-group">
 							<a href="<?php echo base_url().'member/region/'.$r['region_id'];?>" class="btn btn-default btn-sm"><i class="fa fa-search"></i></a>
@@ -45,4 +44,30 @@
 			</div>
 		</div>
 	</section>
+</div>
+
+<!-- modal wilayah -->
+<div id="modalWilayah" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title"><i class="fa fa-map"></i> Wilayah</h4>
+			</div>
+			<form method="POST" action="<?php echo base_url().'member/sv_region';?>">
+			<input type="hidden" name="app_id" id="app_id">
+			<input type="hidden" name="member_id" id="uid">
+			<div class="modal-body">
+				<div class="form-group">
+					<label>Nama Wilayah</label><br/>
+					<input type="text" name="region_name" class="form-control" placeholder="Nama Wilayah" required>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<input type="submit" class="btn btn-danger" value="Simpan">
+			</div>
+			</form>
+		</div>
+	</div>
 </div>

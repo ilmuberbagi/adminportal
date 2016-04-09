@@ -1,10 +1,10 @@
 <div class="content-wrapper">
 	<section class="content-header">
-		<h1>IBF Articles <small>Share knowladges</small></h1>
+		<h1>IBF Member <small>Update member data</small></h1>
 		<ol class="breadcrumb">
 			<li><a href="<?php echo base_url();?>"><i class="fa fa-dashboard"></i> Home</a></li>
-			<li><a href="<?php echo base_url().'member';?>">Article</a></li>
-			<li class="active">Data Article</li>
+			<li><a href="<?php echo base_url().'member';?>">Member</a></li>
+			<li class="active"><?php echo $member[0]['member_name'];?></li>
 		</ol>
 	</section>
 	

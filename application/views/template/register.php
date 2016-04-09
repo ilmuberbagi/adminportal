@@ -6,10 +6,11 @@
     <link rel="stylesheet" href="<?php echo base_url().'assets/css/bootstrap.min.css';?>">
     <link rel="stylesheet" href="<?php echo base_url().'assets/css/font-awesome.min.css';?>">
     <link rel="stylesheet" href="<?php echo base_url().'assets/css/ionicons.min.css';?>">
-    <link rel="stylesheet" href="<?php echo base_url().'assets/css/AdminLTE.min.css';?>">
     <link rel="stylesheet" href="<?php echo base_url().'assets/css/skins/skin-red.css';?>">
+    <link rel="stylesheet" href="<?php echo base_url().'assets/css/AdminLTE.min.css';?>">
     <link rel="stylesheet" href="<?php echo base_url().'assets/css/custom.css';?>">
     <?php $this->load->view("template/meta_top/register");?>
+	<script src='https://www.google.com/recaptcha/api.js'></script>
 
 </head>
 <body class="hold-transition login">
@@ -30,7 +31,7 @@
 						<div class="login-logo"><a href="<?php echo base_url();?>"><b>PORTAL</b>IBF</a></div>
 						<p class="login-box-msg">Register Member Ilmu Berbagi Foundation</p>
 						<div class="col-md-4">
-							<h5 class="title">Informasi Umum tentang anggota</h5>
+							<h5 class="title"><i class="fa fa-arrow-circle-right"></i> Informasi Umum tentang anggota</h5>
 							<div class="form-group">
 								<label>Nama Lengkap <span>*</span></label>
 								<input type="text" name="member_name" class="form-control" placeholder="Member Name" required>
@@ -68,7 +69,7 @@
 						
 						<!-- sosial media -->
 						<div class="col-md-4">
-							<h5 class="title">Status Keanggotaan</h5>
+							<h5 class="title"><i class="fa fa-arrow-circle-right"></i> Status Keanggotaan</h5>
 							<div class="form-group">
 								<label>Wilayah</label>
 								<select name="member_region" class="form-control select2" required>
@@ -85,7 +86,7 @@
 									<?php }} ?>
 								</select>
 							</div>
-							<h5 class="title">Informasi Kontak</h5>
+							<h5 class="title"><i class="fa fa-arrow-circle-right"></i> Informasi Kontak</h5>
 							<div class="form-group">
 								<label>Nomor HP/Telepon <span>*</span></label>
 								<input type="phone" name="member_phone" class="form-control" placeholder="Ex: +6285770427123" required>
@@ -98,7 +99,7 @@
 								<label>Alamat</label>
 								<textarea name="member_address" class="form-control" placeholder="Ex: Jl. Pandegasiwi Sleman Yogyakarta"></textarea>
 							</div>
-							<h5 class="title">Informasi Jejaring Sosial</h5>
+							<h5 class="title"><i class="fa fa-arrow-circle-right"></i> Informasi Jejaring Sosial</h5>
 							<div class="form-group">
 								<label>Facebook</label>
 								<input type="url" name="member_fb" class="form-control" placeholder="Ex: http://facebook.com/ilmuberbagi">
@@ -114,12 +115,12 @@
 						</div>
 						<!-- account -->
 						<div class="col-md-4">
-							<h5 class="title">Informasi Lain</h5>
+							<h5 class="title"><i class="fa fa-arrow-circle-right"></i> Informasi Lain</h5>
 							<div class="form-group">
 								<label>Alasan Berbagung</label>
 								<textarea name="member_reason" class="form-control" placeholder="Ex: Deskripsikan secara singkat alasan Anda bergabung dengan Ilmu Berbagi Foundation"></textarea>
 							</div>
-							<h5 class="title">Informasi Akun</h5>
+							<h5 class="title"><i class="fa fa-arrow-circle-right"></i> Informasi Akun</h5>
 							<div class="form-group">
 								<label>Username <span>*</span></label>
 								<input type="text" name="member_username" class="form-control" placeholder="username">
@@ -131,6 +132,9 @@
 							<div class="form-group">
 								<label>Ulangi Password</label>
 								<input type="password" name="member_repassword" class="form-control" placeholder="**********">
+							</div>
+							<div class="form-group">
+								<div class="g-recaptcha" data-sitekey="6LdT5BwTAAAAAHP9S-A5QQUIDmMoK5Hd_p5ZWCt8"></div>
 							</div>
 							<div class="form-action">
 								<input type="reset" name="reset" class="btn btn-default" value="Batal">

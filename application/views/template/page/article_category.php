@@ -3,13 +3,13 @@
 		<h1>IBF Articles <small>Share knowladges</small></h1>
 		<ol class="breadcrumb">
 			<li><a href="<?php echo base_url();?>"><i class="fa fa-dashboard"></i> Home</a></li>
-			<li><a href="<?php echo base_url().'member';?>">Article</a></li>
+			<li><a href="<?php echo base_url().'article';?>">Article</a></li>
 			<li class="active">Article Categories</li>
 		</ol>
 	</section>
 
 	<section class="content">
-		<div class="box">
+		<div class="box box-success">
 			<div class="box-header with-border">
 				<h3 class="box-title">IBF Article Categories</h3>
 				<div class="box-tools pull-right">
@@ -23,18 +23,17 @@
 				<thead>
 					<th width="20">No.</th>
 					<th>Category</th>
-					<th>Count Article</th>
 					<th width="100">Action</th>
 				</thead>
 				<tbody>
 				<?php if(!empty($categories)){ $no=0; foreach($categories as $a){ $no++;?>
 				<tr>
 					<td><?php echo $no;?></td>
-					<td><?php echo $a['category_name'];?></td>
-					<td><?php echo $this->lib_general->count_article_by_category($a['category_id']);?></td>
+					<td><?php echo $a['category_name'];?> &nbsp;
+					<span class="badge badge-default"><?php echo $a['count_article'];?></span></td>
 					<td>
 						<span class="btn-group">
-							<a href="<?php echo base_url().'article/'.$a['category_id'];?>" class="btn btn-default btn-sm"><i class="fa fa-search"></i></a>
+							<a href="<?php echo base_url().'article/category/'.$a['category_id'];?>" class="btn btn-default btn-sm"><i class="fa fa-search"></i></a>
 							<a href="" class="btn btn-default btn-sm"><i class="fa fa-trash"></i></a>
 						</span>
 					</td>

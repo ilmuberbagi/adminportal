@@ -3,13 +3,13 @@
 		<h1>IBF Articles <small>Share knowladges</small></h1>
 		<ol class="breadcrumb">
 			<li><a href="<?php echo base_url();?>"><i class="fa fa-dashboard"></i> Home</a></li>
-			<li><a href="<?php echo base_url().'member';?>">Article</a></li>
+			<li><a href="<?php echo base_url().'article';?>">Article</a></li>
 			<li class="active">Data Article</li>
 		</ol>
 	</section>
 
 	<section class="content">
-		<div class="box">
+		<div class="box box-success">
 			<div class="box-header with-border">
 				<h3 class="box-title"><i class="fa fa-file-text"></i> &nbsp; IBF Artikel</h3>
 				<div class="box-tools pull-right">
@@ -30,7 +30,8 @@
 				<?php if(!empty($articles)){ foreach($articles as $a){?>
 				<tr>
 					<td width="50%">
-						<b><a href="<?php echo base_url().'article/'.$a['article_id'];?>"><?php echo strip_tags($a['article_title']);?></a></b><br/>
+						<b><a href="<?php echo base_url().'article/'.$a['article_id'];?>"><?php echo strip_tags($a['article_title']);?></a></b> &nbsp; 
+						<?php echo $a['article_approve'] == 1? '<span class="label label-success">Approved</span>':'<span class="label label-default">Pending</span>';?><br/>
 						<?php echo headline($a['article_content']);?>
 					</td>
 					<td><?php echo $a['member_name'];?></td>
@@ -38,7 +39,7 @@
 					<td>
 						<span class="btn-group">
 							<a href="<?php echo base_url().'article/'.$a['article_id'];?>" class="btn btn-default btn-sm"><i class="fa fa-search"></i></a>
-							<a href="" class="btn btn-default btn-sm"><i class="fa fa-ban"></i></a>
+							<a href="#" class="btn btn-default btn-sm"><i class="fa fa-flag" style="text-<?php echo $a['article_approve'] == 1?'success':'';?>"></i></a>
 						</span>
 					</td>
 				</tr>

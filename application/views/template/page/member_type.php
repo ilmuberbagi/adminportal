@@ -4,14 +4,14 @@
 		<ol class="breadcrumb">
 			<li><a href="<?php echo base_url();?>"><i class="fa fa-dashboard"></i> Home</a></li>
 			<li><a href="<?php echo base_url().'member';?>">Member</a></li>
-			<li class="active">Wilayah</li>
+			<li class="active">Status Anggota</li>
 		</ol>
 	</section>
 
 	<section class="content">
-		<div class="box">
+		<div class="box box-info">
 			<div class="box-header with-border">
-				<h3 class="box-title">Status Keanggotaan</h3>
+				<h3 class="box-title"><i class="fa fa-user"></i> Status Keanggotaan</h3>
 				<div class="pull-right">
 					<button class="btn" data-toggle="modal" data-target="#modalType"><i class="fa fa-plus-circle"></i></button>
 					<button class="btn" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
@@ -19,11 +19,11 @@
 				</div>
 			</div>
 			<div class="box-body">
-				<table  class="table table-bordered table-hover data-member">
+				<table  class="table table-stripped table-hover data-member">
 				<thead>
 					<th width="20">No.</th>
-					<th>Jenis Keanggotaan</th>
-					<th>Jumlah Member</th>
+					<th>Status Keanggotaan</th>
+					<th>Keterangan</th>
 					<th>Action</th>
 				</thead>
 				<tbody>
@@ -31,7 +31,7 @@
 				<tr>
 					<td><?php echo $no;?></td>
 					<td><?php echo $r['member_type'];?></td>
-					<td><?php echo $this->lib_general->count_member_by_type($r['type_id']);?></td>
+					<td><?php echo $r['type_description']?$r['type_description']:'-----';?></td>
 					<td>
 						<span class="btn-group">
 							<a href="<?php echo base_url().'member/type/'.$r['type_id'];?>" class="btn btn-default btn-sm"><i class="fa fa-search"></i></a>

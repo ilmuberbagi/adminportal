@@ -4,17 +4,17 @@
 		<ol class="breadcrumb">
 			<li><a href="<?php echo base_url();?>"><i class="fa fa-dashboard"></i> Home</a></li>
 			<li><a href="<?php echo base_url().'member';?>">Member</a></li>
-			<li class="active">Data Member</li>
+			<li class="active">Privilages</li>
 		</ol>
 	</section>
 
 	<section class="content">
-		<div class="box">
+		<div class="box box-info">
 			<div class="box-header with-border">
-				<h3 class="box-title">IBF Members</h3>
+				<h3 class="box-title"><i class="fa fa-key"></i> IBF Privilages</h3>
 				<div class="box-tools pull-right">
-					<button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
-					<button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
+					<button class="btn" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
+					<button class="btn" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
 				</div>
 			</div>
 			<div class="box-body">

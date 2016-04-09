@@ -3,7 +3,7 @@
 class Mdl_member extends CI_Model{
 
 	public function get_member($code = ''){
-		$sql = "select a.*, b. member_type, b.member_image_profile, b.member_reg_year, c.region_name as member_region 
+		$sql = "select a.*, b.member_type, b.member_image_profile, b.member_reg_year, c.region_name 
 			from ibf_member a left join ibf_member_detail b on a.member_id = b.member_id 
 			left outer join ibf_region c on b.member_region = c.region_id 
 			order by a.member_id DESC";
@@ -58,20 +58,36 @@ class Mdl_member extends CI_Model{
 	public function get_region($region=""){
 		$sql = "select * from ibf_region order by region_name ASC";
 		if($region !== ""){
-			$sql = "select a.*, c.member_type, b.member_image_profile, b.member_reg_year from ibf_member a 
+			$sql = "select a.*, c.region_name, b.member_image_profile, b.member_reg_year from ibf_member a 
 				left join ibf_member_detail b on a.member_id = b.member_id
-				left outer join ibf_member_type c on b.member_type = c.type_id 
+				left outer join ibf_region c on b.member_region = c.region_id
 				where b.member_region = '$region' order by a.member_id DESC";
 		}
 		return $this->db->query($sql)->result_array();
 	}
 	
 	public function count_member_by_region($id){
-		$sql = "select member_id from ibf_member_detail where member_region = '$id'";
-		$count = $this->db->query($sql)->num_rows();
-		return $count;
+		$sql = "select count(member_id) as total from ibf_member_detail where member_region = '$id'";
+		$data = $this->db->query($sql)->result_array();
+		return $data[0]['total'];
 	}
 	
+	public function create_region($data){
+		return $this->db->insert('ibf_region', $data);
+	}
+	
+	public function update_region($id, $data){
+		$this->db->where('region_id', $id);;
+		return $this->db->update('ibf_region', $data);
+	}
+	public function update_wilayah_count($id){
+		$sql = "select count(member_id) as jml from ibf_member_detail where member_region = '$id'";
+		$data = $this->db->query($sql)->result_array();
+		$sqlUpdate = "update ibf_region set count_member = '".($data[0]['jml'])."' where region_id = '$id'";
+		return $this->db->query($sqlUpdate);
+	}
+	
+	#  type model
 	public function get_member_type($type = ""){
 		$sql = "select * from ibf_member_type order by member_type ASC";
 		if($type !== ""){
@@ -113,6 +129,10 @@ class Mdl_member extends CI_Model{
 	public function create_user($data){
 		$this->db->insert('ibf_member', $data);
 		return $this->db->insert_id();
+	}
+	
+	public function create_privilage($data){
+		return $this->db->insert('ibf_privilage', $data);
 	}
 	
 	public function set_privilage($id, $data){

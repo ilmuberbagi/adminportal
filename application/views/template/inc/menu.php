@@ -9,7 +9,8 @@
 					<a href="#"><i class="fa fa-circle text-success"></i> Online</a>
 				</div>
 			</div>
-
+			
+			
 			<!-- search form (Optional) -->
 			<form action="#" method="get" class="sidebar-form">
 				<div class="input-group">
@@ -19,7 +20,7 @@
 					</span>
 				</div>
 			</form>
-          
+			
 			<!-- Sidebar Menu -->
 			<ul class="sidebar-menu">
 				<li class="header">MAIN MENU</li>
@@ -30,7 +31,7 @@
 					<ul class="treeview-menu">
 						<li><a href="<?php echo base_url().'member';?>"><i class="fa fa-arrow-circle-right"></i> Daftar Member</a></li>
 						<li><a href="<?php echo base_url().'member/region';?>"><i class="fa fa-arrow-circle-right"></i>  Wilayah</a></li>
-						<?php if($this->session->userdata('privilage')[1] == 3){?>
+						<?php $priv = $this->session->userdata('privilage'); if($priv['app_1'] == 3){?>
 						<li><a href="<?php echo base_url().'member/privilage';?>"><i class="fa fa-arrow-circle-right"></i>  Hak Akses</a></li>
 						<?php } ?>
 						<li><a href="<?php echo base_url().'member/type';?>"><i class="fa fa-arrow-circle-right"></i>  Status Member</i></a></li>
@@ -53,3 +54,4 @@
 			</ul>
         </section>
 	</aside>
+	<?php #print_r($this->session->all_userdata());?>

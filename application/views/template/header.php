@@ -19,7 +19,7 @@
 								<ul class="menu">
 									<li>
 										<a href="#">
-											<div class="pull-left"><img src="<?php echo base_url().'assets/img/admin.jpg';?>" class="img-circle" alt="User Image"></div>
+											<div class="pull-left"><img src="<?php echo $this->session->userdata('avatar');?>" class="img-circle" alt="User Image"></div>
 											<h4>Support Team <small><i class="fa fa-clock-o"></i> 5 mins</small></h4>
 											<p>Why not buy a new awesome theme?</p>
 										</a>
