@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @package    mitrakomunitas.ilmuberbagi.or.id / 2016
+ * @package    portal.ilmuberbagi.or.id / 2016
  * @author     Sabbana
  * @copyright  Divisi IT IBF
  * @version    1.0
@@ -16,7 +16,6 @@ class Auth extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		$this->load->model("Mdl_login","model");
-		define('AUTH_API_URL','http://localhost/ibf/services/auth/');
 	}
 	
 	public function index(){
@@ -24,27 +23,10 @@ class Auth extends CI_Controller {
 			'username' => $this->security->xss_clean($this->input->post('username')),
 			'password' => $this->security->xss_clean($this->input->post('password')),
 		);
-		$app = $this->security->xss_clean($this->input->post('app'));
-		$postdata = http_build_query(array('api_kode' => 1000, 'api_datapost' => $datapost));
-		$param = array('http' =>
-			array(
-				'method'  => 'POST',
-				'header'  => 'Content-type: application/x-www-form-urlencoded',
-				'content' => $postdata
-			));
-		$context  = stream_context_create($param);
-		$user = json_decode(file_get_contents(AUTH_API_URL.'user', false, $context), true);
+		$user = $this->model->get_user($datapost['username'], $datapost['password']);
 		$priv = array();
 		if(!empty($user)){
-			$postdata = http_build_query(array('api_kode' => 2000, 'api_datapost' => array('member_id' => $user[0]['member_id'])));
-			$param = array('http' =>
-				array(
-					'method'  => 'POST',
-					'header'  => 'Content-type: application/x-www-form-urlencoded',
-					'content' => $postdata
-				));
-			$context  = stream_context_create($param);
-			$priv = json_decode(file_get_contents(AUTH_API_URL.'user', false, $context), true);
+			$priv = $this->model->get_user_privilage($user[0]['member_id']);
 			# create session
 			$create_session = array(
 				'id'			=> $user[0]['member_id'],

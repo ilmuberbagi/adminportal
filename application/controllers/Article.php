@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @package    mitrakomunitas.ilmuberbagi.or.id / 2016
+ * @package    portal.ilmuberbagi.or.id / 2016
  * @author     Sabbana
  * @copyright  Divisi IT IBF
  * @version    1.0

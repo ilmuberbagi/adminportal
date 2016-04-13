@@ -43,9 +43,9 @@
 					<ul class="treeview-menu">
 						<li><a href="<?php echo base_url().'article';?>"><i class="fa fa-arrow-circle-right"></i> Data Artikel</a></li>
 						<li><a href="<?php echo base_url().'article/category';?>"><i class="fa fa-arrow-circle-right"></i>  Kategori Artikel</a></li>
-						<li><a href="<?php echo base_url().'article/image';?>"><i class="fa fa-arrow-circle-right"></i>  Aset Images</i></a></li>
 					</ul>
 				</li>
+				<li><a href="<?php echo base_url().'asset';?>"><i class="fa fa-image"></i>  Aset Images</i></a></li>
 
 				
 				<li><a href="#"><i class="fa fa-book"></i> <span>Journal</span></a></li>
