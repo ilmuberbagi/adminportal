@@ -79,7 +79,7 @@
 						<ul class="dropdown-menu">
 							<li class="user-header">
 								<img class="img-circle" src="<?php echo image_url($this->session->userdata('avatar'));?>" alt="">
-								<p><?php echo $this->session->userdata('name').' - '.$this->session->userdata('type');?> <small>Member since : <?php echo date('M Y');?></small></p>
+								<p><?php echo $this->session->userdata('name').' - '.$this->session->userdata('type');?> <small>Member since : <?php echo $this->session->userdata('year');?></small></p>
 							</li>
 							<li class="user-body">
 								<a href="<?php echo base_url().'member/changepassword';?>" class="btn"><i class="fa fa-key"></i> Change Password</a>
@@ -94,5 +94,4 @@
 			</div>
 		</nav>
 	</header>
-	  
 	<?php $this->load->view('template/inc/menu');?>

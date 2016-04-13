@@ -19,12 +19,10 @@ function UR_exists($url){
 }
 
 function image_url($url){
-	// if(UR_exists($url))
-		// $img = $url;
-	// else if($url == '')
-		// $img = site_url().'assets/img/default.jpg';
-	// else
-	$img = site_url().'assets/img/default.jpg';
+	if($url != "")
+		$img = $url;
+	else
+		$img = site_url().'assets/img/default.jpg';
 	return $img;
 }
 

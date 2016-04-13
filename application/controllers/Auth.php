@@ -35,6 +35,7 @@ class Auth extends CI_Controller {
 				'username'		=> $datapost['username'],
 				'name'			=> $user[0]['member_name'],
 				'avatar'		=> $user[0]['member_image_profile'],
+				'year'			=> $user[0]['member_reg_year'],
 				'type'			=> $user[0]['member_type'],
 				'ibf_code'		=> $user[0]['member_ibf_code'],
 				'privilage'		=> $priv[0],
