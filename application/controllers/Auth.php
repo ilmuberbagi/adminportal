@@ -33,7 +33,8 @@ class Auth extends CI_Controller {
 				'content' => $postdata
 			));
 		$context  = stream_context_create($param);
-		$user = json_decode(file_get_contents(AUTH_API_URL.'user', false, $context), true);
+		// $user = json_decode(file_get_contents(AUTH_API_URL.'user', false, $context), true);
+		$user   = $this->model->get_user($datapost['username'], $datapost['password']);
 		$priv = array();
 		if(!empty($user)){
 			$postdata = http_build_query(array('api_kode' => 2000, 'api_datapost' => array('member_id' => $user[0]['member_id'])));

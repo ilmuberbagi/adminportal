@@ -26,7 +26,7 @@
 			$title = '';
 			$article_category = '';
 			$approve = 0;
-			$member_name = $this->session->userdata('name');;
+			$member_name = $this->session->userdata('name');
 			$author = $this->session->userdata('id');
 			$content = '';
 			$tags = '';
