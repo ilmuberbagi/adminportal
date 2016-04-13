@@ -47,6 +47,13 @@
 				</li>
 				<li><a href="<?php echo base_url().'asset';?>"><i class="fa fa-image"></i>  Aset Images</i></a></li>
 
+				<li class="treeview <?php echo $this->uri->segment(1) == 'activity'? 'active':'';?>">
+					<a href="#"><i class="fa fa-file-text"></i> <span>Aktifitas</span> <i class="fa fa-angle-left pull-right"></i></a>
+					<ul class="treeview-menu">
+						<li><a href="<?php echo base_url().'activity';?>"><i class="fa fa-arrow-circle-right"></i> Data Aktifitas</a></li>
+					</ul>
+				</li>
+
 				
 				<li><a href="#"><i class="fa fa-book"></i> <span>Journal</span></a></li>
 				<li><a href="#"><i class="fa fa-comments"></i> <span>Quote</span></a></li>

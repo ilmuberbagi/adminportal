@@ -81,3 +81,9 @@ $route['article/insert'] = 'article/insert';
 $route['article/image'] = 'article/image';
 $route['article/get_image'] = 'article/get_image_from_dir';
 
+
+$route['activity/(:any)'] = 'activity/detail/$1';
+$route['activity/create'] = 'activity/create';
+$route['activity/update'] = 'activity/update';
+$route['activity/insert'] = 'activity/insert';
+$route['activity/delete(:any)'] = 'activity/delete/$1';
