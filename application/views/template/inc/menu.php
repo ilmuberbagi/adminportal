@@ -2,14 +2,13 @@
 		<section class="sidebar">
 			<div class="user-panel">
 				<div class="pull-left image">
-					<img class="img-circle" src="<?php echo image_url($this->session->userdata('avatar'));?>" alt="" style="width:120px; height:50px">
+					<img class="img-circle" src="<?php echo image_url($this->session->userdata('avatar'));?>" alt="">
 				</div>
 				<div class="pull-left info">
 					<p><?php echo $this->session->userdata('name');?></p>
-					<a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+					<p></p><i class="fa fa-circle text-success"></i> Online<p></p>
 				</div>
 			</div>
-			
 			
 			<!-- search form (Optional) -->
 			<form action="#" method="get" class="sidebar-form">
@@ -23,7 +22,7 @@
 			
 			<!-- Sidebar Menu -->
 			<ul class="sidebar-menu">
-				<li class="header">MAIN MENU</li>
+				<li class="header"><marquee><i class="fa fa-flag"></i> MAIN MENU</marquee></li>
 				<li class="<?php echo $this->uri->segment(1) == ''? 'active':'';?>"><a href="<?php echo base_url();?>"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
 								
 				<li class="treeview <?php echo $this->uri->segment(1) == 'member'? 'active':'';?>">
@@ -45,7 +44,8 @@
 						<li><a href="<?php echo base_url().'article/category';?>"><i class="fa fa-arrow-circle-right"></i>  Kategori Artikel</a></li>
 					</ul>
 				</li>
-				<li><a href="<?php echo base_url().'asset';?>"><i class="fa fa-image"></i>  Aset Images</i></a></li>
+				
+				<li class="<?php echo $this->uri->segment(1) == 'asset'? 'active':'';?>"><a href="<?php echo base_url().'asset';?>"><i class="fa fa-image"></i> <span>Aset Images</span></a></li>
 
 				<li class="treeview <?php echo $this->uri->segment(1) == 'activity'? 'active':'';?>">
 					<a href="#"><i class="fa fa-file-text"></i> <span>Aktifitas</span> <i class="fa fa-angle-left pull-right"></i></a>

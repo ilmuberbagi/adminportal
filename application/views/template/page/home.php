@@ -22,12 +22,12 @@
 						<div class="small-box bg-aqua">
 							<div class="inner">
 								<h3><?php echo number_format($count_member);?></h3>
-								<p>All Members</p>
+								<p>Member</p>
 							</div>
 							<div class="icon">
 								<i class="fa fa-users"></i>
 							</div>
-							<a href="<?php echo base_url().'member';?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+							<a href="<?php echo base_url().'member';?>" class="small-box-footer">Selengkapnya <i class="fa fa-arrow-circle-right"></i></a>
 						</div>
 					</div>
 					<!-- articles -->
@@ -35,12 +35,12 @@
 						<div class="small-box bg-green">
 							<div class="inner">
 								<h3><?php echo number_format($count_article);?></h3>
-								<p>All Articles</p>
+								<p>Artikel</p>
 							</div>
 							<div class="icon">
 								<i class="fa fa-file-text"></i>
 							</div>
-							<a href="<?php echo base_url().'article';?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+							<a href="<?php echo base_url().'article';?>" class="small-box-footer">Selengkapnya <i class="fa fa-arrow-circle-right"></i></a>
 						</div>
 					</div>
 					<!-- quotes -->
@@ -48,12 +48,12 @@
 						<div class="small-box bg-yellow">
 							<div class="inner">
 								<h3><?php echo number_format($count_member);?></h3>
-								<p>All Quotes</p>
+								<p>Aktivitas</p>
 							</div>
 							<div class="icon">
 								<i class="fa fa-comments"></i>
 							</div>
-							<a href="<?php echo base_url().'member';?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+							<a href="<?php echo base_url().'member';?>" class="small-box-footer">Selengkapnya <i class="fa fa-arrow-circle-right"></i></a>
 						</div>
 					</div>
 
@@ -62,12 +62,12 @@
 						<div class="small-box bg-red">
 							<div class="inner">
 								<h3><?php echo number_format($count_member);?></h3>
-								<p>All Journal</p>
+								<p>Agenda</p>
 							</div>
 							<div class="icon">
 								<i class="fa fa-book"></i>
 							</div>
-							<a href="<?php echo base_url().'member';?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+							<a href="<?php echo base_url().'member';?>" class="small-box-footer">Selengkapnya <i class="fa fa-arrow-circle-right"></i></a>
 						</div>
 					</div>
 				</div>

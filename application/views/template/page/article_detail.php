@@ -97,10 +97,11 @@
 							<label>Tags </label><small> - Separate word with a comma</small>
 							<input type="text" class="form-control" data-role="tagsinput" name="tags" value="<?php echo $tags;?>">
 						</div>
-						<?php if($this->session->userdata('privilage')[0]['app_2'] > 1){?>
+						<?php $priv = $this->session->userdata('privilage'); if($priv['app_2'] > 1){?>
 						<div class="form-group">
-							<label>Approve</label>
-							<input type="checkbox" name="article_approve" class="i-check" value="1" <?php echo $approve == 1?'checked':'';?>>
+							<div class="i-checks">
+								<label><input type="checkbox" name="article_approve" value="1" <?php echo $approve == 1?'checked':'';?>> &nbsp;Lolos Review</label>
+							</div>
 						</div>
 						<?php } ?>
 						<div class="form-action">

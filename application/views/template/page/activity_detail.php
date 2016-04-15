@@ -1,6 +1,6 @@
 <div class="content-wrapper">
 	<section class="content-header">
-		<h1>IBF Activity <small>Aktifitas</small></h1>
+		<h1>IBF Activity <small>Aktivitas</small></h1>
 		<ol class="breadcrumb">
 			<li><a href="<?php echo base_url();?>"><i class="fa fa-dashboard"></i> Home</a></li>
 			<li><a href="<?php echo base_url().'activity';?>">Activity</a></li>
@@ -39,10 +39,10 @@
 		<form method="POST" action="<?php echo base_url().'activity/'.$action;?>" enctype="multipart/form-data">
 		<input type="hidden" name="activity_id" value="<?php echo $activity_id;?>">
 			<div class="row">
-				<div class="col-md-9">
+				<div class="col-md-8">
 					<div class="box box-success">
 						<div class="box-header with-border">
-							<h3 class="box-title"><i class="fa fa-file-text"></i> &nbsp;<?php echo $title ? $title : 'Buat Aktifitas';?></h3>
+							<h3 class="box-title"><i class="fa fa-file-text"></i> &nbsp;<?php echo $title ? $title : 'Buat Aktivitas';?></h3>
 							<div class="box-tools pull-right">
 								<button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
 								<button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
@@ -50,21 +50,33 @@
 						</div>
 						<div class="box-body">
 							<div class="form-group">
-								<label>Nama Aktifitas</label>
+								<label>Nama Aktivitas</label>
 								<div class="input-group">
 									<div class="input-group-addon"><i class="fa fa-tasks"></i></div>
 									<input type="text" name="activity_name" class="form-control" placeholder="Ex: Seminar <?php echo $activity_name; ?>" required value="<?php echo $activity_name; ?>">
 								</div>
 							</div>
 							<div class="form-group">
-								<label>Lokasi Aktifitas</label>
+								<label>Lokasi Aktivitas</label>
 								<div class="input-group">
-									<div class="input-group-addon"><i class="fa fa-map-marker"></i></div>
+									<div class="input-group-addon"><i class="fa fa-home"></i></div>
 									<input type="text" name="activity_location" class="form-control" placeholder="Ex: Rumah IB" required value="<?php echo $activity_location; ?>">
 								</div>
 							</div>
+							
 							<div class="form-group">
-								<label>Keterangan Aktifitas</label>
+								<label><b>Google Address</b> <span>*</span></label>
+								<div class="input-group">
+									<div class="input-group-addon"><i class="fa fa-map-marker"></i></div>
+									<input id="googleAddress" type="text" size="50" placeholder="Masukkan Alamat Kota atau Jalan" autocomplete="on" runat="server" class="form-control" required />  
+									<input type="hidden" id="city" name="city" />
+									<input type="hidden" id="lat" name="lat" />
+									<input type="hidden" id="long" name="long" />  
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label>Keterangan Aktivitas</label>
 								<textarea name="activity_description" class="form-control" rows="6" placeholder="Ex: Acaranya untuk umum" required><?php echo $activity_description; ?></textarea>
 							</div>
 							<div class="form-group">
@@ -85,7 +97,7 @@
 				</div>
 
 				<!-- detail author and activity -->
-				<div class="col-md-3">
+				<div class="col-md-4">
 					<div class="box">
 						<div class="box-header with-border"></div>
 						<div class="box-body">
@@ -124,6 +136,15 @@
 								<div class="input-group">
 									<div class="input-group-addon"><i class="fa fa-clock-o"></i></div>
 									<input type="text" name="time_end" class="form-control" value="<?php echo $time_end;?>" required>
+								</div>
+							</div>
+							<div class="form-group">
+								<label>Sertakan Formulir Partisipan</label>
+								<div class="i-checks">
+									<label><input type="radio" name="is_participant" value="1"> Ya </label>
+								</div>
+								<div class="i-checks">
+									<label><input type="radio" name="is_participant" value="0"> Tidak </label>
 								</div>
 							</div>
 							<div class="form-action">

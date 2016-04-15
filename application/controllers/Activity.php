@@ -27,7 +27,7 @@ class Activity extends CI_Controller{
 	}
 
 	public function create(){
-		$this->data['title'] 	= 'IBF Activity : New Activity';
+		$this->data['title'] 	= 'IBF Activity : Tambah Aktivitas';
 		$this->data['page'] 	= 'page/activity_detail';
 		$this->load->view('template', $this->data);
 	}
@@ -46,7 +46,7 @@ class Activity extends CI_Controller{
 			);
 
 		$this->load->library('upload', $config);
-		if ( ! $this->upload->do_upload('activity_image'))
+		if (!$this->upload->do_upload('activity_image'))
 		{
 			$this->session->set_flashdata('error','Terjadi masalah saat menyimpan gambar.');
 		}
@@ -56,7 +56,11 @@ class Activity extends CI_Controller{
 			$data = array(
 				'activity_name' 		=> $this->input->post('activity_name'),
 				'activity_location' 	=> $this->input->post('activity_location'),
+				'activity_lat'		 	=> $this->input->post('lat'),
+				'activity_long'		 	=> $this->input->post('long'),
+				'activity_google_address' => $this->input->post('city'),
 				'activity_pic' 			=> $this->input->post('activity_pic'),
+				'activity_participant' 	=> $this->input->post('is_participant'),
 				'activity_description' 	=> $this->input->post('activity_description'),
 				'activity_date_start'	=> date ("Y-m-d",strtotime($date_start))." ".$time_start,
 				'activity_date_end' 	=> date ("Y-m-d",strtotime($date_end))." ".$time_end,
@@ -110,7 +114,11 @@ class Activity extends CI_Controller{
 				$data = array(
 					'activity_name' 		=> $this->input->post('activity_name'),
 					'activity_location' 	=> $this->input->post('activity_location'),
+					'activity_lat'		 	=> $this->input->post('lat'),
+					'activity_long'		 	=> $this->input->post('long'),
+					'activity_google_address' => $this->input->post('city'),
 					'activity_pic' 			=> $this->input->post('activity_pic'),
+					'activity_participant' 	=> $this->input->post('is_participant'),
 					'activity_description' 	=> $this->input->post('activity_description'),
 					'activity_date_start'	=> date ("Y-m-d",strtotime($date_start))." ".$time_start,
 					'activity_date_end' 	=> date ("Y-m-d",strtotime($date_end))." ".$time_end,
@@ -125,7 +133,11 @@ class Activity extends CI_Controller{
 			$data = array(
 				'activity_name' 		=> $this->input->post('activity_name'),
 				'activity_location' 	=> $this->input->post('activity_location'),
+				'activity_lat'		 	=> $this->input->post('lat'),
+				'activity_long'		 	=> $this->input->post('long'),
+				'activity_google_address' => $this->input->post('city'),
 				'activity_pic' 			=> $this->input->post('activity_pic'),
+				'activity_participant' 	=> $this->input->post('is_participant'),
 				'activity_description' 	=> $this->input->post('activity_description'),
 				'activity_date_start'	=> date ("Y-m-d",strtotime($date_start))." ".$time_start,
 				'activity_date_end' 	=> date ("Y-m-d",strtotime($date_end))." ".$time_end,
@@ -134,7 +146,7 @@ class Activity extends CI_Controller{
 			$act = $this->activity->update($id, $data);
 		}
 		if($act){
-			$this->session->set_flashdata('success','Data aktifitas telah berhasil diupdate.');
+			$this->session->set_flashdata('success','Data aktivitas telah berhasil diupdate.');
 		}else{
 			$this->session->set_flashdata('error','Terjadi masalah saat menyimpan data.');
 		}
@@ -146,7 +158,7 @@ class Activity extends CI_Controller{
         $act 	= $this->activity->delete($id);
 		if($act){
 			unlink('./assets/img/img_activity/' . $data[0]['activity_image']);
-			$this->session->set_flashdata('success','Data aktifitas telah berhasil dihapus.');
+			$this->session->set_flashdata('success','Data aktivitas telah berhasil dihapus.');
 		}else{
 			$this->session->set_flashdata('error','Terjadi masalah saat menghapus data.');
 		}

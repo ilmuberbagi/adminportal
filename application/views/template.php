@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="<?php echo base_url().'assets/css/ionicons.min.css';?>">
 	<link rel="stylesheet" href="<?php echo base_url().'assets/plugins/timepicker/bootstrap-timepicker.min.css';?>">
     <link rel="stylesheet" href="<?php echo base_url().'assets/plugins/toastr/toastr.min.css';?>">
+    <link rel="stylesheet" href="<?php echo base_url().'assets/plugins/iCheck/all.css';?>">
     <link rel="stylesheet" href="<?php echo base_url().'assets/css/skins/skin-red.css';?>">
 	<?php
     $meta_page = "default";
@@ -36,6 +37,7 @@
     <script src="<?php echo base_url().'assets/js/bootstrap.min.js';?>"></script>
     <script src="<?php echo base_url().'assets/plugins/slimScroll/jquery.slimscroll.min.js';?>"></script>
     <script src="<?php echo base_url().'assets/plugins/fastclick/fastclick.min.js';?>"></script>
+    <script src="<?php echo base_url().'assets/plugins/iCheck/icheck.min.js';?>"></script>
     <script src="<?php echo base_url().'assets/js/app.min.js';?>"></script>
 	<?php
     if(file_exists(APPPATH."views/template/meta_bottom/{$meta_page}.php"))
