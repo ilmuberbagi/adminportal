@@ -83,13 +83,16 @@
 								<label>Gambar/Banner</label>
 								<div class="input-group">
 									<div class="input-group-addon"><i class="fa fa-image"></i></div>
-									<input type="file" name="activity_image" class="form-control" value="<?php echo $activity_image; ?>" >
+									<input type="file" name="activity_image" onchange="imagePreview(this);" class="form-control" value="<?php echo $activity_image; ?>" >
 								</div>
+									<img id="imgPreview">
 								<br>
 								<?php if($action != 'insert'){ ?>
+								<div id="current_image">
 									<img src="<?php echo base_url().'assets/img/img_activity/'.$activity_image; ?>">
 									<caption><?php echo $activity_image; ?></caption>
 									<input type="hidden" name="current_image" value="<?php echo $activity_image; ?>" >
+								</div>
 								<?php } ?>
 							</div>
 						</div>

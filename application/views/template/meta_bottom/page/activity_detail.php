@@ -18,4 +18,16 @@
 		$(".content-article").wysihtml5();
 		$(".select2").select2();
 	});
+
+
+	function imagePreview(input) {
+		if(input.files && input.files[0]){
+			var filerd = new FileReader();
+			filerd.onload = function(e){
+				$('#imgPreview').attr('src', e.target.result);
+				$('#current_image').remove();
+			};
+			filerd.readAsDataURL(input.files[0]);
+		}
+	}
 </script>
