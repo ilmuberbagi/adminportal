@@ -37,10 +37,22 @@ class Article extends CI_Controller{
 		$this->load->view('template', $this->data);
 	}
 	
+	public function sv_category(){
+		$data = array(
+			'category_name' => $this->security->xss_clean($this->input->post('category_name'))
+		);
+		$act = $this->article->create_category($data);
+		if($act) $this->session->set_flashdata('success','Kategori artikel baru telah berhasil disimpan.');
+		else $this->session->set_flashdata('error','Terjadi kesalahan saat menyimpan data.');
+		redirect('article/category');
+	}
+
 	public function detail($id){
 		$this->data['article'] = $this->article->get_article($id);
 		$this->data['categories'] = $this->article->get_article_category();
 		$this->data['title'] = 'IBF Articles : '.$this->data['article'][0]['article_title'];
+		$this->load->model('Mdl_member','member');
+		$this->data['members'] = $this->member->get_member();
 		$this->data['page'] = 'page/article_detail';
 		$this->load->view('template', $this->data);
 	}
@@ -58,6 +70,7 @@ class Article extends CI_Controller{
 			'article_title' => $this->input->post('article_title'),
 			'article_content' => $this->input->post('article_content'),
 			'article_author' => $this->input->post('article_author'),
+			'article_image' => $this->input->post('article_image'),
 			'article_date_input' => date('Y-m-d H:i:s'),
 			'article_category' => $this->input->post('article_category'),
 			'article_tags' => json_encode($tags)
@@ -76,16 +89,18 @@ class Article extends CI_Controller{
 	public function update(){
 		$id = $this->input->post('article_id');
 		$tags = explode(',',$this->input->post('tags'));
+		$priv = $this->session->userdata('privilage');
 		$date = str_replace('/','-',$this->input->post('article_date'));
 		$data = array(
 			'article_title' => $this->input->post('article_title'),
 			'article_content' => $this->input->post('article_content'),
+			'article_image' => $this->input->post('article_image'),
 			'article_author' => $this->input->post('article_author'),
 			'article_date_update' => date('Y-m-d H:i:s'),
 			'article_category' => $this->input->post('article_category'),
 			'article_tags' => json_encode($tags),
 		);
-		if($this->session->userdata('privilage')[0]['app_2'] > 1 ||
+		if($priv['app_2'] > 1 ||
 			$this->session->userdata('id') == $this->input->post('article_author'))
 			$data['article_approve'] = $this->input->post('article_approve');
 		

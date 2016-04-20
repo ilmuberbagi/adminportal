@@ -23,15 +23,16 @@
 				<thead>
 					<th width="20">No.</th>
 					<th>Status Keanggotaan</th>
-					<th>Keterangan</th>
+					<th>Jumlah</th>
 					<th>Action</th>
 				</thead>
 				<tbody>
 				<?php if(!empty($types)){ $no=0;  foreach($types as $r){  $no++; ?>
 				<tr>
 					<td><?php echo $no;?></td>
-					<td><?php echo $r['member_type'];?></td>
-					<td><?php echo $r['type_description']?$r['type_description']:'-----';?></td>
+					<td><?php echo $r['member_type'];?><br/>
+					<?php echo $r['type_description']?$r['type_description']:'-----';?></td>
+					<td><span class="label label-warning"><?php echo $this->lib_general->count_member_by_type($r['member_type']);?></span></td>
 					<td>
 						<span class="btn-group">
 							<a href="<?php echo base_url().'member/type/'.$r['type_id'];?>" class="btn btn-default btn-sm"><i class="fa fa-search"></i></a>

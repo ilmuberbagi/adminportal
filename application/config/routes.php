@@ -78,6 +78,9 @@ $route['article/category'] = 'article/category';
 $route['article/create'] = 'article/create';
 $route['article/update'] = 'article/update';
 $route['article/insert'] = 'article/insert';
+
+$route['article/sv_category'] = 'article/sv_category';
+
 $route['article/image'] = 'article/image';
 $route['article/get_image'] = 'article/get_image_from_dir';
 

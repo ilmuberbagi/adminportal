@@ -14,6 +14,7 @@
 			$article_category = $article[0]['article_category'];
 			$title = $article[0]['article_title'];
 			$member_name = $article[0]['member_name'];
+			$article_image = $article[0]['article_image'];
 			$author = $article[0]['article_author'];
 			$approve = $article[0]['article_approve'];
 			$content = $article[0]['article_content'];
@@ -26,6 +27,7 @@
 			$title = '';
 			$article_category = '';
 			$approve = 0;
+			$article_image = '';
 			$member_name = $this->session->userdata('name');
 			$author = $this->session->userdata('id');
 			$content = '';
@@ -57,6 +59,13 @@
 							<label>Konten Artikel</label>
 							<textarea name="article_content" class="form-control content-article" rows="15"><?php echo $content;?></textarea>
 						</div>
+						<div class="form-group">
+							<label>Image Cover</label>
+							<div class="input-group">
+								<div class="input-group-addon"><i class="fa fa-image"></i></div>
+								<input type="url" name="article_image" class="form-control" value="<?php echo $article_image;?>">
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -68,8 +77,16 @@
 					<div class="box-body">
 						<div class="form-group">
 							<label>Author</label>
+						<?php $priv = $this->session->userdata('privilage'); if($priv['app_2'] < 2){?>
 							<input type="hidden" name="article_author" value="<?php echo $author;?>">
 							<input type="text" name="member_name" class="form-control" value="<?php echo $member_name;?>" readonly>
+						<?php }else{?>
+							<select name="article_author" class="select2 form-control">
+							<?php foreach($members as $m){?>
+								<option value="<?php echo $m['member_id'];?>" <?php echo $m['member_id'] == $author ? 'selected':'';?>><?php echo $m['member_name'];?></option>
+							<?php }?>
+							</select>
+						<?php } ?>
 						</div>
 						<div class="form-group">
 							<label>Tanggal dibuat</label>

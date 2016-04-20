@@ -23,7 +23,6 @@ class Lib_mailer {
     private $ci;
 	private $mail;
     private $data;
-    private $redis;
 
     function __construct() {
     	require 'mailer/class.phpmailer.php';
@@ -33,11 +32,12 @@ class Lib_mailer {
     }
 
     public function init($from=array()) {
-    	$this->mail->setFrom((isset($from['email'])?$from['email']:'noreply.mitrakomunitas@ilmuberbagi.or.id'), (isset($from['name'])?$from['name']:'Porrtal Komunitas IBF'));
- 		// $this->isSMTP();
+    	$this->mail->setFrom((isset($from['email'])?$from['email']:'noreply.info@ilmuberbagi.or.id'), (isset($from['name'])?$from['name']:'Portal Komunitas IBF'));
+ 		$this->isSMTP();
     }
 
-    public function isSMTP($host='localhost', $port=25, $auth=FALSE, $username='', $password='') {
+    public function isSMTP($host='ilmuberbagi.or.id', $port=25, $auth=FALSE, $username='', $password='')
+	{
     	$this->mail->isSMTP();
     	$this->mail->Host = $host;
     	$this->mail->Port = $port;
@@ -76,7 +76,6 @@ class Lib_mailer {
     	if(!$this->mail->send()) {
     		return -1;
     	}
-
     	return TRUE;
     }
 

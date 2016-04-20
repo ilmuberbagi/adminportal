@@ -99,8 +99,8 @@ class Mdl_member extends CI_Model{
 		return $this->db->query($sql)->result_array();
 	}
 	
-	public function count_member_by_type($id){
-		$sql = "select member_id from ibf_member_detail where member_type = '$id'";
+	public function count_member_by_type($type){
+		$sql = "select member_id from ibf_member_detail where member_type like '%$type%'";
 		$count = $this->db->query($sql)->num_rows();
 		return $count;
 	}

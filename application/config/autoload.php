@@ -60,7 +60,7 @@ $autoload['packages'] = array();
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
 
-$autoload['libraries'] = array('database', 'session','encrypt', 'lib_general');
+$autoload['libraries'] = array('database', 'session','encrypt', 'lib_general','recaptcha');
 
 
 /*
@@ -104,7 +104,7 @@ $autoload['helper'] = array("url","form","security","misc");
 |
 */
 
-$autoload['config'] = array('config_site');
+$autoload['config'] = array('config_site','recaptcha');
 
 
 /*

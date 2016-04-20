@@ -87,34 +87,45 @@ class Login extends CI_Controller {
 			'member_date_input'	=> date('Y-m-d H:i:s'),
 			'member_date_update'	=> date('Y-m-d H:i:s'),
 		);
-		
-		$act = $this->member->insert($detailuser);
-		if($act){
-			# create privilage default user
-			$data = array('member_id' => $member_id);
-			$cp = $this->member->create_privilage($data);
-			$this->load->library('Lib_mailer');
-			$this->lib_mailer->init();
-			# message body
-			$param = array(
-				'name' 		=> $data['member_name'],
-				'username'	=> $data['member_username'],
-				'password'	=> $password,
-			);
-			$bcc = array(
-				'email' => 'sabbana.a7@gmail.com',
-				'name'	=> 'Sabbana Azmi'
-			);
-			$cc = array(
-				'email'	=> 'info@ilmuberbagi.or.id',
-				'name'	=> 'Ilmu Berbagi Foundation'
-			);
 
-			$message = $this->load->view('template/mailer/createUser', $param, TRUE);
-			$this->lib_mailer->sendmail(array('email'=>$email), 'Selamat Datang di Mitra Komunitas IBF', $message, $cc, $bcc);
-			
-			$this->session->set_flashdata('success','<b>Selamat,</b> Anda telah terdaftar sebagai Member Ilmu Berbagi Foundation. Kami telah mengirimkan email akun akun Anda yang dapat digunakan untuk masuk dan menggunakan layanan-layanan kami. Salam Berbagi!');
-		}
+		$this->load->library('recaptcha');
+		$recaptcha = $this->input->post('g-recaptcha-response');
+        if (!empty($recaptcha)) {
+            $response = $this->recaptcha->verifyResponse($recaptcha);
+            if (isset($response['success']) and $response['success'] === true) {
+				// echo "OKE"; die();
+				$act = $this->member->insert($detailuser);
+				if($act){
+					# create privilage default user
+					$data = array('member_id' => $member_id);
+					$cp = $this->member->create_privilage($data);
+					
+					
+					$this->load->library('Lib_mailer');
+					$this->lib_mailer->init();
+					# message body
+					$param = array(
+						'name' 		=> $name,
+						'username'	=> $username,
+						'password'	=> $password,
+					);
+					$bcc = array(
+						'email' => 'sabbana.a7@gmail.com',
+						'name'	=> 'Sabbana Azmi'
+					);
+					$cc = array(
+						'email'	=> 'info@ilmuberbagi.or.id',
+						'name'	=> 'Ilmu Berbagi Foundation'
+					);
+
+					$message = $this->load->view('template/mailer/createUser', $param, TRUE);
+					$this->lib_mailer->sendmail(array('email'=>$email), 'Selamat Datang di Mitra Komunitas IBF', $message, $cc, $bcc);
+					
+					// echo "we are here ..."; die();
+					$this->session->set_flashdata('success','<b>Selamat,</b> Anda telah terdaftar sebagai Member Ilmu Berbagi Foundation. Kami telah mengirimkan email aktivasi akun Anda yang dapat digunakan untuk masuk dan menggunakan layanan-layanan kami. Salam Berbagi!');
+				}
+			}
+        }
 		redirect('register');
 	}
 	

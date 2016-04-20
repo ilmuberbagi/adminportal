@@ -64,6 +64,10 @@ class Mdl_article extends CI_Model{
 		return $this->db->query($sql)->result_array();
 	}
 	
+	public function create_category($data){
+		return $this->db->insert('ibf_article_category', $data);
+	}
+
 	public function update_category_count($id){
 		$sql = "select count(article_id) as jml from ibf_article where article_category = '$id'";
 		$data = $this->db->query($sql)->result_array();

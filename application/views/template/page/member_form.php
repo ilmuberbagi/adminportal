@@ -12,8 +12,8 @@
 		<div class="row">
 		<?php
 		$xxx = array();
-		if($member[0]['member_type'] !== NULL || $member[0]['member_type'] !== "")
-			$xxx = json_decode($member[0]['member_type']);
+		if(($member[0]['member_type'] !== NULL || $member[0]['member_type'] !== "") && !is_numeric($member[0]['member_type']))
+			$xxx = json_decode((string)$member[0]['member_type']);
 		?>
 		<form action="<?php echo base_url().'member/update';?>" method="POST">
 		<input type="hidden" name="member_id" value="<?php echo $member[0]['member_id'];?>">

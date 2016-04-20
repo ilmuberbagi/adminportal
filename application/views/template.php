@@ -16,7 +16,7 @@
     if(file_exists(APPPATH."views/template/meta_top/{$meta_page}.php")) 
         $this->load->view("template/meta_top/{$meta_page}");
     ?>
-    <link rel="stylesheet" href="<?php echo base_url().'assets/css/AdminLTE.min.css';?>">
+    <link rel="stylesheet" href="<?php echo base_url().'assets/css/adminLTE.min.css';?>">
     <link rel="stylesheet" href="<?php echo base_url().'assets/css/custom.css';?>">
 </head>
 

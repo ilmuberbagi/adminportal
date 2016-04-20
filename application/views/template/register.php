@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="<?php echo base_url().'assets/css/font-awesome.min.css';?>">
     <link rel="stylesheet" href="<?php echo base_url().'assets/css/ionicons.min.css';?>">
     <link rel="stylesheet" href="<?php echo base_url().'assets/css/skins/skin-red.css';?>">
+    <?php $this->load->view("template/meta_top/register");?>
     <link rel="stylesheet" href="<?php echo base_url().'assets/css/adminLTE.min.css';?>">
     <link rel="stylesheet" href="<?php echo base_url().'assets/css/custom.css';?>">
-    <?php $this->load->view("template/meta_top/register");?>
 	<script src='https://www.google.com/recaptcha/api.js'></script>
 
 </head>

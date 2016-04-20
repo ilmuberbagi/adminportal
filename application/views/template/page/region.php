@@ -30,7 +30,7 @@
 				<tr>
 					<td><?php echo $no;?></td>
 					<td><?php echo $r['region_name'];?>&nbsp;
-					<span class="badge"><?php echo $r['count_member'];?></span></td>
+					<span class="label label-success"><?php echo $this->lib_general->count_member_by_region($r['region_id']);?></span></td>
 					<td>
 						<span class="btn-group">
 							<a href="<?php echo base_url().'member/region/'.$r['region_id'];?>" class="btn btn-default btn-sm"><i class="fa fa-search"></i></a>
