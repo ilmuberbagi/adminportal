@@ -35,12 +35,15 @@
 					<td><?php echo $m['member_name'];?></td>
 					<td><a href="mailto:<?php echo $m['member_email'];?>"><?php echo $m['member_email'];?></a></td>
 					<td><?php echo $m['region_name'];?></td>
-					<td align="center"><?php echo $m['member_status'] == 1? '<span class="label label-success">aktif</span>':'<span class="label label-default">pending</span>';?></td>
+					<td align="center"><?php echo $m['member_status'] == 1? '<span class="label label-success">aktif</span>':'<span class="label label-danger">suspend</span>';?></td>
 					<td align="center"><?php echo $m['member_reg_year'];?></td>
 					<td>
 						<span class="btn-group">
 							<a href="<?php echo base_url().'member/'.$m['member_ibf_code'];?>" class="btn btn-default btn-sm"><i class="fa fa-search"></i></a>
+							<?php $priv = $this->session->userdata('privilage'); if($priv['app_1'] == 3){?>
 							<a data-toggle="modal" data-target="#modalStatus" class="btn btn-default btn-sm" onclick="return change_status('<?php echo $m['member_id'].'#'.$m['member_status'].'#'.$m['member_name'];?>')"><i class="fa fa-ban"></i></a>
+							<a data-toggle="modal" data-target="#modalDelete" class="btn btn-default btn-sm" onclick="return delete_member('<?php echo $m['member_id'].'#'.$m['member_name'];?>')"><i class="fa fa-trash"></i></a>
+							<?php } ?>
 						</span>
 					</td>
 				</tr>
@@ -70,6 +73,29 @@
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 				<input type="submit" class="btn btn-danger btnaction">
+			</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<!-- modal delete -->
+<div id="modalDelete" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title"><i class="fa fa-trash"></i> Delete Member</h4>
+			</div>
+			<form method="POST" action="<?php echo base_url().'member/delete';?>">
+			<input type="hidden" name="member_id" id="member_id_delete">
+			<input type="hidden" name="member_name" id="member_name_delete">
+			<div class="modal-body msg-delete">
+				
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<input type="submit" class="btn btn-danger btnaction" value="Delete">
 			</div>
 			</form>
 		</div>

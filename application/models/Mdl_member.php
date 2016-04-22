@@ -140,7 +140,11 @@ class Mdl_member extends CI_Model{
 		return $this->db->update('ibf_privilage', $data);		
 	}
 	
-	
+	# delete model
+	public function delete_member($id){
+		$this->db->where('member_id', $id);
+		return $this->db->delete('ibf_member');
+	}
 }
 
 

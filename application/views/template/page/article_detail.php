@@ -77,16 +77,11 @@
 					<div class="box-body">
 						<div class="form-group">
 							<label>Author</label>
-						<?php $priv = $this->session->userdata('privilage'); if($priv['app_2'] < 2){?>
-							<input type="hidden" name="article_author" value="<?php echo $author;?>">
-							<input type="text" name="member_name" class="form-control" value="<?php echo $member_name;?>" readonly>
-						<?php }else{?>
-							<select name="article_author" class="select2 form-control">
-							<?php foreach($members as $m){?>
+							<select name="article_author" class="select2 form-control" <?php echo $this->data['privilage']['app_2'] == 3 ? '':'disabled';?>>
+							<?php if(!empty($members)){ foreach($members as $m){?>
 								<option value="<?php echo $m['member_id'];?>" <?php echo $m['member_id'] == $author ? 'selected':'';?>><?php echo $m['member_name'];?></option>
-							<?php }?>
+							<?php }} ?>
 							</select>
-						<?php } ?>
 						</div>
 						<div class="form-group">
 							<label>Tanggal dibuat</label>

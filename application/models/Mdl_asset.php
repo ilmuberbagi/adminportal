@@ -18,6 +18,10 @@ class Mdl_asset extends CI_Model{
 		$data = $this->db->query($sql)->result_array();
 		return $data[0]['jml'];
 	}
+	
+	public function save_asset($data){
+		return $this->db->insert('ibf_asset', $data);
+	}
 }
 
 

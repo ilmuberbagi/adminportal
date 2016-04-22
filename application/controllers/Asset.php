@@ -17,6 +17,7 @@ class Asset extends CI_Controller{
 		parent::__construct();
 		if($this->session->userdata('ibf_token_string') == '') redirect('login');
 		$this->load->model('Mdl_asset','asset');
+		$this->data['privilage'] = $this->session->userdata('privilage');
 	}
 
 	public function index(){
@@ -29,20 +30,16 @@ class Asset extends CI_Controller{
 		$this->load->view('template', $this->data);
 	}
 	
-public function do_upload() {
+	public function do_upload() {
         $upload_path_url = base_url() . 'assets/img/uploads/';
 
         $config['upload_path'] = FCPATH . 'assets/img/uploads/';
         $config['allowed_types'] = 'jpg|jpeg|png|gif';
-        $config['max_size'] = '2048';
+        $config['max_size'] = '2048'; # Max size 2 MB
 
         $this->load->library('upload', $config);
 
         if (!$this->upload->do_upload()) {
-            //$error = array('error' => $this->upload->display_errors());
-            //$this->load->view('upload', $error);
-
-            //Load the list of existing files in the upload directory
             $existingFiles = get_dir_file_info($config['upload_path']);
             $foundFiles = array();
             $f=0;
@@ -62,25 +59,6 @@ public function do_upload() {
             $this->output->set_content_type('application/json')->set_output(json_encode(array('files' => $foundFiles)));
         } else {
             $data = $this->upload->data();
-            /*
-             * Array
-              (
-              [file_name] => png1.jpg
-              [file_type] => image/jpeg
-              [file_path] => /home/ipresupu/public_html/uploads/
-              [full_path] => /home/ipresupu/public_html/uploads/png1.jpg
-              [raw_name] => png1
-              [orig_name] => png.jpg
-              [client_name] => png.jpg
-              [file_ext] => .jpg
-              [file_size] => 456.93
-              [is_image] => 1
-              [image_width] => 1198
-              [image_height] => 1166
-              [image_type] => jpeg
-              [image_size_str] => width="1198" height="1166"
-              )
-             */
             // to re-size for thumbnail images un-comment and set path here and in json array
             $config = array();
             $config['image_library'] = 'gd2';
@@ -89,12 +67,12 @@ public function do_upload() {
             $config['new_image'] = $data['file_path'] . 'thumbs/';
             $config['maintain_ratio'] = TRUE;
             $config['thumb_marker'] = '';
-            $config['width'] = 75;
-            $config['height'] = 50;
+            $config['width'] = 150;
+            $config['height'] = 150;
             $this->load->library('image_lib', $config);
             $this->image_lib->resize();
 
-
+			
             //set the data for the json array
             $info = new StdClass;
             $info->name = $data['file_name'];
@@ -108,16 +86,20 @@ public function do_upload() {
             $info->error = null;
 
             $files[] = $info;
+						# set data and save to database
+			# ======================================
+			$data_image = array(
+				'asset_name'	=> $info->name,
+				'asset_url'		=> $this->config->item('image_upload_url').$info->name,
+				'asset_url_thumb'	=> $this->config->item('image_upload_url_thumb').$info->name,
+				'asset_create_date'	=> date('Y-m-d H:i:s')
+			);
+			$this->asset->save_asset($data_image);
+
             //this is why we put this in the constants to pass only json data
             if (IS_AJAX) {
                 echo json_encode(array("files" => $files));
-                //this has to be the only data returned or you will get an error.
-                //if you don't give this a json array it will give you a Empty file upload result error
-                //it you set this without the if(IS_AJAX)...else... you get ERROR:TRUE (my experience anyway)
-                // so that this will still work if javascript is not enabled
             } else {
-                $file_data['upload_data'] = $this->upload->data();
-                // $this->load->view('upload/upload_success', $file_data);
 				redirect('asset');
             }
         }
@@ -132,7 +114,7 @@ public function do_upload() {
 		$config = array(
 			'base_url'		 => base_url().'asset/images/',
 			'total_rows'	 => $this->asset->count_asset(),
-			'per_page'		 => 10,
+			'per_page'		 => 12,
 			'full_tag_open'	 => '<ul class="pagination pagination-sm pull-right">',
 			'full_tag_close' => '</ul>',
 			'cur_tag_open'	 => '<li class="active"><a href="#">',

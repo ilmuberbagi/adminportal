@@ -23,11 +23,17 @@ class Mdl_article extends CI_Model{
 		}
 		return $this->db->query($sql)->result_array();
 	}
-	
+
 	# count article by :
 	# all article
-	public function count_article(){
-		return $this->db->get('ibf_article')->num_rows();
+	public function count_article($id=null){
+		$res = $this->db->get('ibf_article')->num_rows();
+		if($id != null){
+			$this->db->where('article_author', $id);
+			return $this->db->get('ibf_article')->num_rows();
+		}
+		return $res;
+			
 	}
 	
 	# by category
@@ -68,6 +74,11 @@ class Mdl_article extends CI_Model{
 		return $this->db->insert('ibf_article_category', $data);
 	}
 
+	public function update_category($id, $data){
+		$this->db->where('category_id', $id);
+		return $this->db->update('ibf_article_category', $data);
+	}
+
 	public function update_category_count($id){
 		$sql = "select count(article_id) as jml from ibf_article where article_category = '$id'";
 		$data = $this->db->query($sql)->result_array();
@@ -75,8 +86,10 @@ class Mdl_article extends CI_Model{
 		return $this->db->query($sqlUpdate);
 	}
 	
-	public function get_article_by_member($id='', $limit = 5){
-		$sql = "select * from ibf_article where article_author = '$id' order by article_date_update limit 0, $limit";
+	public function get_article_by_member($id='', $limit = null){
+		$sql = "select * from ibf_article where article_author = '$id' order by article_date_update";
+		if($limit != null)
+			$sql = "select * from ibf_article where article_author = '$id' order by article_date_update limit 0, $limit";
 		return $this->db->query($sql)->result_array();
 	}
 	
