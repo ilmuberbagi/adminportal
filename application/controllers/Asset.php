@@ -34,7 +34,7 @@ public function do_upload() {
 
         $config['upload_path'] = FCPATH . 'assets/img/uploads/';
         $config['allowed_types'] = 'jpg|jpeg|png|gif';
-        $config['max_size'] = '30000';
+        $config['max_size'] = '2048';
 
         $this->load->library('upload', $config);
 
@@ -56,13 +56,10 @@ public function do_upload() {
                 $foundFiles[$f]['deleteUrl'] = base_url() . 'asset/deleteImage/' . $fileName;
                 $foundFiles[$f]['deleteType'] = 'DELETE';
                 $foundFiles[$f]['error'] = null;
-
                 $f++;
               }
             }
-            $this->output
-            ->set_content_type('application/json')
-            ->set_output(json_encode(array('files' => $foundFiles)));
+            $this->output->set_content_type('application/json')->set_output(json_encode(array('files' => $foundFiles)));
         } else {
             $data = $this->upload->data();
             /*
@@ -161,7 +158,7 @@ public function do_upload() {
 	}
 		
 	
-	    public function deleteImage($file) {//gets the job done but you might want to add error checking and security
+	public function deleteImage($file) {//gets the job done but you might want to add error checking and security
         $success = unlink(FCPATH . 'assets/img/uploads/' . $file);
         $success = unlink(FCPATH . 'assets/img/uploads/thumbs/' . $file);
         //info to see if it is doing what it is supposed to

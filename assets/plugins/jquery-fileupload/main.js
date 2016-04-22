@@ -16,7 +16,9 @@ $(function () {
 	
 	var urlPost = window.location.origin+"/ibf/adminportal/asset/do_upload";
     $('#fileupload').fileupload({
-        url: urlPost
+        url: urlPost,
+		maxFileSize: 2*1024*1024,
+		acceptFileTypes:  /(\.|\/)(png|jpg|jpeg|)$/i,
     });
 
     $('#fileupload').fileupload(
