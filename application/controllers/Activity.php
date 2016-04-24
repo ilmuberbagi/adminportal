@@ -17,6 +17,7 @@ class Activity extends CI_Controller{
 		parent::__construct();
 		if($this->session->userdata('ibf_token_string') == '') redirect('login');
 		$this->load->model("Mdl_activity","activity");
+		$this->data['privilage'] = $this->session->userdata('privilage');
 	}
 
 	public function index(){

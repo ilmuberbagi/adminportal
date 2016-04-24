@@ -34,7 +34,9 @@
 					<td>
 						<span class="btn-group">
 							<a href="<?php echo base_url().'article/category/'.$a['category_id'];?>" class="btn btn-default btn-sm"><i class="fa fa-search"></i></a>
-							<a href="" class="btn btn-default btn-sm"><i class="fa fa-trash"></i></a>
+							<?php if($this->data['privilage']['app_2'] == 3){?>
+							<a href="#" data-toggle="modal" data-target="#modalCategory" class="btn btn-default btn-sm" onclick="return edit_category('<?php echo $a['category_id'].'#'.$a['category_name'];?>')"><i class="fa fa-edit"></i></a>
+							<?php } ?>
 						</span>
 					</td>
 				</tr>
@@ -53,12 +55,12 @@
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 				<h4 class="modal-title"><i class="fa fa-list"></i> Kategori Artikel</h4>
 			</div>
-			<form method="POST" action="<?php echo base_url().'article/sv_category';?>">
+			<form method="POST" action="<?php echo base_url().'article/sv_category';?>" id="form-category">
 			<input type="hidden" name="category_id" id="cat_id">
 			<div class="modal-body">
 				<div class="form-group">
 					<label>Nama Kategori</label><br/>
-					<input type="text" name="category_name" class="form-control" placeholder="Nama Kategori" required>
+					<input type="text" id="cat_name" name="category_name" class="form-control" placeholder="Nama Kategori" required>
 				</div>
 			</div>
 			<div class="modal-footer">

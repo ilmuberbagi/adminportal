@@ -19,6 +19,10 @@
 				</div>
 			</div>
 			<div class="box-body">
+				<div class="callout">
+					<div class="text-bold">Note</div>
+					<p>Upload file image atau video dengan format JPG|PNG|GIF|MP4<br/>dengan ukuran file tidak lebih dari 2 MB</p>
+				</div>
 				<!-- uploader -->
 				<form id="fileupload" action="<?php echo base_url().'asset/do_upload';?>" method="POST" enctype="multipart/form-data">
 					<!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
@@ -121,7 +125,7 @@
 		<td>
 			<p class="name">
 				{% if (file.url) { %}
-				<a href="{%=file.url%}" title="{%=file.name%}" download="{%=file.name%}" {%=file.thumbnailUrl?'data-gallery':''%}>{%=file.name%}</a>
+				<span>{%=file.name%}</span>
 				{% } else { %}
 				<span>{%=file.name%}</span>
 				{% } %}

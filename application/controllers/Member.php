@@ -8,6 +8,7 @@ class Member extends CI_Controller{
 		parent::__construct();
 		if($this->session->userdata('ibf_token_string') == '') redirect('login');
 		$this->load->model('Mdl_member','member');
+		$this->data['privilage'] = $this->session->userdata('privilage');
 	}
 	
 	public function index(){
@@ -36,6 +37,16 @@ class Member extends CI_Controller{
 		$this->load->view('template', $this->data);
 	}
 
+	public function delete(){
+		$id = $this->security->xss_clean($this->input->post('member_id'));
+		$name = $this->security->xss_clean($this->input->post('member_name'));
+		$act = $this->member->delete_member($id);
+		if($act)
+			$this->session->set_flashdata('success','Member dengan nama <b>'.$name.'</b> berhasil dihapus.');
+		else
+			$this->session->set_flashdata('error','Terjadi kesalahan sistem saat menghapus member.');
+		redirect('member');
+	}
 	# module wilayah
 	# ==============================================
 	public function region($region = ""){
@@ -235,7 +246,7 @@ class Member extends CI_Controller{
 		$id = $this->input->post('member_id');
 		$name = $this->input->post('member_name');
 		$data = array(
-			'member_status' => $this->input->post('member_status') == 1 ? 0 : 1,
+			'member_status' => $this->input->post('member_status') == 1 ? 2 : 1,
 		);
 		$status = $data['member_status'] == 1 ? 'diaktifkan.':'diblokir.';
 		$act = $this->member->update($id, $data);

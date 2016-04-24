@@ -19,4 +19,10 @@ function change_status(str){
 	}
 	$(".msg").html('Apakah Anda yakin ingin '+action+'?');
 }
+function delete_member(str){
+	id = str.split("#");
+	$("#member_id_delete").val(id[0]);
+	$("#member_name_delete").val(id[1]);
+	$(".msg-delete").html('Apakah Anda yakin ingin menghapus member dengan nama <b>'+id[1]+'</b>');
+}
 </script>

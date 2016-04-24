@@ -30,16 +30,23 @@
 				<?php if(!empty($articles)){ foreach($articles as $a){?>
 				<tr>
 					<td width="50%">
+						
+						<?php if($this->session->userdata('id') == $a['article_author']){?>
 						<b><a href="<?php echo base_url().'article/'.$a['article_id'];?>"><?php echo strip_tags($a['article_title']);?></a></b> &nbsp; 
-						<?php echo $a['article_approve'] == 1? '<span class="label label-success">Approved</span>':'<span class="label label-default">Pending</span>';?><br/>
-						<?php echo headline($a['article_content']);?>
+						<?php } ?>
+						
+						<?php echo $a['article_approve'] == 1? '<span class="label label-success">Approved</span>':'<span class="label label-default">Pending</span>';?>
+						<div class="content-list">
+							<img src="<?php echo set_image($a['article_image'], 'thumb');?>" class="img-thumb"> 
+							<?php echo headline($a['article_content']);?>
+						</div>
 					</td>
 					<td><?php echo $a['member_name'];?></td>
 					<td><?php echo date('d/m/Y H:i', strtotime($a['article_date_update']));?></td>
 					<td>
 						<span class="btn-group">
 							<a href="<?php echo base_url().'article/'.$a['article_id'];?>" class="btn btn-default btn-sm"><i class="fa fa-search"></i></a>
-							<a href="#" class="btn btn-default btn-sm"><i class="fa fa-flag" style="text-<?php echo $a['article_approve'] == 1?'success':'';?>"></i></a>
+							<a href="#" class="btn btn-sm <?php echo $a['article_approve'] == 1?'btn-success':'btn-default';?>"><i class="fa fa-flag"></i></a>
 						</span>
 					</td>
 				</tr>

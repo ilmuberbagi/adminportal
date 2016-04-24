@@ -17,7 +17,7 @@
 	font-size:3em;
 }
 .login{
-	background: url(../img/credit/nature.png) no-repeat center center fixed; 
+	background: url(../img/portal/poster1.jpg) no-repeat center center fixed; 
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -25,6 +25,7 @@
 }
 .bg-white{ 
 	background-color:#fff;
+	opacity:0.9;
 	position:fixed;
 	top:0; right:0;
 	height:100%;
@@ -56,4 +57,14 @@ html, h1 > small{
 	background:#FFF;
 	float:left;
 	width:100px;
+}
+.img-thumb{
+	max-width:150px;
+	float:left;
+	border:solid 1px #CCC;
+	padding:1px;
+	margin-right:10px;
+}
+.content-list{
+	margin-top:10px;
 }

@@ -22,8 +22,30 @@ function image_url($url){
 	if($url != "")
 		$img = $url;
 	else
-		$img = site_url().'assets/img/default.jpg';
+		$img = site_url().'assets/img/foto/default.png';
 	return $img;
+}
+
+function set_image($url, $param = null){
+	if($url != null){
+		if($param == "thumb"){
+			$res = str_replace('uploads/','uploads/thumbs/', $url);
+		}else
+			$res = $url;
+	}else
+		$res = base_url().'assets/img/default.jpg';
+	
+	return $res;
+		
+}
+
+function gen_member_status($sts){
+	switch($sts){
+		case 1 : $label = '<span class="label label-success">Aktif</span>'; break;
+		case 2 : $label = '<span class="label label-danger">Blokir</span>'; break;
+		default : $label = '<span class="label label-default">Pending</span>'; break;
+	}
+	return $label;
 }
 
 function generatePassword($length, $strength){

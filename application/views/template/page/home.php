@@ -35,7 +35,11 @@
 						<div class="small-box bg-green">
 							<div class="inner">
 								<h3><?php echo number_format($count_article);?></h3>
-								<p>Artikel</p>
+								<?php if($this->data['privilage']['app_2'] > 1){?>
+								<p>Semua Artikel</p>
+								<?php }else{?>
+								<p>Artikel Anda</p>
+								<?php } ?>
 							</div>
 							<div class="icon">
 								<i class="fa fa-file-text"></i>

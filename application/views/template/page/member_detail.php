@@ -90,9 +90,9 @@
 						<!-- artikel member -->
 						<div class="tab-pane" id="article">  
 							<?php if(!empty($articles)){ foreach($articles as $ar){?>
-							<div class="">
+							<div class="list">
 								<label><a href="<?php echo base_url().'article/'.$ar['article_id'];?>"><?php echo $ar['article_title'];?></a></label>
-								<div class=""><?php echo get_image_from_content($ar['article_content']).' '.headline($ar['article_content']);?></div>
+								<div class=""><?php echo '<img src="'.$ar['article_image'].'" class="img" style="max-width:200px; float:left; margin-right:10px; display:inline"> '.headline($ar['article_content']);?></div>
 							</div>
 							<?php }}else{ echo "Belum ada artikel yang dapat ditampilkan."; } ?>
 						</div>

@@ -21,12 +21,38 @@
 			<div class="box-body">
 				<div class="row">
 					<?php if(!empty($images)){ foreach($images as $img){?>
-					<div class="col-lg-3 col-md-4 col-xs-6 thumb">
-						<a class="thumbnail" href="#">
+					<div class="col-lg-2 col-md-2 col-xs-6 thumb" data-value="<?php echo $img['asset_url'] ? $img['asset_url']:$img['asset_url_thumb'];?>">
+						<a class="thumbnail">
 							<img class="img-responsive" src="<?php echo $img['asset_url_thumb'] ? $img['asset_url_thumb']:'http://placehold.it/400x300';?>" alt="">
 						</a>
 					</div>
-					<?php }}?>
+					<?php }?>
+					<div class="col-lg-12">
+						<?php echo $paging;?>
+					</div>
+					<?php }else{?>
+					<div class="col-lg-12">
+						<div class="callout">
+							<div class="text-bold">Ups!</div>
+							<p>Belum ada asset (images) yang dapat ditampilkan...</p>
+						</div>
+					</div>
+					<?php }?>
+				</div>
+				<hr/>
+				<div class="row copy" style="display:none">
+					<div class="col-lg-12">
+						<div class="form-group">
+							<label>Image URL</label>
+							<input type="text" id="url" class="form-control">
+						</div>
+					</div>
+					<div class="col-lg-12">
+						<div class="form-group">
+							<label>Image Thumb URL</label>
+							<input type="text" id="url_thumb" class="form-control">
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

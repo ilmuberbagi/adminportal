@@ -17,12 +17,18 @@ class Article extends CI_Controller{
 		parent::__construct();
 		if($this->session->userdata('ibf_token_string') == '') redirect('login');
 		$this->load->model('Mdl_article','article');
+		$this->data['privilage'] = $this->session->userdata('privilage');
+		// print_r($this->data['privilage']);
 	}
 	
 	public function index(){
 		$this->data['title'] = 'IBF Articles';
 		$this->data['page'] = 'page/article';
-		$this->data['articles'] = $this->article->get_article();
+		$id = $this->session->userdata('id');
+		$this->data['articles'] = $this->article->get_article_by_member($id);
+		if($this->data['privilage']['app_2'] > 1)
+			$this->data['articles'] = $this->article->get_article();
+			
 		$this->load->view('template', $this->data);
 	}
 	
@@ -47,6 +53,17 @@ class Article extends CI_Controller{
 		redirect('article/category');
 	}
 
+	public function upd_category(){
+		$id = $this->input->post('category_id');
+		$data = array(
+			'category_name' => $this->security->xss_clean($this->input->post('category_name'))
+		);
+		$act = $this->article->update_category($id, $data);
+		if($act) $this->session->set_flashdata('success','Kategori artikel telah berhasil diupdate.');
+		else $this->session->set_flashdata('error','Terjadi kesalahan saat menyimpan data.');
+		redirect('article/category');
+	}
+
 	public function detail($id){
 		$this->data['article'] = $this->article->get_article($id);
 		$this->data['categories'] = $this->article->get_article_category();
@@ -61,6 +78,8 @@ class Article extends CI_Controller{
 		$this->data['categories'] = $this->article->get_article_category();
 		$this->data['title'] = 'IBF Articles : New Article';
 		$this->data['page'] = 'page/article_detail';
+		$this->load->model('Mdl_member','member');
+		$this->data['members'] = $this->member->get_member();
 		$this->load->view('template', $this->data);
 	}
 	
