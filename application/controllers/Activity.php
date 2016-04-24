@@ -38,21 +38,43 @@ class Activity extends CI_Controller{
 		$time_start 	= $this->input->post('time_start');
 		$time_end 		= $this->input->post('time_end');
 
-		$config	= array(
-			'upload_path'	=> 	'./assets/img/img_activity/',
-			'allowed_types'	=>	'gif|jpg|png|jpeg|bmp',
-			'max_size'		=> 	'2048',
-			'max_height'	=>	'768'
-			);
-
-		$this->load->library('upload', $config);
-		if (!$this->upload->do_upload('activity_image'))
+		if (isset($_FILES['activity_image']) && !empty($_FILES['activity_image']['name']))
 		{
-			$this->session->set_flashdata('error','Terjadi masalah saat menyimpan gambar.');
+		/* insert data dan gambar */
+			$config	= array(
+				'upload_path'	=> 	'./assets/img/img_activity/',
+				'allowed_types'	=>	'gif|jpg|png|jpeg|bmp',
+				'max_size'		=> 	'2048',
+				'max_height'	=>	'768'
+				);
+			$this->load->library('upload', $config);
+			if ( ! $this->upload->do_upload('activity_image'))
+			{
+				$this->session->set_flashdata('error','Terjadi masalah saat menyimpan gambar.');
+			}
+			else
+			{
+				$file = $this->upload->data();
+				$data = array(
+					'activity_name' 		=> $this->input->post('activity_name'),
+					'activity_location' 	=> $this->input->post('activity_location'),
+					'activity_lat'		 	=> $this->input->post('lat'),
+					'activity_long'		 	=> $this->input->post('long'),
+					'activity_google_address' => $this->input->post('city'),
+					'activity_pic' 			=> $this->input->post('activity_pic'),
+					'activity_participant' 	=> $this->input->post('is_participant'),
+					'activity_description' 	=> $this->input->post('activity_description'),
+					'activity_date_start'	=> date ("Y-m-d",strtotime($date_start))." ".$time_start,
+					'activity_date_end' 	=> date ("Y-m-d",strtotime($date_end))." ".$time_end,
+					'activity_image'	 	=> $file['file_name'],
+					'activity_create_date'	=> date('Y-m-d H:i:s'),
+					'activity_update_date'	=> date('Y-m-d H:i:s')
+					);
+				$act = $this->activity->insert($data);
+			} 
 		}
-		else
-		{
-			$file = $this->upload->data();
+		else{
+		/* insert data saja */
 			$data = array(
 				'activity_name' 		=> $this->input->post('activity_name'),
 				'activity_location' 	=> $this->input->post('activity_location'),
@@ -64,17 +86,16 @@ class Activity extends CI_Controller{
 				'activity_description' 	=> $this->input->post('activity_description'),
 				'activity_date_start'	=> date ("Y-m-d",strtotime($date_start))." ".$time_start,
 				'activity_date_end' 	=> date ("Y-m-d",strtotime($date_end))." ".$time_end,
-				'activity_image'	 	=> $file['file_name'],
 				'activity_create_date'	=> date('Y-m-d H:i:s'),
 				'activity_update_date'	=> date('Y-m-d H:i:s')
 				);
 			$act = $this->activity->insert($data);
-			if($act){
-				$this->session->set_flashdata('success','Activity telah berhasil disimpan.');
-			}else{
-				$this->session->set_flashdata('error','Terjadi masalah saat menyimpan data.');
-			}
-		}	
+		}
+		if($act){
+			$this->session->set_flashdata('success','Data aktivitas telah berhasil diupdate.');
+		}else{
+			$this->session->set_flashdata('error','Terjadi masalah saat menyimpan data.');
+		}
 		redirect('activity');
 	}
 
@@ -165,3 +186,26 @@ class Activity extends CI_Controller{
 		redirect('activity');
 	}
 }
+
+/*
+
+	public function detail($id){
+		$this->data['activity'] = $this->activity->get_activity($id);
+		$this->data['title'] 	= 'IBF Activity : '.$this->data['activity'][0]['activity_name'];
+		$this->data['page']		= 'page/activity_detail';
+		$lat 		= $this->data['activity'][0]['activity_lat'];
+		$long 		= $this->data['activity'][0]['activity_long'];
+		$city 		= $this->data['activity'][0]['activity_google_address'];
+		$location 	= $this->data['activity'][0]['activity_location'];
+
+		$marker = array(
+			'center'			 => $lat.','.$long,
+			'position'			 => $lat.','.$long, 
+			'infowindow_content' => $location,
+			);
+        $this->googlemaps->add_marker($marker);
+		$this->googlemaps->initialize($marker);
+		$this->data['map'] 		= $this->googlemaps->create_map();
+		$this->load->view('template', $this->data);
+	}
+*/

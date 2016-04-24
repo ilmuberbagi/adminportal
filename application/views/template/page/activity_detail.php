@@ -1,3 +1,5 @@
+
+
 <div class="content-wrapper">
 	<section class="content-header">
 		<h1>IBF Activity <small>Aktivitas</small></h1>
@@ -13,18 +15,34 @@
 		$activity_id 			= $activity[0]['activity_id'];
 		$activity_name	 		= $activity[0]['activity_name'];
 		$activity_location		= $activity[0]['activity_location'];
+		$activity_goadd			= $activity[0]['activity_google_address'];
+		$activity_lat			= $activity[0]['activity_lat'];
+		$activity_long			= $activity[0]['activity_long'];
 		$activity_pic			= $activity[0]['activity_pic'];
 		$activity_description 	= $activity[0]['activity_description'];
 		$activity_image			= $activity[0]['activity_image'];
+		$activity_participant	= $activity[0]['activity_participant'];
 		$date_start 			= date('d/m/Y', strtotime($activity[0]['activity_date_start']));
 		$time_start 			= date('H:i:s', strtotime($activity[0]['activity_date_start']));
 		$date_end 				= date('d/m/Y', strtotime($activity[0]['activity_date_end']));
 		$time_end 				= date('H:i:s', strtotime($activity[0]['activity_date_end']));
+		
+		if ($activity_participant == 1){
+			$checked1 	= 'checked';
+			$checked2 	= '';
+		} else{
+			$checked1 	= '';
+			$checked2 	= 'checked';
+		}
+		
 		$action = 'update';
 	}else{
 		$activity_id 			= '';
 		$activity_name	 		= '';
 		$activity_location		= '';
+		$activity_goadd			= '';
+		$activity_lat			= '';
+		$activity_long			= '';
 		$activity_pic			= $this->session->userdata('name');
 		$activity_description 	= '';
 		$activity_image			= '';
@@ -32,6 +50,8 @@
 		$time_start 			= date('H:i:s');
 		$date_end 				= date('d/m/Y');
 		$time_end 				= date('H:i:s');
+		$checked1 				= '';
+		$checked2 				= '';
 		$action = 'insert';
 	}
 	?>
@@ -69,10 +89,11 @@
 								<div class="input-group">
 									<div class="input-group-addon"><i class="fa fa-map-marker"></i></div>
 									<input id="googleAddress" type="text" size="50" placeholder="Masukkan Alamat Kota atau Jalan" autocomplete="on" runat="server" class="form-control" required />  
-									<input type="hidden" id="city" name="city" />
-									<input type="hidden" id="lat" name="lat" />
-									<input type="hidden" id="long" name="long" />  
+									<input type="hidden" id="city" name="city" value="<?php echo $activity_goadd; ?>"/>
+									<input type="hidden" id="lat" name="lat" value="<?php echo $activity_lat; ?>"/>
+									<input type="hidden" id="long" name="long" value="<?php echo $activity_long; ?>" />  
 								</div>
+								<div id="map_canvas" style="width: 690px; height: 300px;"></div> 
 							</div>
 
 							<div class="form-group">
@@ -87,13 +108,15 @@
 								</div>
 									<img id="imgPreview">
 								<br>
-								<?php if($action != 'insert'){ ?>
+								<?php if($action == 'update' && !empty($activity_image) ){ ?>
 								<div id="current_image">
 									<img src="<?php echo base_url().'assets/img/img_activity/'.$activity_image; ?>">
 									<caption><?php echo $activity_image; ?></caption>
 									<input type="hidden" name="current_image" value="<?php echo $activity_image; ?>" >
 								</div>
-								<?php } ?>
+								<?php } else { ?>
+									<p>Tidak ada foto </p>
+									<?php }?>
 							</div>
 						</div>
 					</div>
@@ -144,10 +167,10 @@
 							<div class="form-group">
 								<label>Sertakan Formulir Partisipan</label>
 								<div class="i-checks">
-									<label><input type="radio" name="is_participant" value="1"> Ya </label>
+									<label><input type="radio" name="is_participant" value="1" <?php echo $checked1; ?> > Ya </label>
 								</div>
 								<div class="i-checks">
-									<label><input type="radio" name="is_participant" value="0"> Tidak </label>
+									<label><input type="radio" name="is_participant" value="0" <?php echo $checked2; ?> > Tidak </label>
 								</div>
 							</div>
 							<div class="form-action">
