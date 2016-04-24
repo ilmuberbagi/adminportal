@@ -187,26 +187,3 @@ class Activity extends CI_Controller{
 		redirect('activity');
 	}
 }
-
-/*
-
-	public function detail($id){
-		$this->data['activity'] = $this->activity->get_activity($id);
-		$this->data['title'] 	= 'IBF Activity : '.$this->data['activity'][0]['activity_name'];
-		$this->data['page']		= 'page/activity_detail';
-		$lat 		= $this->data['activity'][0]['activity_lat'];
-		$long 		= $this->data['activity'][0]['activity_long'];
-		$city 		= $this->data['activity'][0]['activity_google_address'];
-		$location 	= $this->data['activity'][0]['activity_location'];
-
-		$marker = array(
-			'center'			 => $lat.','.$long,
-			'position'			 => $lat.','.$long, 
-			'infowindow_content' => $location,
-			);
-        $this->googlemaps->add_marker($marker);
-		$this->googlemaps->initialize($marker);
-		$this->data['map'] 		= $this->googlemaps->create_map();
-		$this->load->view('template', $this->data);
-	}
-*/
