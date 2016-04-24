@@ -63,7 +63,7 @@ class Login extends CI_Controller {
 			'member_username'	=> $username,
 			'member_password'	=> md5($password),
 			'member_ibf_code'	=> generate_code_member($count+1),
-			'status'			=> 0,
+			'member_status'			=> 0,
 		);
 		$member_id = $this->member->create_user($data);
 		
@@ -102,6 +102,8 @@ class Login extends CI_Controller {
 					if($cp)
 						$this->session->set_flashdata('success','<b>Selamat,</b> Anda telah terdaftar sebagai Member Ilmu Berbagi Foundation. Kami telah mengirimkan email aktivasi akun Anda yang dapat digunakan untuk masuk dan menggunakan layanan-layanan kami. Salam Berbagi!');
 				}
+			}else{
+				$this->session->set_flashdata('warning','<b>Peringatan,</b> Mohon untuk memastikan Anda bukan robot, dengan mengecek capcha yang telah disediakan!');
 			}
         }
 		redirect('register');

@@ -24,7 +24,7 @@
 					<th>Nama Lengkap</th>
 					<th>Email</th>
 					<th>Wilayah</th>
-					<th>Aktif</th>
+					<th>Status</th>
 					<th>Tahun</th>
 					<th>Action</th>
 				</thead>
@@ -35,7 +35,8 @@
 					<td><?php echo $m['member_name'];?></td>
 					<td><a href="mailto:<?php echo $m['member_email'];?>"><?php echo $m['member_email'];?></a></td>
 					<td><?php echo $m['region_name'];?></td>
-					<td align="center"><?php echo $m['member_status'] == 1? '<span class="label label-success">aktif</span>':'<span class="label label-danger">suspend</span>';?></td>
+					<td align="center">
+						<?php echo gen_member_status($m['member_status']);?></td>
 					<td align="center"><?php echo $m['member_reg_year'];?></td>
 					<td>
 						<span class="btn-group">

@@ -58,3 +58,13 @@ html, h1 > small{
 	float:left;
 	width:100px;
 }
+.img-thumb{
+	max-width:150px;
+	float:left;
+	border:solid 1px #CCC;
+	padding:1px;
+	margin-right:10px;
+}
+.content-list{
+	margin-top:10px;
+}

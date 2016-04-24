@@ -4,7 +4,7 @@
 				<div class="pull-left image">
 					<img class="img-circle" src="<?php echo image_url($this->session->userdata('avatar'));?>" alt="">
 				</div>
-				<div class="pull-left info">
+				<div class="pull-right info">
 					<p><?php echo $this->session->userdata('name');?></p>
 					<p></p><i class="fa fa-circle text-success"></i> Online<p></p>
 				</div>
@@ -22,9 +22,10 @@
 			
 			<!-- Sidebar Menu -->
 			<ul class="sidebar-menu">
-				<li class="header"><marquee><i class="fa fa-flag"></i> MAIN MENU</marquee></li>
+				<li class="header">MAIN MENU</li>
 				<li class="<?php echo $this->uri->segment(1) == ''? 'active':'';?>"><a href="<?php echo base_url();?>"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
-								
+				
+				<?php if($this->data['privilage']['app_1'] > 0){?>				
 				<li class="treeview <?php echo $this->uri->segment(1) == 'member'? 'active':'';?>">
 					<a href="#"><i class="fa fa-users"></i> <span>Member</span> <i class="fa fa-angle-left pull-right"></i></a>
 					<ul class="treeview-menu">
@@ -36,6 +37,7 @@
 						<li><a href="<?php echo base_url().'member/type';?>"><i class="fa fa-arrow-circle-right"></i>  Status Member</i></a></li>
 					</ul>
 				</li>
+				<?php } ?>
 				
 				<li class="treeview <?php echo $this->uri->segment(1) == 'article'? 'active':'';?>">
 					<a href="#"><i class="fa fa-file-text"></i> <span>Artikel</span> <i class="fa fa-angle-left pull-right"></i></a>
@@ -48,7 +50,7 @@
 				<li class="<?php echo $this->uri->segment(1) == 'asset'? 'active':'';?>"><a href="<?php echo base_url().'asset';?>"><i class="fa fa-image"></i> <span>Aset Images</span></a></li>
 
 				<li class="treeview <?php echo $this->uri->segment(1) == 'activity'? 'active':'';?>">
-					<a href="#"><i class="fa fa-file-text"></i> <span>aktivitas</span> <i class="fa fa-angle-left pull-right"></i></a>
+					<a href="#"><i class="fa fa-file-text"></i> <span>Aktivitas</span> <i class="fa fa-angle-left pull-right"></i></a>
 					<ul class="treeview-menu">
 						<li><a href="<?php echo base_url().'activity';?>"><i class="fa fa-arrow-circle-right"></i> Data aktivitas</a></li>
 					</ul>

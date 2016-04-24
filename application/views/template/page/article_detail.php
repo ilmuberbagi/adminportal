@@ -77,7 +77,7 @@
 					<div class="box-body">
 						<div class="form-group">
 							<label>Author</label>
-							<select name="article_author" class="select2 form-control" <?php echo $this->data['privilage']['app_2'] == 3 ? '':'disabled';?>>
+							<select name="article_author" class="select2 form-control" <?php echo $this->data['privilage']['app_2'] == 3 ? '':'readonly';?>>
 							<?php if(!empty($members)){ foreach($members as $m){?>
 								<option value="<?php echo $m['member_id'];?>" <?php echo $m['member_id'] == $author ? 'selected':'';?>><?php echo $m['member_name'];?></option>
 							<?php }} ?>
