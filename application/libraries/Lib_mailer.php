@@ -36,17 +36,20 @@ class Lib_mailer {
  		$this->isSMTP();
     }
 
-    public function isSMTP($host='ilmuberbagi.or.id', $port=25, $auth=FALSE, $username='', $password='')
+	public function isSMTP()
 	{
+		# mail relay google 
     	$this->mail->isSMTP();
-    	$this->mail->Host = $host;
-    	$this->mail->Port = $port;
-    	$this->mail->SMTPAuth = $auth;
-    	if(!empty($username))
-    		$this->mail->Username = $username;
-    	if(!empty($password))
-    		$this->mail->Password = $password;
+		$this->mail->SMTPDebug = false; // debugging: 1 = errors and messages, 2 = messages only
+		$this->mail->SMTPAuth = true; // authentication enabled
+		$this->mail->SMTPSecure = 'ssl'; // secure transfer enabled REQUIRED for Gmail
+		$this->mail->Host = "smtp.gmail.com";
+		$this->mail->Port = 465; // or 587
+		$this->mail->IsHTML(true);
+		$this->mail->Username = "info@ilmuberbagi.or.id";
+		$this->mail->Password = "chonnam2012";
     }
+
 
     public function sendmail($to, $subject, $message, $cc=array(), $bcc=array()) {
     	if(!is_array($to))

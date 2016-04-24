@@ -233,7 +233,7 @@ class Member extends CI_Controller{
 		if($act){
 			$upd = $this->member->update_data_user($id, $detailuser);
 			if($upd){
-				$this->member->update_wilayah_count($detailuser['member_region']);
+				#$this->member->update_wilayah_count($detailuser['member_region']);
 				$this->session->set_flashdata('success','Data profil berhasil diperbaharui.');
 			}
 		}else

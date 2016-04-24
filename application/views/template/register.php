@@ -93,11 +93,27 @@
 							</div>
 							<div class="form-group">
 								<label>Email <span>*</span></label>
-								<input type="email" name="member_email" class="form-control" placeholder="Ex: member@gmail.com" required>
+								<input type="email" name="member_email" class="form-control" placeholder="Ex: member@gmail.com" id="email" required>
 							</div>
 							<div class="form-group">
 								<label>Alamat</label>
 								<textarea name="member_address" class="form-control" placeholder="Ex: Jl. Pandegasiwi Sleman Yogyakarta"></textarea>
+							</div>
+							<div class="form-group">
+								<label>Username <span>*</span></label>
+								<input type="text" name="member_username" class="form-control" placeholder="Ex: member" id="username" required>
+							</div>
+							<div class="form-group">
+								<label>Password</label>
+								<p class="alert alert-info"><i class="fa fa-info-circle"></i> Password akan dikirim ke alamat email yang Anda masukkan.</p>
+							</div>
+						</div>
+						<!-- account -->
+						<div class="col-md-4">
+							<h5 class="title"><i class="fa fa-arrow-circle-right"></i> Informasi Lain</h5>
+							<div class="form-group">
+								<label>Alasan Berbagung</label>
+								<textarea name="member_reason" class="form-control" placeholder="Ex: Deskripsikan secara singkat alasan Anda bergabung dengan Ilmu Berbagi Foundation"></textarea>
 							</div>
 							<h5 class="title"><i class="fa fa-arrow-circle-right"></i> Informasi Jejaring Sosial</h5>
 							<div class="form-group">
@@ -111,27 +127,6 @@
 							<div class="form-group">
 								<label>Website/Blog</label>
 								<input type="url" name="member_website" class="form-control" placeholder="Ex: http://ilmuberbagi.or.id">
-							</div>
-						</div>
-						<!-- account -->
-						<div class="col-md-4">
-							<h5 class="title"><i class="fa fa-arrow-circle-right"></i> Informasi Lain</h5>
-							<div class="form-group">
-								<label>Alasan Berbagung</label>
-								<textarea name="member_reason" class="form-control" placeholder="Ex: Deskripsikan secara singkat alasan Anda bergabung dengan Ilmu Berbagi Foundation"></textarea>
-							</div>
-							<h5 class="title"><i class="fa fa-arrow-circle-right"></i> Informasi Akun</h5>
-							<div class="form-group">
-								<label>Username <span>*</span></label>
-								<input type="text" name="member_username" class="form-control" placeholder="username">
-							</div>
-							<div class="form-group">
-								<label>Password <span>*</span></label>
-								<input type="password" name="member_password" class="form-control" placeholder="8 - 12 digit" min="8" max="12">
-							</div>
-							<div class="form-group">
-								<label>Ulangi Password</label>
-								<input type="password" name="member_repassword" class="form-control" placeholder="**********">
 							</div>
 							<div class="form-group">
 								<div class="g-recaptcha" data-sitekey="6LdT5BwTAAAAAHP9S-A5QQUIDmMoK5Hd_p5ZWCt8"></div>

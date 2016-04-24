@@ -17,5 +17,18 @@
 		});
 		$(".content-article").wysihtml5();
 		$(".select2").select2();
+		
+		// generate username 
+		$("#email").on('keyup', function(){
+			var user = $(this).val();
+			var username = user.split('@');
+			$("#username").val(username[0]);
+		});
+		
+		$("#email").on('blur', function(){
+			var user = $(this).val();
+			var username = user.split('@');
+			$("#username").val(username[0]);
+		});
 	});
 </script>

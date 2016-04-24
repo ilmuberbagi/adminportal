@@ -30,10 +30,10 @@
 					Silakan masukkan alamat email Anda dengan benar. Klik 'Reset Password', Kami akan mengirimkan password baru ke email Anda.
 					</p>
 					<?php echo $this->session->flashdata('invalid');?>
-					<form action="<?php echo base_url().'reset';?>" method="post">
+					<form action="<?php echo base_url().'login/reset_password';?>" method="post">
 						<input type="hidden" name="app" value="portal">
 						<div class="form-group has-feedback">
-							<input type="email" class="form-control" name="email" placeholder="Enter your email" required>
+							<input type="email" class="form-control" name="email" placeholder="Alamat email" required>
 							<span class="fa fa-envelope form-control-feedback"></span>
 						</div>
 						<div class="row">
