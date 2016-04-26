@@ -49,6 +49,9 @@
 						<span class="btn-group">
 							<a href="<?php echo base_url().'article/'.$a['article_id'];?>" class="btn btn-default btn-sm"><i class="fa fa-search"></i></a>
 							<a href="#" class="btn btn-sm <?php echo $a['article_approve'] == 1?'btn-success':'btn-default';?>"><i class="fa fa-flag"></i></a>
+							<?php if($this->data['privilage']['app_2'] == 3){?>
+							<a href="#" class="btn btn-sm btn-default"  data-toggle="modal" data-target="#modalDelete" onclick="return delete('<?php echo $a['article_id'];?>')"><i class="fa fa-trash"></i></a>
+							<?php } ?>
 						</span>
 					</td>
 				</tr>
@@ -58,4 +61,30 @@
 			</div>
 		</div>
 	</section>
+</div>
+
+
+<!-- modal delete -->
+<div class="modal inmodal" id="modalDelete" tabindex="-1" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content animated bounceInDown">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">
+				<span aria-hidden="true"><i class="fa fa-remove"></i></span><span class="sr-only">Close</span></button>
+				<i class="fa fa-trash modal-icon"></i>
+				<h4 class="modal-title">Delete Artikel</h4>
+				<div>Hapus artikel selamanya.</div>
+			</div>
+			<form name="formdelete" action="<?php echo base_url().'article/delete';?>" method="POST">
+			<div class="modal-body">
+				<input type="hidden" name="article_id" id="article_id">
+				<div class="msg"></div>
+			</div>
+			<div class="modal-footer">
+				<input type="reset" name="reset" value="Cancel" class="btn btn-white" data-dismiss="modal">
+				<input type="submit" name="move" value="Remove" class="btn btn-danger action">
+			</div>
+			</form>
+		</div>	
+	</div>
 </div>

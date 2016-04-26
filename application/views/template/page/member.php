@@ -57,12 +57,15 @@
 </div>
 
 <!-- modal status -->
-<div id="modalStatus" class="modal fade" role="dialog">
+<div class="modal inmodal" id="modalStatus" tabindex="-1" aria-hidden="true">
 	<div class="modal-dialog">
-		<div class="modal-content">
+		<div class="modal-content animated bounceInDown">
 			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title"><i class="fa fa-lock"></i> Aktif/Nonaktifkan Member</h4>
+				<button type="button" class="close" data-dismiss="modal">
+				<span aria-hidden="true"><i class="fa fa-remove"></i></span><span class="sr-only">Close</span></button>
+				<i class="fa fa-cog modal-icon"></i>
+				<h4 class="modal-title">Status Member</h4>
+				<div>Aktifkan atau blokir member.</div>
 			</div>
 			<form method="POST" action="<?php echo base_url().'member/change_member_status';?>">
 			<input type="hidden" name="member_id" id="member_id">
@@ -81,24 +84,27 @@
 </div>
 
 <!-- modal delete -->
-<div id="modalDelete" class="modal fade" role="dialog">
+<div class="modal inmodal" id="modalDelete" tabindex="-1" aria-hidden="true">
 	<div class="modal-dialog">
-		<div class="modal-content">
+		<div class="modal-content animated bounceInDown">
 			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title"><i class="fa fa-trash"></i> Delete Member</h4>
+				<button type="button" class="close" data-dismiss="modal">
+				<span aria-hidden="true"><i class="fa fa-remove"></i></span><span class="sr-only">Close</span></button>
+				<i class="fa fa-user-times modal-icon"></i>
+				<h4 class="modal-title">Delete Member</h4>
+				<div>Hapus member dari daftar member.</div>
 			</div>
 			<form method="POST" action="<?php echo base_url().'member/delete';?>">
 			<input type="hidden" name="member_id" id="member_id_delete">
 			<input type="hidden" name="member_name" id="member_name_delete">
 			<div class="modal-body msg-delete">
-				
+
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				<input type="submit" class="btn btn-danger btnaction" value="Delete">
+				<input type="reset" name="reset" value="Cancel" class="btn btn-white" data-dismiss="modal">
+				<input type="submit" name="move" value="Remove" class="btn btn-danger action">
 			</div>
 			</form>
-		</div>
+		</div>	
 	</div>
 </div>
