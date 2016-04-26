@@ -18,4 +18,23 @@
 		$(".content-article").wysihtml5();
 		$(".select2").select2();
 	});
+	
+	var $loading = $('#loadingDiv').hide();
+	$(document).ajaxStart(function (){$loading.show();}).ajaxStop(function () {$loading.hide();});
+	
+	function image_list(){
+		$.ajax({
+			type:'GET',
+			url: '<?php echo site_url()."asset/get_all_asset";?>',
+			success: function(data){
+				$("#image-content").html(data);
+			}, error: function(){
+				alert('Error connection... \nPlease check your internet connection!');
+			}
+		});
+	}
+	
+	function choose(url){
+		$("#article_image").val(url);
+	}
 </script>

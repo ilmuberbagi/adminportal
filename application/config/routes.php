@@ -96,6 +96,7 @@ $route['activity/delete(:any)'] = 'activity/delete/$1';
 
 
 $route['asset/upload'] = 'asset/upload';
+$route['asset/get_all_asset'] = 'asset/get_all_asset';
 $route['asset/do_upload'] = 'asset/do_upload';
 $route['asset/update'] = 'asset/update';
 $route['asset/(:any)'] = 'asset/detail/$1';

@@ -33,6 +33,8 @@
 						
 						<?php if($this->session->userdata('id') == $a['article_author']){?>
 						<b><a href="<?php echo base_url().'article/'.$a['article_id'];?>"><?php echo strip_tags($a['article_title']);?></a></b> &nbsp; 
+						<?php }else{?>
+						<b><a href="<?php echo base_url().'article/preview/'.$a['article_id'];?>"><?php echo strip_tags($a['article_title']);?></a></b> &nbsp; 
 						<?php } ?>
 						
 						<?php echo $a['article_approve'] == 1? '<span class="label label-success">Approved</span>':'<span class="label label-default">Pending</span>';?>

@@ -57,13 +57,13 @@
 						</div>
 						<div class="form-group">
 							<label>Konten Artikel</label>
-							<textarea name="article_content" class="form-control content-article" rows="15"><?php echo $content;?></textarea>
+							<textarea name="article_content" class="form-control content-article" rows="25"><?php echo $content;?></textarea>
 						</div>
 						<div class="form-group">
 							<label>Image Cover</label>
 							<div class="input-group">
-								<div class="input-group-addon"><i class="fa fa-image"></i></div>
-								<input type="url" name="article_image" class="form-control" value="<?php echo $article_image;?>">
+								<div class="input-group-addon" data-toggle="modal" data-target="#modalImages" style="cursor:pointer" onclick="return image_list()"><i class="fa fa-image"></i></div>
+								<input type="url" name="article_image" id="article_image" class="form-control" value="<?php echo $article_image;?>">
 							</div>
 						</div>
 					</div>
@@ -126,4 +126,22 @@
 		</div>
 		</form>
 	</section>
+</div>
+
+<!-- modal images -->
+<div id="modalImages" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"><i class="fa fa-close"></i></button>
+				<h4 class="modal-title"><i class="fa fa-image"></i> Select Image Asset</h4>
+			</div>
+			<div class="modal-body" id="image-content">
+				<div id="loadingDiv" style="text-align:center"><i class="fa fa-spinner fa-spin fa-3x"></i></div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
 </div>

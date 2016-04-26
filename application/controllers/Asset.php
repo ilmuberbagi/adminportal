@@ -158,6 +158,11 @@ class Asset extends CI_Controller{
             $this->load->view('admin/delete_success', $file_data);
         }
     }
+	
+	# ajax request
+	public function get_all_asset(){
+		echo $this->asset->get_all_asset_ajax();
+	}
 
 
 }

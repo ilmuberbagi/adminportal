@@ -93,7 +93,9 @@
 									<input type="hidden" id="lat" name="lat" value="<?php echo $activity_lat; ?>"/>
 									<input type="hidden" id="long" name="long" value="<?php echo $activity_long; ?>" />  
 								</div>
-								<div id="map_canvas" style="width: 690px; height: 300px;"></div> 
+								<div id="map_canvas" style="width: 690px; height: 200px; text-align:center; border:solid 1px #DDD; font-size:4em; color:#BBB; padding-top:20px">
+									Google Location
+								</div> 
 							</div>
 
 							<div class="form-group">
@@ -106,7 +108,7 @@
 									<div class="input-group-addon"><i class="fa fa-image"></i></div>
 									<input type="file" name="activity_image" onchange="imagePreview(this);" class="form-control" value="<?php echo $activity_image; ?>" >
 								</div>
-									<img id="imgPreview">
+									<img id="imgPreview" style="max-width:690px; padding:1px; border:solid 1px #DDD">
 								<br>
 								<?php if($action == 'update' && !empty($activity_image) ){ ?>
 								<div id="current_image">
@@ -116,7 +118,7 @@
 								</div>
 								<?php } else { ?>
 									<p>Tidak ada foto </p>
-									<?php }?>
+								<?php }?>
 							</div>
 						</div>
 					</div>
