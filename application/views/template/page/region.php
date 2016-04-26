@@ -47,12 +47,15 @@
 </div>
 
 <!-- modal wilayah -->
-<div id="modalWilayah" class="modal fade" role="dialog">
+<div class="modal inmodal" id="modalWilayah" tabindex="-1" aria-hidden="true">
 	<div class="modal-dialog">
-		<div class="modal-content">
+		<div class="modal-content animated bounceInDown">
 			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title"><i class="fa fa-map"></i> Wilayah</h4>
+				<button type="button" class="close" data-dismiss="modal">
+				<span aria-hidden="true"><i class="fa fa-remove"></i></span><span class="sr-only">Close</span></button>
+				<i class="fa fa-map-marker modal-icon"></i>
+				<h4 class="modal-title">Member Region</h4>
+				<div>Tambahkan wilayah keanggotaan IBF</div>
 			</div>
 			<form method="POST" action="<?php echo base_url().'member/sv_region';?>">
 			<input type="hidden" name="app_id" id="app_id">

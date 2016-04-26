@@ -88,13 +88,20 @@ class Mdl_member extends CI_Model{
 	}
 	
 	#  type model
+	private function convert_member_type_name($type_id){
+		$sql = "select member_type from ibf_member_type where type_id = '$type_id'";
+		$data = $this->db->query($sql)->result_array();
+		return $data[0]['member_type'];
+	}
+	
 	public function get_member_type($type = ""){
 		$sql = "select * from ibf_member_type order by member_type ASC";
 		if($type !== ""){
-			$sql = "select a.*, c.member_type, b.member_image_profile, b.member_reg_year from ibf_member a 
+			$sql = "select a.*, c.member_type, b.member_image_profile, b.member_reg_year, d.region_name from ibf_member a 
 				left join ibf_member_detail b on a.member_id = b.member_id
 				left outer join ibf_member_type c on b.member_type = c.type_id 
-				where b.member_type = '$type' order by a.member_id DESC";
+				left outer join ibf_region d on b.member_region = d.region_id 
+				where b.member_type like '%\"".$this->convert_member_type_name($type)."\"%' order by a.member_id DESC";
 		}
 		return $this->db->query($sql)->result_array();
 	}

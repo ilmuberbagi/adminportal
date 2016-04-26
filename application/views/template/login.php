@@ -24,7 +24,7 @@
 					<form action="<?php echo base_url().'auth';?>" method="post">
 						<input type="hidden" name="app" value="portal">
 						<div class="form-group has-feedback">
-							<input type="text" class="form-control" name="username" placeholder="Username atau Email" required>
+							<input type="text" class="form-control" name="username" placeholder="Username atau Email" autofocus required>
 							<span class="glyphicon glyphicon-user form-control-feedback"></span>
 						</div>
 						<div class="form-group has-feedback">

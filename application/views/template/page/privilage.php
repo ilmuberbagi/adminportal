@@ -51,23 +51,33 @@
 </div>
 
 <!-- modal privilage setting -->
-<div id="modalPriv" class="modal fade" role="dialog">
+<div class="modal inmodal" id="modalPriv" tabindex="-1" aria-hidden="true">
 	<div class="modal-dialog">
-		<div class="modal-content">
+		<div class="modal-content animated bounceInDown">
 			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title"><i class="fa fa-lock"></i> Modul Akses</h4>
+				<button type="button" class="close" data-dismiss="modal">
+				<span aria-hidden="true"><i class="fa fa-remove"></i></span><span class="sr-only">Close</span></button>
+				<i class="fa fa-key modal-icon"></i>
+				<h4 class="modal-title">Member Privilage</h4>
+				<div>Setting member privilage</div>
 			</div>
 			<form method="POST" action="<?php echo base_url().'member/change_privilage';?>">
 			<input type="hidden" name="app_id" id="app_id">
 			<input type="hidden" name="member_id" id="uid">
 			<div class="modal-body">
 				<div class="form-group">
-					<label>Seeting user sebagai:</label><br/>
-					<input type="radio" name="priv" class="priv" id="block" value="0"> Blokir
-					<input type="radio" name="priv" class="priv" id="user" value="1"> User
-					<input type="radio" name="priv" class="priv" id="approval" value="2"> Approv
-					<input type="radio" name="priv" class="priv" id="admin" value="3"> Admin
+					<div class="i-checks">
+						<label><input type="radio" name="priv" class="priv" id="block" value="0"> Blokir</label>
+					</div>
+					<div class="i-checks">
+						<label><input type="radio" name="priv" class="priv" id="user" value="1"> User </label>
+					</div>
+					<div class="i-checks">
+						<label><input type="radio" name="priv" class="priv" id="approval" value="2"> Artikel Reviewer </label>
+					</div>
+					<div class="i-checks">
+						<label><input type="radio" name="priv" class="priv" id="admin" value="3"> Administator</label>
+					</div>
 				</div>
 			</div>
 			<div class="modal-footer">
