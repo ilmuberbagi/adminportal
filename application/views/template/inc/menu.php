@@ -23,7 +23,7 @@
 			<!-- Sidebar Menu -->
 			<ul class="sidebar-menu">
 				<li class="header">MAIN MENU</li>
-				<li class="<?php echo $this->uri->segment(1) == ''? 'active':'';?>"><a href="<?php echo base_url();?>"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+				<li class="<?php echo $this->uri->segment(1) == ''? 'active':'';?>"><a href="<?php echo base_url();?>"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
 				
 				<?php if($this->data['privilage']['app_1'] > 0){?>				
 				<li class="treeview <?php echo $this->uri->segment(1) == 'member'? 'active':'';?>">
@@ -50,9 +50,9 @@
 				<li class="<?php echo $this->uri->segment(1) == 'asset'? 'active':'';?>"><a href="<?php echo base_url().'asset';?>"><i class="fa fa-image"></i> <span>Aset Images</span></a></li>
 
 				<li class="treeview <?php echo $this->uri->segment(1) == 'activity'? 'active':'';?>">
-					<a href="#"><i class="fa fa-file-text"></i> <span>Aktivitas</span> <i class="fa fa-angle-left pull-right"></i></a>
+					<a href="#"><i class="fa fa-bars"></i> <span>Agenda</span> <i class="fa fa-angle-left pull-right"></i></a>
 					<ul class="treeview-menu">
-						<li><a href="<?php echo base_url().'activity';?>"><i class="fa fa-arrow-circle-right"></i> Data aktivitas</a></li>
+						<li><a href="<?php echo base_url().'activity';?>"><i class="fa fa-arrow-circle-right"></i> Daftar Agenda</a></li>
 					</ul>
 				</li>
 

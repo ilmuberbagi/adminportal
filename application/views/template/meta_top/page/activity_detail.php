@@ -16,7 +16,7 @@
                 function(results, status) {
                     var add = results[0].formatted_address;
                     var myMap     = {
-                        zoom:17,
+                        zoom:16,
                         center:myLatLong,
                         mapTypeId:google.maps.MapTypeId.ROADMAP
                     };
@@ -41,9 +41,9 @@
 
     <?php endif; ?>
 
+/* ---------------------------------------------------------------------------------*/
 
     function initialize() {            
-        /* ---------------------------------------------------------------------------------*/
         var input        = document.getElementById('googleAddress');
         var autocomplete = new google.maps.places.Autocomplete(input);
 

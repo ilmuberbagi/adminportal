@@ -57,7 +57,7 @@
 	?>
 	<section class="content">
 		<form method="POST" action="<?php echo base_url().'activity/'.$action;?>" enctype="multipart/form-data">
-		<input type="hidden" name="activity_id" value="<?php echo $activity_id;?>">
+			<input type="hidden" name="activity_id" value="<?php echo $activity_id;?>">
 			<div class="row">
 				<div class="col-md-8">
 					<div class="box box-success">
@@ -103,6 +103,21 @@
 								<textarea name="activity_description" class="form-control" rows="6" placeholder="Ex: Acaranya untuk umum" required><?php echo $activity_description; ?></textarea>
 							</div>
 							<div class="form-group">
+								<label>Image Cover</label>
+								<div class="input-group">
+									<div class="input-group-addon" data-toggle="modal" data-target="#modalImages" style="cursor:pointer" onclick="return image_list()"><i class="fa fa-image"></i></div>
+									<input type="url" name="activity_image" id="activity_image" class="form-control" value="<?php echo $activity_image;?>" placeholder="Klik pada icon untuk memilih asset gambar">
+								</div>
+							</div>
+							<div id="previewBox">
+								<div class="box-tools pull-right">
+									<div class="btn btn-box-tool" id="closeButton" data-toggle="tooltip" title="Hapus gambar"><i class="fa fa-times"></i></div>
+								</div>
+								<img id="image_current" src="<?php echo $activity_image;?>">
+							</div>
+
+
+							<!-- <div class="form-group">
 								<label>Gambar/Banner</label>
 								<div class="input-group">
 									<div class="input-group-addon"><i class="fa fa-image"></i></div>
@@ -119,7 +134,7 @@
 								<?php } else { ?>
 									<p>Tidak ada foto </p>
 								<?php }?>
-							</div>
+							</div> -->
 						</div>
 					</div>
 				</div>
@@ -185,4 +200,23 @@
 			</div>
 		</form>
 	</section>
+</div>
+
+
+<!-- modal images -->
+<div id="modalImages" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"><i class="fa fa-close"></i></button>
+				<h4 class="modal-title"><i class="fa fa-image"></i> Select Image Asset</h4>
+			</div>
+			<div class="modal-body" id="image-content">
+				<div id="loadingDiv" style="text-align:center"><i class="fa fa-spinner fa-spin fa-3x"></i></div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
 </div>
