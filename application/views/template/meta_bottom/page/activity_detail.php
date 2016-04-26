@@ -17,17 +17,36 @@
 		});
 		$(".content-article").wysihtml5();
 		$(".select2").select2();
+
+		if($('#activity_image').val() == '' ){$('#previewBox').hide();}  
 	});
 
+	var $loading = $('#loadingDiv').hide();
+	$(document).ajaxStart(function (){$loading.show();}).ajaxStop(function () {$loading.hide();});
+	
 
-	function imagePreview(input) {
-		if(input.files && input.files[0]){
-			var filerd = new FileReader();
-			filerd.onload = function(e){
-				$('#imgPreview').attr('src', e.target.result);
-				$('#current_image').remove();
-			};
-			filerd.readAsDataURL(input.files[0]);
-		}
+	function image_list(){
+		$.ajax({
+			type:'GET',
+			url: '<?php echo site_url()."asset/get_all_asset";?>',
+			success: function(data){
+				$("#image-content").html(data);
+			}, error: function(){
+				alert('Error connection... \nPlease check your internet connection!');
+			}
+		});
 	}
-</script>
+	
+	function choose(url){
+		$("#activity_image").val(url);
+		$("#previewBox").show();
+		$("#image_current").attr('src', url);
+	}
+
+	$('#closeButton').on('click', function(e) { 
+		$("#previewBox").hide();
+		$("#image_current").attr('src', '');
+		$("#activity_image").val('');
+    });
+
+	</script>
