@@ -53,11 +53,11 @@
 					<div class="box-body">
 						<div class="form-group">
 							<label>Judul</label>
-							<input type="text" name="article_title" class="form-control" value='<?php echo $title;?>'>
+							<input type="text" name="article_title" class="form-control" value='<?php echo $title;?>' placeholder="Judul Artikel">
 						</div>
 						<div class="form-group">
 							<label>Konten Artikel</label>
-							<textarea name="article_content" class="form-control content-article" rows="25"><?php echo $content;?></textarea>
+							<textarea name="article_content" class="form-control" id="content" placeholder="Konten"><?php echo $content;?></textarea>
 						</div>
 						<div class="form-group">
 							<label>Image Cover</label>
@@ -97,13 +97,15 @@
 								<input type="text" name="article_time" class="form-control timepicker" value="<?php echo $time_input;?>">
 							</div>
 						</div>
-						<div class="form-group">
-							<label>Kategori <span>*</span></label>
-							<select name="article_category" class="select2 form-control" width="100%">
-								<?php if(!empty($categories)){ foreach($categories as $cat){?>
-								<option value="<?php echo $cat['category_id'];?>" <?php echo $cat['category_id'] == $article_category ? 'selected':'';?>><?php echo $cat['category_name'];?></option>
-								<?php } } ?>
-							</select>
+						<div class="bootstrap-timepicker">
+							<div class="form-group">
+								<label>Kategori <span>*</span></label>
+								<select name="article_category" class="select2 form-control" width="100%">
+									<?php if(!empty($categories)){ foreach($categories as $cat){?>
+									<option value="<?php echo $cat['category_id'];?>" <?php echo $cat['category_id'] == $article_category ? 'selected':'';?>><?php echo $cat['category_name'];?></option>
+									<?php } } ?>
+								</select>
+							</div>
 						</div>
 						<div class="form-group">
 							<label>Tags </label><small> - Separate word with a comma</small>

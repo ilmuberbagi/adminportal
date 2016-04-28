@@ -112,6 +112,11 @@ class Mdl_member extends CI_Model{
 		return $count;
 	}
 	
+	public function count_new_member(){
+		$this->db->where('member_status', 0);
+		return $this->db->get('ibf_member')->num_rows();
+	}
+	
 	# ibf apps
 	public function get_apps(){
 		return $this->db->get('ibf_app')->result_array();

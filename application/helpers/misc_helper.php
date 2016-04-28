@@ -30,6 +30,8 @@ function set_image($url, $param = null){
 	if($url != null){
 		if($param == "thumb"){
 			$res = str_replace('uploads/','uploads/thumbs/', $url);
+		}else if($param == "profile-thumb"){
+			$res = str_replace('/foto/','/thumbs/', $url);
 		}else
 			$res = $url;
 	}else

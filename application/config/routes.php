@@ -72,6 +72,7 @@ $route['member/privilage'] = 'member/privilage';
 $route['member/update'] = 'member/proc_update';
 $route['member/updatepassword'] = 'member/proc_change_password';
 $route['member/change_privilage'] = 'member/change_privilage';
+$route['member/change_profile'] = 'member/change_profile';
 
 $route['member/delete'] = 'member/delete';
 
@@ -80,6 +81,7 @@ $route['article/category'] = 'article/category';
 $route['article/create'] = 'article/create';
 $route['article/update'] = 'article/update';
 $route['article/insert'] = 'article/insert';
+$route['article/delete'] = 'article/delete';
 
 $route['article/sv_category'] = 'article/sv_category';
 $route['article/upd_category'] = 'article/upd_category';

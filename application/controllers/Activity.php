@@ -33,7 +33,7 @@ class Activity extends CI_Controller{
 		$this->load->view('template', $this->data);
 	}
 
-		public function insert(){
+	public function insert(){
 		$date_start 	= str_replace('/','-',$this->input->post('date_start'));
 		$date_end 		= str_replace('/','-',$this->input->post('date_end'));
 		$time_start 	= $this->input->post('time_start');

@@ -22,7 +22,7 @@
 					<li class="dropdown notifications-menu">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 							<i class="fa fa-users"></i>
-							<span class="label label-warning">0</span>
+							<span class="label label-warning"><?php echo $this->lib_general->count_new_member();?></span>
 						</a>
 						<ul class="dropdown-menu">
 							<li class="header">Belum ada member baru</li>
@@ -48,7 +48,7 @@
 						</a>
 						<ul class="dropdown-menu">
 							<li class="user-header">
-								<img class="img-circle" src="<?php echo image_url($this->session->userdata('avatar'));?>" alt="">
+								<img class="img-circle link" src="<?php echo image_url($this->session->userdata('avatar'));?>" data-toggle="modal" data-target="#modalProfile">
 								<p><?php echo $this->session->userdata('name').' - '.$this->session->userdata('type');?> <small>Member since : <?php echo $this->session->userdata('year');?></small></p>
 							</li>
 							<li class="user-body">
@@ -64,4 +64,31 @@
 			</div>
 		</nav>
 	</header>
+	<!-- modal profile -->
+	<div class="modal inmodal" id="modalProfile" tabindex="-1" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content animated bounceInDown">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">
+					<span aria-hidden="true"><i class="fa fa-remove"></i></span><span class="sr-only">Close</span></button>
+					<img class="img-circle link" src="<?php echo set_image($this->session->userdata('avatar'));?>"  style="max-width:100px">
+					<h4 class="modal-title">Update Profil</h4>
+					<div>Perbaharui gambar profile</div>
+				</div>
+				<form name="formdelete" action="<?php echo base_url().'member/change_profile';?>" method="POST" enctype="multipart/form-data">
+				<div class="modal-body">
+					<div class="form-group">
+						<label>Pilih Gambar Profil</label>
+						<input type="file" name="profile" class="form-control btn btn-default" required>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<input type="reset" name="reset" value="Cancel" class="btn btn-white" data-dismiss="modal">
+					<input type="submit" name="move" value="Update" class="btn btn-success action">
+				</div>
+				</form>
+			</div>	
+		</div>
+	</div>
+
 	<?php $this->load->view('template/inc/menu');?>

@@ -1,5 +1,3 @@
-
-
 <div class="content-wrapper">
 	<section class="content-header">
 		<h1>IBF Activity <small>Aktivitas</small></h1>

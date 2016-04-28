@@ -50,7 +50,7 @@
 							<a href="<?php echo base_url().'article/'.$a['article_id'];?>" class="btn btn-default btn-sm"><i class="fa fa-search"></i></a>
 							<a href="#" class="btn btn-sm <?php echo $a['article_approve'] == 1?'btn-success':'btn-default';?>"><i class="fa fa-flag"></i></a>
 							<?php if($this->data['privilage']['app_2'] == 3){?>
-							<a href="#" class="btn btn-sm btn-default"  data-toggle="modal" data-target="#modalDelete" onclick="return delete('<?php echo $a['article_id'];?>')"><i class="fa fa-trash"></i></a>
+							<a href="#" class="btn btn-sm btn-default"  data-toggle="modal" data-target="#modalDelete" onclick="return delete_article('<?php echo $a['article_id'];?>')"><i class="fa fa-trash"></i></a>
 							<?php } ?>
 						</span>
 					</td>

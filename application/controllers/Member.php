@@ -271,5 +271,38 @@ class Member extends CI_Controller{
 		
 		redirect('member/privilage');
 	}
+	
+	# change picture profile 
+	# ===============================
+	public function change_profile(){
+		$id = $this->session->userdata('id');
+		$code = $this->session->userdata('code');
+		$file = $_FILES['profile']['name'];
+		$fileExt = array_pop(explode(".", $file));
+		$config	= array(
+			'upload_path'	=> './assets/img/foto/',
+			'allowed_types'	=> 'gif|jpg|png|jpeg|bmp',
+			'max_size'		=> '500', # 500 KB
+			'file_name'		=> $code.'.'.$fileExt,
+			'overwrite'		=> true,
+		);
+		$this->load->library('upload', $config);
+		if ( ! $this->upload->do_upload('profile')){
+			$this->session->set_flashdata('error','Terjadi masalah saat menyimpan gambar.');
+		}else{
+			$file = $this->upload->data();
+			$data = array(
+				'member_image_profile' 	=> base_url().'assets/img/foto/'.$config['file_name'],
+			);
+			$act = $this->member->update_data_user($id, $data);
+			if($act){
+				$this->session->unset_userdata('avatar');
+				$this->session->set_userdata('avatar', $data['member_image_profile']);
+				$this->session->set_flashdata('success','Image profile telah berhasil diperbaharui.');
+			}else
+				$this->session->set_flashdata('error','Terjadi kesalahan saat menyimpan image profile!');
+		}
+		redirect('member/'.$code);
+	}
 
 }

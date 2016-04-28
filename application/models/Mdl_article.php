@@ -36,6 +36,11 @@ class Mdl_article extends CI_Model{
 			
 	}
 	
+	public function delete($id){
+		$this->db->where('article_id', $id);
+		return $this->db->delete('ibf_article');
+	}
+	
 	# by category
 	public function count_article_by_category($id){
 		$this->db->where('article_category', $id);

@@ -18,19 +18,10 @@ class Lib_general {
         $this->ci =&get_instance();
     }
 	
+	# member 
 	public function get_id_from_code($code){
 		$this->ci->load->model('Mdl_member','member');
 		return $this->ci->member->get_id_from_code($code);
-	}
-
-	public function count_article_by_category($id){
-		$this->ci->load->model('Mdl_article','article');
-		return $this->ci->article->count_article_by_category($id);
-	}
-
-	public function count_article_by_user($id){
-		$this->ci->load->model('Mdl_article','article');
-		return $this->ci->article->count_article_by_user($id);
 	}
 
 	public function count_member_by_region($id){
@@ -42,5 +33,23 @@ class Lib_general {
 		$this->ci->load->model('Mdl_member','member');
 		return $this->ci->member->count_member_by_type($id);
 	}
+	
+	public function count_new_member(){
+		$this->ci->load->model('Mdl_member','member');
+		return $this->ci->member->count_new_member();
+	}
+	
+	# article 
+	public function count_article_by_category($id){
+		$this->ci->load->model('Mdl_article','article');
+		return $this->ci->article->count_article_by_category($id);
+	}
+
+	public function count_article_by_user($id){
+		$this->ci->load->model('Mdl_article','article');
+		return $this->ci->article->count_article_by_user($id);
+	}
+
+
 
 }

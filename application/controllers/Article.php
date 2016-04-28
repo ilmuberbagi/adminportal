@@ -85,15 +85,20 @@ class Article extends CI_Controller{
 	
 	public function insert(){
 		$tags = explode(',',$this->input->post('tags'));
+		$priv = $this->session->userdata('privilage');
 		$data = array(
 			'article_title' => $this->input->post('article_title'),
 			'article_content' => $this->input->post('article_content'),
 			'article_author' => $this->input->post('article_author'),
 			'article_image' => $this->input->post('article_image'),
 			'article_date_input' => date('Y-m-d H:i:s'),
+			'article_date_update' => date('Y-m-d H:i:s'),
 			'article_category' => $this->input->post('article_category'),
 			'article_tags' => json_encode($tags)
 		);
+		if($priv['app_2'] > 1 ||
+			$this->session->userdata('id') == $this->input->post('article_author'))
+			$data['article_approve'] = $this->input->post('article_approve');
 		$act = $this->article->insert($data);
 		if($act){
 			$upd = $this->article->update_category_count($data['article_category']);
@@ -133,6 +138,16 @@ class Article extends CI_Controller{
 		redirect('article');
 	}
 	
+	public function delete(){
+		$id = $this->input->post('article_id');
+		$act = $this->article->delete($id);
+		if($act){
+			$this->session->set_flashdata('success','Data artikel telah berhasil dihapus.');
+		}else
+			$this->session->set_flashdata('error','Terjadi masalah saat menghapus data.');
+		redirect('article');
+	}
+	
 	public function image(){
 		$this->data['title'] = 'IBF Image Asset';
 		$this->data['page'] = 'page/article_category';
@@ -140,14 +155,6 @@ class Article extends CI_Controller{
 		$this->load->view('template', $this->data);
 	}
 	
-	public function get_image_from_dir(){
-		$handle = opendir('./assets/img/thumbs/');
-        while($file = readdir($handle)){
-            if($file !== '.' && $file !== '..'){
-                echo '<img src="'.base_url().'assets/img/thumbs/'.$file.'" border="0" />';
-            }
-        }
-	}
 
 
 }

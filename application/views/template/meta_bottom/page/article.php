@@ -5,4 +5,9 @@
 $(function(){
 	$(".data-member").DataTable();
 });
+
+function delete_article(id){
+	$("#article_id").val(id);
+	$(".msg").html("Apakah Anda yakin ingin menghapus artikel ini?");
+}
 </script>
