@@ -2,11 +2,11 @@
 
 <div class="content-wrapper">
 	<section class="content-header">
-		<h1>IBF Activity <small>Aktivitas</small></h1>
+		<h1>IBF Kegiatan <small>Kegiatan</small></h1>
 		<ol class="breadcrumb">
 			<li><a href="<?php echo base_url();?>"><i class="fa fa-dashboard"></i> Home</a></li>
-			<li><a href="<?php echo base_url().'activity';?>">Activity</a></li>
-			<li class="active">Data Activity</li>
+			<li><a href="<?php echo base_url().'activity';?>">Kegiatan</a></li>
+			<li class="active">Data Kegiatan</li>
 		</ol>
 	</section>
 	<?php 
@@ -62,7 +62,7 @@
 				<div class="col-md-8">
 					<div class="box box-success">
 						<div class="box-header with-border">
-							<h3 class="box-title"><i class="fa fa-file-text"></i> &nbsp;<?php echo $title ? $title : 'Buat Aktivitas';?></h3>
+							<h3 class="box-title"><i class="fa fa-file-text"></i> &nbsp;<?php echo $title ? $title : 'Buat Kegiatan';?></h3>
 							<div class="box-tools pull-right">
 								<button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
 								<button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
@@ -70,14 +70,14 @@
 						</div>
 						<div class="box-body">
 							<div class="form-group">
-								<label>Nama Aktivitas</label>
+								<label>Nama Kegiatan</label>
 								<div class="input-group">
 									<div class="input-group-addon"><i class="fa fa-tasks"></i></div>
 									<input type="text" name="activity_name" class="form-control" placeholder="Ex: Seminar <?php echo $activity_name; ?>" required value="<?php echo $activity_name; ?>">
 								</div>
 							</div>
 							<div class="form-group">
-								<label>Lokasi Aktivitas</label>
+								<label>Lokasi Kegiatan</label>
 								<div class="input-group">
 									<div class="input-group-addon"><i class="fa fa-home"></i></div>
 									<input type="text" name="activity_location" class="form-control" placeholder="Ex: Rumah IB" required value="<?php echo $activity_location; ?>">
@@ -99,7 +99,7 @@
 							</div>
 
 							<div class="form-group">
-								<label>Keterangan Aktivitas</label>
+								<label>Keterangan Kegiatan</label>
 								<textarea name="activity_description" class="form-control" rows="6" placeholder="Ex: Acaranya untuk umum" required><?php echo $activity_description; ?></textarea>
 							</div>
 							<div class="form-group">

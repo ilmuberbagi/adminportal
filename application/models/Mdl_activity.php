@@ -12,7 +12,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Mdl_activity extends CI_Model{
 
 	public function get_activity($id = ''){
-		$sql = "SELECT * from ibf_activity";
+		$sql = "SELECT * from ibf_activity WHERE activity_date_end <= NOW()";
+		if($id != ''){
+			$sql = "SELECT * from ibf_activity where activity_id = '$id'";
+		}
+		return $this->db->query($sql)->result_array();
+	}
+
+	public function get_agenda($id = ''){
+		$sql = "SELECT * from ibf_activity WHERE activity_date_start >= NOW()";
 		if($id != ''){
 			$sql = "SELECT * from ibf_activity where activity_id = '$id'";
 		}

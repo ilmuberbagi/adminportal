@@ -1,17 +1,17 @@
 <div class="content-wrapper">
 	<section class="content-header">
-		<h1>IBF Activity <small>Share knowladges</small></h1>
+		<h1>IBF Kegiatan <small>Share knowladges</small></h1>
 		<ol class="breadcrumb">
 			<li><a href="<?php echo base_url();?>"><i class="fa fa-dashboard"></i> Home</a></li>
-			<li><a href="<?php echo base_url().'activity';?>">Activity</a></li>
-			<li class="active">Data Activity</li>
+			<li><a href="<?php echo base_url().'activity';?>">Kegiatan</a></li>
+			<li class="active">Data Kegiatan</li>
 		</ol>
 	</section>
 
 	<section class="content">
 		<div class="box box-success">
 			<div class="box-header with-border">
-				<h3 class="box-title"><i class="fa fa-file-text"></i> &nbsp; IBF Activity</h3>
+				<h3 class="box-title"><i class="fa fa-file-text"></i> &nbsp; IBF Kegiatan</h3>
 				<div class="box-tools pull-right">
 					<a class="btn btn-default" href="<?php echo base_url().'activity/create';?>"><i class="fa fa-plus-circle"></i></a>
 					<button class="btn" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>

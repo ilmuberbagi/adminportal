@@ -21,14 +21,22 @@ class Activity extends CI_Controller{
 	}
 
 	public function index(){
-		$this->data['title'] 	= 'IBF Aktifitas';
+		$this->data['title'] 	= 'IBF Kegiatan';
 		$this->data['page'] 	= 'page/activity';
 		$this->data['activity'] = $this->activity->get_activity();
 		$this->load->view('template', $this->data);
 	}
 
+	public function agenda(){
+		$this->data['title'] 	= 'IBF Agenda';
+		$this->data['page'] 	= 'page/agenda';
+		$this->data['activity'] = $this->activity->get_agenda();
+		$this->load->view('template', $this->data);
+	}
+
+
 	public function create(){
-		$this->data['title'] 	= 'IBF Activity : Tambah Aktivitas';
+		$this->data['title'] 	= 'IBF Kegiatan : Tambah Kegiatan';
 		$this->data['page'] 	= 'page/activity_detail';
 		$this->load->view('template', $this->data);
 	}
@@ -54,9 +62,7 @@ class Activity extends CI_Controller{
 				'activity_create_date'	=> date('Y-m-d H:i:s'),
 				'activity_update_date'	=> date('Y-m-d H:i:s')
 				);
-			print_r($data);
-			exit();
-			// $act = $this->activity->insert($data);
+			$act = $this->activity->insert($data);
 		if($act){
 			$this->session->set_flashdata('success','Data aktivitas telah berhasil diupdate.');
 		}else{

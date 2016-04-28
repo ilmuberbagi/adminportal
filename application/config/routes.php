@@ -93,6 +93,7 @@ $route['activity/create'] = 'activity/create';
 $route['activity/update'] = 'activity/update';
 $route['activity/insert'] = 'activity/insert';
 $route['activity/delete(:any)'] = 'activity/delete/$1';
+$route['activity/agenda'] = 'activity/agenda';
 
 
 $route['asset/upload'] = 'asset/upload';

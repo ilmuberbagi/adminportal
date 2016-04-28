@@ -15,6 +15,7 @@
             geocoder.geocode( {'latLng': myLatLong}, 
                 function(results, status) {
                     var add = results[0].formatted_address;
+                    var contentString = '<div style="color:#000000;">'+add+'</div>';
                     var myMap     = {
                         zoom:16,
                         center:myLatLong,
@@ -30,8 +31,9 @@
                     map.setCenter(myLatLong);
 
                     infowindow = new google.maps.InfoWindow({
-                        content: add
+                        content: contentString
                     });
+
                     infowindow.open(map, marker);
                     document.getElementById('googleAddress').value = add;
                 }
@@ -49,7 +51,7 @@
 
         google.maps.event.addListener(autocomplete, 'place_changed', function () {
             var place           = autocomplete.getPlace();
-            var det_location    = place.formatted_address;
+            var contentString   = '<div style="color:#000000;">'+place.formatted_address+'</div>';
             var city            = place.name;
             var lat             = place.geometry.location.lat();
             var lng             = place.geometry.location.lng();
@@ -63,14 +65,14 @@
             map    = new google.maps.Map(document.getElementById('map_canvas'), myMap);
             marker = new google.maps.Marker({
                 map       : map,
-                title     : det_location,
+                title     : contentString,
                 draggable : true
             })
             marker.setPosition(myLatLong);
             map.setCenter(myLatLong);
 
             infowindow = new google.maps.InfoWindow({
-                content: det_location
+                content: contentString
             });
 
             google.maps.event.addListener(marker, 'click', function(){
