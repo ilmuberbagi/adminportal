@@ -37,6 +37,14 @@
 						<li><a href="<?php echo base_url().'member/type';?>"><i class="fa fa-arrow-circle-right"></i>  Status Member</i></a></li>
 					</ul>
 				</li>
+				<li class="treeview <?php echo $this->uri->segment(1) == 'partner'? 'active':'';?>">
+					<a href="#"><i class="fa fa-user"></i> <span>Partner</span> <i class="fa fa-angle-left pull-right"></i></a>
+					<ul class="treeview-menu">
+						<li><a href="<?php echo base_url().'partner';?>"><i class="fa fa-arrow-circle-right"></i> Partner</a></li>
+						<li><a href="<?php echo base_url().'donatur';?>"><i class="fa fa-arrow-circle-right"></i>  Donatur</a></li>
+						<li><a href="<?php echo base_url().'donasi';?>"><i class="fa fa-arrow-circle-right"></i>  Donasi</i></a></li>
+					</ul>
+				</li>
 				<?php } ?>
 				
 				<li class="treeview <?php echo $this->uri->segment(1) == 'article'? 'active':'';?>">

@@ -14,9 +14,9 @@
             // 
             geocoder.geocode( {'latLng': myLatLong}, 
                 function(results, status) {
-                    var add = results[0].formatted_address;
-                    var contentString = '<div style="color:#000000;">'+add+'</div>';
-                    var myMap     = {
+                    var add           = results[0].formatted_address;
+                    var contentString = add;
+                    var myMap         = {
                         zoom:16,
                         center:myLatLong,
                         mapTypeId:google.maps.MapTypeId.ROADMAP
@@ -51,12 +51,12 @@
 
         google.maps.event.addListener(autocomplete, 'place_changed', function () {
             var place           = autocomplete.getPlace();
-            var contentString   = '<div style="color:#000000;">'+place.formatted_address+'</div>';
+            var contentString   = place.formatted_address;
             var city            = place.name;
             var lat             = place.geometry.location.lat();
             var lng             = place.geometry.location.lng();
-            var myLatLong = new google.maps.LatLng(lat, lng);
-            var myMap     = {
+            var myLatLong       = new google.maps.LatLng(lat, lng);
+            var myMap           = {
                 zoom:16,
                 center:myLatLong,
                 mapTypeId:google.maps.MapTypeId.ROADMAP

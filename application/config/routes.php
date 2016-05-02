@@ -90,17 +90,23 @@ $route['article/image'] = 'article/image';
 $route['article/get_image'] = 'article/get_image_from_dir';
 
 
-$route['activity/(:any)'] = 'activity/detail/$1';
-$route['activity/create'] = 'activity/create';
-$route['activity/update'] = 'activity/update';
-$route['activity/insert'] = 'activity/insert';
+$route['activity/(:any)'] 		= 'activity/detail/$1';
+$route['activity/create'] 		= 'activity/create';
+$route['activity/update'] 		= 'activity/update';
+$route['activity/insert'] 		= 'activity/insert';
 $route['activity/delete(:any)'] = 'activity/delete/$1';
-$route['activity/agenda'] = 'activity/agenda';
+$route['activity/agenda']		= 'activity/agenda';
 
 
-$route['asset/upload'] = 'asset/upload';
-$route['asset/get_all_asset'] = 'asset/get_all_asset';
-$route['asset/do_upload'] = 'asset/do_upload';
-$route['asset/update'] = 'asset/update';
-$route['asset/(:any)'] = 'asset/detail/$1';
-$route['asset/delete(:any)'] = 'asset/delete/$1';
+$route['asset/upload'] 			= 'asset/upload';
+$route['asset/get_all_asset'] 	= 'asset/get_all_asset';
+$route['asset/do_upload'] 		= 'asset/do_upload';
+$route['asset/update'] 			= 'asset/update';
+$route['asset/(:any)'] 			= 'asset/detail/$1';
+$route['asset/delete(:any)'] 	= 'asset/delete/$1';
+
+$route['partner/(:any)']		= 'partner/detail/$1';
+$route['partner/create']		= 'partner/create';
+$route['partner/update'] 		= 'partner/update';
+$route['partner/insert'] 		= 'partner/insert';
+$route['partner/delete(:any)'] 	= 'partner/delete/$1';

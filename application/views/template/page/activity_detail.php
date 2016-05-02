@@ -91,8 +91,8 @@
 									<input type="hidden" id="lat" name="lat" value="<?php echo $activity_lat; ?>"/>
 									<input type="hidden" id="long" name="long" value="<?php echo $activity_long; ?>" />  
 								</div>
-								<div id="map_canvas" style="width: 690px; height: 200px; text-align:center; border:solid 1px #DDD; font-size:4em; color:#BBB; padding-top:20px">
-									Google Location
+								<div id="map_canvas" style="width: 690px; height: 200px; text-align:center; border:solid 1px #DDD; font-size:4em; padding-top:20px">
+									<p style="color:#BBB;">Google Location</p>
 								</div> 
 							</div>
 
