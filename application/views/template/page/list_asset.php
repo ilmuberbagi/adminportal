@@ -9,48 +9,56 @@
 	</section>
 
 	<section class="content">
-		<div class="box box-info">
-			<div class="box-header with-border">
-				<h3 class="box-title"><i class="fa fa-image"></i> IBF Asset</h3>
-				<div class="box-tools pull-right">
-					<a href="<?php echo base_url().'asset/upload';?>" class="btn btn-default" data-toggle="tooltip" title="Upload Media"><i class="fa fa-cloud-upload"></i></a>
-					<button class="btn" data-widget="collapse" data-tooltip="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
-					<button class="btn" data-widget="remove" data-tooltip="tooltip" title="Remove"><i class="fa fa-times"></i></button>
+		<div class="row">
+			<div class="col-md-12" id="img-content">
+				<div class="box box-info">
+					<div class="box-header with-border">
+						<h3 class="box-title"><i class="fa fa-image"></i> Media Asset Ilmu Berbagi</h3>
+						<div class="box-tools pull-right">
+							<a href="<?php echo base_url().'asset/upload';?>" class="btn btn-default" data-toggle="tooltip" title="Upload Media"><i class="fa fa-cloud-upload"></i> Upload Media</a>
+						</div>
+					</div>
+					<div class="box-body">
+						<div class="row">
+							<div class="col-lg-12">
+								<?php if(!empty($images)){ foreach($images as $img){?>
+								<div class="col-lg-2 col-md-2 col-xs-6 thumb" data-value="<?php echo $img['asset_url'] ? $img['asset_url']:$img['asset_url_thumb'];?>#<?php echo $img['asset_url_thumb'] ? $img['asset_url_thumb']:$img['asset_url'];?>">
+									<div class="thumbnail">
+										<img class="img-responsive" src="<?php echo $img['asset_url_thumb'] ? $img['asset_url_thumb']:'http://placehold.it/400x300';?>" alt="">
+									</div>
+								</div>
+								<?php }?>
+								<div class="col-lg-12">
+									<?php echo $paging;?>
+								</div>
+								<?php }else{?>
+								<div class="col-lg-12">
+									<div class="callout">
+										<div class="text-bold">Ups!</div>
+										<p>Belum ada asset (images) yang dapat ditampilkan...</p>
+									</div>
+								</div>
+								<?php }?>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
-			<div class="box-body">
-				<div class="row">
-					<?php if(!empty($images)){ foreach($images as $img){?>
-					<div class="col-lg-2 col-md-2 col-xs-6 thumb" data-value="<?php echo $img['asset_url'] ? $img['asset_url']:$img['asset_url_thumb'];?>#<?php echo $img['asset_url_thumb'] ? $img['asset_url_thumb']:$img['asset_url'];?>">
-						<a class="thumbnail">
-							<img class="img-responsive" src="<?php echo $img['asset_url_thumb'] ? $img['asset_url_thumb']:'http://placehold.it/400x300';?>" alt="">
-						</a>
+			<!-- attribut -->
+			<div class="col-md-4" id="img-attribut" style="display:none">		
+				<div class="box box-info">
+					<div class="box-header with-border">
+						<h3 class="box-title"><i class="fa fa-list"></i> Image Attribut</h3>
 					</div>
-					<?php }?>
-					<div class="col-lg-12">
-						<?php echo $paging;?>
-					</div>
-					<?php }else{?>
-					<div class="col-lg-12">
-						<div class="callout">
-							<div class="text-bold">Ups!</div>
-							<p>Belum ada asset (images) yang dapat ditampilkan...</p>
-						</div>
-					</div>
-					<?php }?>
-				</div>
-				<hr/>
-				<div class="row copy" style="display:none">
-					<div class="col-lg-12">
+					<div class="box-body">					
 						<div class="form-group">
 							<label>Image URL</label>
-							<input type="text" id="url" class="form-control">
+							<textarea id="url" class="form-control"></textarea>
 						</div>
-					</div>
-					<div class="col-lg-12">
+					
 						<div class="form-group">
 							<label>Image Thumb URL</label>
-							<input type="text" id="url_thumb" class="form-control">
+							<textarea id="url_thumb" class="form-control"></textarea>
 						</div>
 					</div>
 				</div>

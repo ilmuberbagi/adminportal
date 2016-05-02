@@ -51,7 +51,7 @@
 					<div class="col-lg-3 col-xs-6">
 						<div class="small-box bg-yellow">
 							<div class="inner">
-								<h3>0</h3>
+								<h3><?php echo $this->lib_general->count_activity();?></h3>
 								<p>Aktivitas</p>
 							</div>
 							<div class="icon">
@@ -65,13 +65,13 @@
 					<div class="col-lg-3 col-xs-6">
 						<div class="small-box bg-red">
 							<div class="inner">
-								<h3>0</h3>
+								<h3><?php echo $this->lib_general->count_agenda();?></h3>
 								<p>Agenda</p>
 							</div>
 							<div class="icon">
 								<i class="fa fa-book"></i>
 							</div>
-							<a href="<?php echo base_url().'activity';?>" class="small-box-footer">Selengkapnya <i class="fa fa-arrow-circle-right"></i></a>
+							<a href="<?php echo base_url().'activity/agenda';?>" class="small-box-footer">Selengkapnya <i class="fa fa-arrow-circle-right"></i></a>
 						</div>
 					</div>
 				</div>

@@ -26,6 +26,16 @@ class Mdl_activity extends CI_Model{
 		}
 		return $this->db->query($sql)->result_array();
 	}
+	
+	public function count_agenda(){
+		$sql = "SELECT * from ibf_activity WHERE activity_date_start >= NOW()";
+		return $this->db->query($sql)->num_rows();
+	}
+
+	public function count_activity(){
+		$sql = "SELECT * from ibf_activity WHERE activity_date_end <= NOW()";
+		return $this->db->query($sql)->num_rows();
+	}
 
 	public function insert($data){
 		return $this->db->insert('ibf_activity', $data);

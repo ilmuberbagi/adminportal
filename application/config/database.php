@@ -64,9 +64,6 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	// 'hostname' => '10.9.8.72',
-	// 'username' => 'kcm_video',
-	// 'password' => 'm3g4p0rt4l',
 	'hostname' => 'localhost',
 	'username' => 'root',
 	'password' => '',

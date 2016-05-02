@@ -50,6 +50,15 @@ class Lib_general {
 		return $this->ci->article->count_article_by_user($id);
 	}
 
+	# activities
+	public function count_agenda(){
+		$this->ci->load->model('Mdl_activity','activity');
+		return $this->ci->activity->count_agenda();
+	}
 
+	public function count_activity(){
+		$this->ci->load->model('Mdl_activity','activity');
+		return $this->ci->activity->count_activity();
+	}
 
 }
