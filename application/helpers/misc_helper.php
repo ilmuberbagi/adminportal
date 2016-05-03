@@ -1,9 +1,9 @@
 <?php  
 
 /**
- * @package    studio_hub / 2015
- * @author     Alikuro, Alnol, Sabbana
- * @copyright  PT. Kompas Cyber Media
+ * @package    adminportal / 2016
+ * @author     Sabbana
+ * @copyright  portal.ilmuberbagi.id
  * @version    1.0
  */
 

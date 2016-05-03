@@ -112,7 +112,7 @@ class Asset extends CI_Controller{
 		$this->data['page'] = 'page/list_asset';
 		
 		$config = array(
-			'base_url'		 => base_url().'asset/images/',
+			'base_url'		 => base_url().'asset/images/page/',
 			'total_rows'	 => $this->asset->count_asset(),
 			'per_page'		 => 12,
 			'full_tag_open'	 => '<ul class="pagination pagination-sm pull-right">',
@@ -132,7 +132,7 @@ class Asset extends CI_Controller{
 			'use_page_numbers' => TRUE,
 
 		);
-		$offset = $this->uri->segment(3)? ( (($this->uri->segment(3)-1) * $config['per_page'])) : 0;
+		$offset = $this->uri->segment(4)? ( (($this->uri->segment(4)-1) * $config['per_page'])) : 0;
 		$this->pagination->initialize($config);
 		$this->data['paging'] = $this->pagination->create_links();
 		$this->data['images'] = $this->asset->get_asset_limit($config['per_page'], $offset);
