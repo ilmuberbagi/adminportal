@@ -34,23 +34,18 @@ class Partner extends CI_Controller{
 	}
 
 	public function insert(){
-
-		if (isset($_FILES['company_logo']) && !empty($_FILES['company_logo']['name']))
-		{
+		if (isset($_FILES['company_logo']) && !empty($_FILES['company_logo']['name'])){
 			// insert data dan gambar 
 			$config	= array(
 				'upload_path'	=> 	'./assets/img/partner/',
 				'allowed_types'	=>	'gif|jpg|png|jpeg|bmp',
 				'max_size'		=> 	'2048',
 				'max_height'	=>	'768'
-				);
+			);
 			$this->load->library('upload', $config);
-			if ( ! $this->upload->do_upload('company_logo'))
-			{
+			if ( ! $this->upload->do_upload('company_logo')){
 				$this->session->set_flashdata('error','Terjadi masalah saat menyimpan gambar.');
-			}
-			else
-			{
+			}else{
 				$file = $this->upload->data();
 				$data = array(
 					'partner_name' 	=> $this->input->post('partner_name'), 
@@ -58,25 +53,20 @@ class Partner extends CI_Controller{
 					'company_logo'	=> $file['file_name'],
 					'phone' 		=> $this->input->post('phone'),
 					'email' 		=> $this->input->post('email')
-					);
+				);
 			} 
-		}
-		else{
-		// insert data saja 
+		}else{
+			// insert data saja 
 			$data = array(
 				'partner_name' 	=> $this->input->post('partner_name'), 
 				'company' 		=> $this->input->post('company'),
 				'phone' 		=> $this->input->post('phone'),
 				'email' 		=> $this->input->post('email')
-				);
+			);
 		}
 		$act = $this->partner->insert($data);
-
-		if($act){
-			$this->session->set_flashdata('success','Data partner telah berhasil disimpan.');
-		}else{
-			$this->session->set_flashdata('error','Terjadi masalah saat menyimpan data.');
-		}
+		if($act) $this->session->set_flashdata('success','Data partner telah berhasil disimpan.');
+		else $this->session->set_flashdata('error','Terjadi masalah saat menyimpan data.');
 		redirect('partner');
 	}
 
