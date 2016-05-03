@@ -19,7 +19,7 @@
 				</div>
 			</div>
 			<div class="box-body">
-				<table  class="table table-striped table-hover data-member">
+				<table  class="table table-striped table-hover data-activity">
 				<thead>
 					<th>Aktifitas</th>
 					<th>Lokasi</th>
@@ -39,7 +39,8 @@
 					<td>
 						<span class="btn-group">
 							<a href="<?php echo base_url().'activity/'.$a['activity_id'];?>" class="btn btn-default btn-sm"><i class="fa fa-search"></i></a>
-							<a href="<?php echo base_url().'activity/delete/'.$a['activity_id'];?>" class="btn btn-default btn-sm"><i class="fa fa-trash"></i></a>
+							<!-- <a href="<?php echo base_url().'activity/delete/'.$a['activity_id'];?>" class="btn btn-default btn-sm"><i class="fa fa-trash"></i></a> -->
+							<a data-toggle="modal" data-target="#modalDelete" class="btn btn-default btn-sm" onclick="return delete_activity('<?php echo $a['activity_id'].'#'.$a['activity_name'];?>')"><i class="fa fa-trash"></i></a>
 						</span>
 					</td>
 				</tr>
@@ -50,3 +51,30 @@
 		</div>
 	</section>
 </div>
+
+
+<!-- modal delete -->
+<div class="modal inmodal" id="modalDelete" tabindex="-1" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content animated bounceInDown">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">
+					<span aria-hidden="true"><i class="fa fa-remove"></i></span><span class="sr-only">Close</span></button>
+					<i class="fa fa-user-times modal-icon"></i>
+					<h4 class="modal-title">Delete kegiatan</h4>
+					<div>Hapus kegiatan dari daftar kegiatan.</div>
+				</div>
+				<form method="POST" action="<?php echo base_url().'activity/delete';?>">
+					<input type="hidden" name="activity_id" id="activity_id_delete">
+					<input type="hidden" name="activity_name" id="activity_name_delete">
+					<div class="modal-body msg-delete">
+
+					</div>
+					<div class="modal-footer">
+						<input type="reset" name="reset" value="Cancel" class="btn btn-white" data-dismiss="modal">
+						<input type="submit" name="move" value="Remove" class="btn btn-danger action">
+					</div>
+				</form>
+			</div>	
+		</div>
+	</div>

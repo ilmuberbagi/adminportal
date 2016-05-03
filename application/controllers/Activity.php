@@ -180,12 +180,13 @@ class Activity extends CI_Controller{
 		redirect('activity');
 	}
 
-	public function delete($id){
+	public function delete(){
+		$id 	= $this->security->xss_clean($this->input->post('activity_id'));
 		$data 	= $this->activity->get_activity($id);
+
         $act 	= $this->activity->delete($id);
 		if($act){
-			unlink('./assets/img/img_activity/' . $data[0]['activity_image']);
-			$this->session->set_flashdata('success','Data aktivitas telah berhasil dihapus.');
+			$this->session->set_flashdata('success','Data kegiatan telah berhasil dihapus.');
 		}else{
 			$this->session->set_flashdata('error','Terjadi masalah saat menghapus data.');
 		}

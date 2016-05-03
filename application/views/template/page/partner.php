@@ -19,7 +19,7 @@
 				</div>
 			</div>
 			<div class="box-body">
-				<table  class="table table-striped table-hover data-member">
+				<table  class="table table-striped table-hover data-partner">
 					<thead>
 						<th>Partner</th>
 						<th>Asal</th>
@@ -28,16 +28,16 @@
 						<th>Action</th>
 					</thead>
 					<tbody>
-						<?php if(!empty($partner)){ foreach($partner as $a){?>
+						<?php if(!empty($partner)){ foreach($partner as $p){?>
 						<tr>
-							<td><?php echo $a['partner_name'];?></td>
-							<td><?php echo $a['company'];?></td>
-							<td><?php echo $a['phone'];?></td>
-							<td><?php echo $a['email'];?></td>
+							<td><?php echo $p['partner_name'];?></td>
+							<td><?php echo $p['company'];?></td>
+							<td><?php echo $p['phone'];?></td>
+							<td><?php echo $p['email'];?></td>
 							<td>
 								<span class="btn-group">
-									<a href="<?php echo base_url().'partner/'.$a['partner_id'];?>" class="btn btn-default btn-sm"><i class="fa fa-search"></i></a>
-									<div class="btn btn-default btn-sm" id="<?php echo $a['partner_id'];?>" style="cursor:pointer" data-toggle="modal" data-target="#modalConfirm" onclick="confirm_del(this.id)"><i class="fa fa-trash"></i></div>
+									<a href="<?php echo base_url().'partner/'.$p['partner_id'];?>" class="btn btn-default btn-sm"><i class="fa fa-search"></i></a>
+									<a data-toggle="modal" data-target="#modalDelete" class="btn btn-default btn-sm" onclick="return delete_partner('<?php echo $p['partner_id'].'#'.$p['partner_name'];?>')"><i class="fa fa-trash"></i></a>
 								</span>
 							</td>
 						</tr>
@@ -49,21 +49,28 @@
 	</section>
 </div>
 
-<!-- modal confirm -->
-<div id="modalConfirm" class="modal fade" role="dialog">
+<!-- modal delete -->
+<div class="modal inmodal" id="modalDelete" tabindex="-1" aria-hidden="true">
 	<div class="modal-dialog">
-		<div class="modal-content">
+		<div class="modal-content animated bounceInDown">
 			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal"><i class="fa fa-close"></i></button>
-				<h4 class="modal-title"><i class="fa fa-warning"></i> Hapus data Partner</h4>
-			</div>
-			<div class="modal-body">
-				Anda yakin ingin menghapus data partner ini ?
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
-				<a href="" id="del" class="btn btn-default btn-sm">Hapus</a>
-			</div>
+				<button type="button" class="close" data-dismiss="modal">
+					<span aria-hidden="true"><i class="fa fa-remove"></i></span><span class="sr-only">Close</span></button>
+					<i class="fa fa-user-times modal-icon"></i>
+					<h4 class="modal-title">Delete partner</h4>
+					<div>Hapus partner dari daftar partner.</div>
+				</div>
+				<form method="POST" action="<?php echo base_url().'partner/delete';?>">
+					<input type="hidden" name="partner_id" id="partner_id_delete">
+					<input type="hidden" name="partner_name" id="partner_name_delete">
+					<div class="modal-body msg-delete">
+
+					</div>
+					<div class="modal-footer">
+						<input type="reset" name="reset" value="Cancel" class="btn btn-white" data-dismiss="modal">
+						<input type="submit" name="move" value="Remove" class="btn btn-danger action">
+					</div>
+				</form>
+			</div>	
 		</div>
 	</div>
-</div>

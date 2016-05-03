@@ -152,7 +152,10 @@ class Partner extends CI_Controller{
 		redirect('partner');
 	}
 
-	public function delete($id){
+	public function delete(){
+
+		$id 	= $this->security->xss_clean($this->input->post('partner_id'));
+		$name 	= $this->security->xss_clean($this->input->post('partner_name'));
 		$data 	= $this->partner->get_partner($id);
 		$act 	= $this->partner->delete($id);
 		if($act){
