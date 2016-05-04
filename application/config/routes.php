@@ -110,3 +110,7 @@ $route['partner/create']		= 'partner/create';
 $route['partner/update'] 		= 'partner/update';
 $route['partner/insert'] 		= 'partner/insert';
 $route['partner/delete'] 		= 'partner/delete';
+
+
+$route['donasi'] 				= 'donation';
+$route['donatur'] 				= 'donation/donator';

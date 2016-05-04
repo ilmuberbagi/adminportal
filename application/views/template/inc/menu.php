@@ -37,7 +37,7 @@
 						<li><a href="<?php echo base_url().'member/type';?>"><i class="fa fa-arrow-circle-right"></i>  Status Member</i></a></li>
 					</ul>
 				</li>
-				<li class="treeview <?php echo $this->uri->segment(1) == 'partner'? 'active':'';?>">
+				<li class="treeview <?php echo $this->uri->segment(1) == 'partner' || 'donasi' || 'donatur' ? 'active':'';?>">
 					<a href="#"><i class="fa fa-user"></i> <span>Partner</span> <i class="fa fa-angle-left pull-right"></i></a>
 					<ul class="treeview-menu">
 						<li><a href="<?php echo base_url().'partner';?>"><i class="fa fa-arrow-circle-right"></i> Partner</a></li>
