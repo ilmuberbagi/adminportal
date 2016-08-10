@@ -276,7 +276,7 @@ class Member extends CI_Controller{
 	# ===============================
 	public function change_profile(){
 		$id = $this->session->userdata('id');
-		$code = $this->session->userdata('code');
+		$code = $this->session->userdata('ibf_code');
 		$file = $_FILES['profile']['name'];
 		$fileExt = array_pop(explode(".", $file));
 		$config	= array(

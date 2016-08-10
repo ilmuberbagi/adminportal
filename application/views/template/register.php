@@ -139,6 +139,9 @@
 					</div>
 				</div>
 			</form>
+			<a href="<?php echo site_url().'login';?>">Back to Login</a><br>
+			<a href="<?php echo site_url().'login/reset';?>" class="text-center">Reset Password</a>
+
 		</div>
 	</div>
 
